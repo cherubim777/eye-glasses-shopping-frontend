@@ -1,3 +1,3 @@
 # eye-glasses-shopping
 
-An Eye-glasses Shopping Site
+The Front-end part of our Eye-glasses Shopping Site project
