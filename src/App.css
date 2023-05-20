@@ -36,12 +36,13 @@ body{
 }
 
 .intro{
-    height: 600px;
+    min-height: 700px;
     background-color: #A52A2A;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    gap: 133px;
+    flex-wrap: wrap;
 }
 
 .intro-text {
@@ -50,7 +51,8 @@ body{
     height: 360px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+
 }
 
 .intro-text-title {
@@ -65,4 +67,37 @@ body{
 .intro-text > button {
     width: 173px;
     height: 50px;
+}
+
+.intro-images {
+    width: 700px;
+    height: 500px;
+    display: flex;
+    gap: 5px;
+}
+
+.intro-images-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.intro-images-vertical > div {
+    background-size: cover;
+    width: 300px;
+    height: 250px;
+}
+
+
+.intro-image-n {
+    background-image: url(./assets/sample-eyeglass1.png);
+    
+}
+.intro-image-p {
+    background-image: url(./assets/sample-eyeglass2.png);
+}
+.intro-image-f {
+    width: 400px;
+    background-image: url(./assets/sample-eyeglass3.png);
+    background-size: cover;
 }
