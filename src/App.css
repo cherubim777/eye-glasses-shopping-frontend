@@ -34,3 +34,35 @@ body{
 .user{
     background-image: url("./assets/user.png");
 }
+
+.intro{
+    height: 600px;
+    background-color: #A52A2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.intro-text {
+    color: white;
+    width: 420px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.intro-text-title {
+    font-size: 64px;
+    line-height: 72px;
+}
+
+.intro-text-description {
+    font-weight: 300;
+}
+
+.intro-text > button {
+    width: 173px;
+    height: 50px;
+}
