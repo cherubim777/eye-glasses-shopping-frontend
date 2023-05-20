@@ -6,14 +6,20 @@ export default function Home(){
             <div className="intro-text">
                 <div className="intro-text-title">Vision care for you</div>
                 <div className="intro-text-description">Discover a range of stylish and affordable eyeglasses that provide the vision care you deserve, all from the comfort of your own home.</div>
-                <button>Explore</button>
+                <button className="theme-color">Explore</button>
             </div>
             <div className="intro-images">
                 <div className="intro-images-vertical">
-                    <div className="intro-image-n">new</div>
-                    <div className="intro-image-p">popular</div>
+                    <div className="intro-image-n">
+                        <div className="intro-image-tag theme-color">New</div>
+                    </div>
+                    <div className="intro-image-p">
+                        <div className="intro-image-tag theme-color">Popular</div>
+                    </div>
                 </div>
-                <div className="intro-image-f">featured</div>
+                <div className="intro-image-f">
+                    <div className="intro-image-tag theme-color">Featured</div>
+                </div>
             </div>
         </div>
 
