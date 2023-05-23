@@ -7,6 +7,11 @@ body{
     color:white;
     background-color: black;
 }
+.button-style{
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+}
 
 .navbar{
     position: sticky;
@@ -76,9 +81,6 @@ body{
 .intro-text > button {
     width: 173px;
     height: 50px;
-    font-family: 'Poppins', sans-serif;
-    border: none;
-    border-radius: 5px;
 }
 
 .intro-images {
@@ -122,4 +124,39 @@ body{
     margin-top: 12px;
     margin-left: 15px;
     font-size: 12px;
+}
+.product-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.product {
+    margin-top: 40px;
+    width: 280px;
+    height: fit-content;
+
+}
+.product-info {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+.product-image {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.product-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-add, .product-buy {
+    border: none;
+    width: 45%;
+    height: 35px;
+    margin-right: 10px;
+    margin-top: 10px;
+
 }
