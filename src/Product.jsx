@@ -3,7 +3,7 @@ import React from "react";
 export default function Product(){
     return (
         <div className="product">
-            <img className="product-image" src="./src/assets/sample-eyeglass1.png" alt="eyeglass" />
+            <img className="product-image" src="./src/assets/sample-eyeglass3.png" alt="eyeglass" />
             <div className="product-info">
                 <span className="product-name">Rayban</span>
                 <span className="product-price">30ETB</span>

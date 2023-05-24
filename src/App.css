@@ -12,6 +12,7 @@ body{
     font-family: 'Poppins', sans-serif;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .navbar{
@@ -129,11 +130,12 @@ body{
 .products{
     padding-left:140px;
     margin-top:100px;
-    margin-bottom: 100px;
-    background-color: #F3FFFC;;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    background-color: #f1eef5;
 }
 .products-category{
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .products-header {
@@ -156,6 +158,8 @@ body{
     width: 280px;
     height: fit-content;
     flex: 0 0 auto;
+    padding: 20px 20px 40px 20px;
+    background-color: white;
 
 
 }
