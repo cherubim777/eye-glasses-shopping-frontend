@@ -1,6 +1,6 @@
 import React from "react";
 import Products from "./Products";
-
+import Footer from "./Footer";
 
 export default function Home(){
     return (
@@ -31,7 +31,7 @@ export default function Home(){
         <Products category="New"/>
         <Products category="Popular"/>
         
-
+        <Footer />
 
         </>
     )
