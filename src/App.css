@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
+    
 }
 
 .theme-color{
@@ -125,15 +126,37 @@ body{
     margin-left: 15px;
     font-size: 12px;
 }
+.products{
+    padding-left:140px;
+    margin-top:100px;
+    margin-bottom: 100px;
+    background-color: #F3FFFC;;
+}
+.products-category{
+    font-size: 30px;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+}
+.products-expander{
+    margin-right:146px;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .product-container {
     display: flex;
+    overflow-x: auto;
     gap: 20px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 .product {
     margin-top: 40px;
     width: 280px;
     height: fit-content;
+    flex: 0 0 auto;
+
 
 }
 .product-info {

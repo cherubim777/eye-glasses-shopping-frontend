@@ -1,5 +1,6 @@
 import React from "react";
-import Product from "./Product";
+import Products from "./Products";
+
 
 export default function Home(){
     return (
@@ -23,12 +24,15 @@ export default function Home(){
                     <div className="intro-image-tag theme-color">Featured</div>
                 </div>
             </div>
+
         </div>
-        <div className="product-container">
-            <Product />
-            <Product />
-            <Product />
-        </div>
+        
+        <Products category="Featured"/>
+        <Products category="New"/>
+        <Products category="Popular"/>
+        
+
+
         </>
     )
 }
