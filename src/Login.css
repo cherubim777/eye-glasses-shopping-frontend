@@ -1,10 +1,16 @@
-body{
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    /* background-color: #f1eef5; */
+.login-page{
+    margin:0;
+    background-color: #f1eef5;
+    height: 100%;
 
 }
+.login-left{
+    background-color: white;
+    width:1000px;
+    height:100%;
+    border: 1px solid white;
 
+}
 .login-form{
     width:450px;
     height:fit-content;
@@ -36,14 +42,14 @@ body{
     margin-bottom:23px;
 
 }
-div > button {
+.login-btn{
     width: fit-content;
     height: 40px;
     padding: 11px 22px;
     margin: 17px 0px 30px 160px;
 }
 
-div > button > img {
+.login-btn-arrow{
     width: 17px;
     margin-left: 15px;
     margin-bottom: 3px;
@@ -63,3 +69,11 @@ div > button > img {
     opacity: 0.5;
 }
 
+.login-image{
+    width: 860px;
+    height: 700px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
