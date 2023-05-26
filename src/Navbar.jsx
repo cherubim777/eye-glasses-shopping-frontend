@@ -7,9 +7,9 @@ export default function Navbar(){
             <ul className="navbar-links">
                 <li>Home</li>
                 <li>Products</li>
-                <li className="logo search"></li>
-                <li className="logo cart"></li>
-                <li className="logo user"></li>
+                <li className="logo search-btn"></li>
+                <li className="logo cart-btn"></li>
+                <li className="logo user-btn"></li>
             </ul>
         </div>
     )

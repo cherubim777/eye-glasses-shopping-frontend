@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './Navbar'
 import Home from './Home'
 import Login from './Login'
+import Cart from './Cart'
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
     <>
     {/* <Navbar />
     <Home />     */}
-    <Login />
+    {/* <Login /> */}
+    <Cart />
     </>
   )
 }

@@ -45,13 +45,13 @@ body{
     height: 20px;
 }
 
-.search{
+.search-btn{
     background-image: url("./assets/search.png");
 }
-.cart{
+.cart-btn{
     background-image: url("./assets/cart.png");
 }
-.user{
+.user-btn{
     background-image: url("./assets/user.png");
 }
 
