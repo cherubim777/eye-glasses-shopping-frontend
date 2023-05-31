@@ -9,9 +9,9 @@ export default function Cart(){
             <p>You have 3 items in your cart</p>
             <div className="cart-body">
                 <div className="cart-items">
-                    <Item />
-                    <Item />
-                    <Item />
+                    <Item user="customer"/>
+                    <Item user="customer"/>
+                    <Item user="customer"/>
                    
                    
                     

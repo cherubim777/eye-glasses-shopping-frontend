@@ -9,9 +9,9 @@ export default function WishList(){
             <p>You have 3 items in your wish List</p>
             <div className="cart-body">
                 <div className="cart-items">
-                    <Item />
-                    <Item />
-                    <Item />
+                    <Item user="customer"/>
+                    <Item user="customer"/>
+                    <Item user="customer"/>
                 </div>
                 
             </div>     
