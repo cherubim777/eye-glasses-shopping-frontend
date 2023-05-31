@@ -5,17 +5,19 @@ import Navbar from './Navbar'
 import Home from './Home'
 import Login from './Login'
 import Cart from './Cart'
+import WishList from './WishList'
 
-function App() {
+export default function App() {
 
   return (
     <>
     {/* <Navbar />
     <Home />     */}
     {/* <Login /> */}
-    <Cart />
+    {/* <Cart /> */}
+    <WishList />
     </>
   )
 }
 
-export default App
+
