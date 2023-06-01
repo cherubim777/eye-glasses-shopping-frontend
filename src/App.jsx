@@ -12,12 +12,11 @@ export default function App() {
 
   return (
     <>
-    <Navbar user="retailer"/>
     {/* <Home />     */}
     {/* <Login /> */}
     {/* <Cart /> */}
     {/* <WishList /> */}
-    {/* < Dashboard /> */}
+    < Dashboard />
     {/* <SellerSettings /> */}
     </>
   )

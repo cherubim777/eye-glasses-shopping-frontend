@@ -39,14 +39,34 @@ body{
     gap: 40px;
 }
 
-.seller-navbar{
+.retailer-navbar {
+}
+
+.retailer-navbar-list{
     flex-direction: column;
 }
 
+.retailer-navbar-links {
+    display: flex;
+    gap: 10px;
+    color: #cdcdcd;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.retailer-navbar-links > img {
+    width: 30px;
+
+}
+.retailer-navbar-links
 .logo{
     background-size: 20px;
     width: 20px;
     height: 20px;
+}
+
+.clicked {
+    color: black;
 }
 
 .search-btn{

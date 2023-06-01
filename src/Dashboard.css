@@ -1,6 +1,12 @@
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
 .dashboard-body {
     background-color: #f1eef5;
     padding: 25px;
+    width: fit-content;
 }
 
 .dashboard-title {
