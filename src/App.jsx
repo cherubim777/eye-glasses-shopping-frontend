@@ -13,13 +13,13 @@ export default function App() {
 
   return (
     <>
-    {/* <Navbar />
-    <Home />     */}
+    <Navbar user="retailer"/>
+    {/* <Home />     */}
     {/* <Login /> */}
     {/* <Cart /> */}
     {/* <WishList /> */}
     {/* < Dashboard /> */}
-    <SellerSettings />
+    {/* <SellerSettings /> */}
     </>
   )
 }
