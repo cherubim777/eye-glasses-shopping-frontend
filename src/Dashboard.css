@@ -1,0 +1,117 @@
+.dashboard-body {
+    background-color: #f1eef5;
+    padding: 25px;
+}
+
+.dashboard-title {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+    color: #535353;
+}
+
+.barchart {
+    background-color: white;
+    width: fit-content;
+    margin-bottom: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 15px 30px;
+}
+
+.barchart-title {
+    font-weight: 500;
+    color: #A7A7A7;
+}
+
+.revenue-value {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 42px;
+}
+
+.year-selector {
+    text-align: end;
+}
+
+.year-selector > select {
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+}
+
+.product-stats {
+    width: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    padding: 52px 29px 44px 21px;
+    
+}
+
+.total {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stats {
+    border-radius: 10px;
+    padding: 15px 10px;
+}
+
+.stats > div {
+    text-align: center;
+}
+
+.top {
+    margin: 15px 0;
+}
+
+.top-products {
+    display: flex;
+    height: 230px;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.product-stats-and-overview {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    gap: 25px;
+}
+.stats-overview {
+    width: fit-content;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.stats-overview-title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.stats-overview-description {
+    color: #A7A7A7;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 4px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: black;
+    border-radius: 10px;
+  }
+
+  .percentage {
+    text-align: end;
+  }

@@ -19,7 +19,8 @@
 }
 
 .item {
-    width: 600px;
+    /* width: 600px; */
+    width: fit-content;
     height: 80px;
     padding: 10px;
     margin-bottom: 25px;

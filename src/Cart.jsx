@@ -1,5 +1,7 @@
 import React from "react";
 import Item from "./Item";
+import "./Cart.css"
+
 export default function Cart(){
     return(
         <div className="cart">
