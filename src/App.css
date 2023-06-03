@@ -13,6 +13,7 @@ body{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    padding: 8px 16px;
 }
 
 .link-style{
@@ -40,6 +41,8 @@ body{
 }
 
 .retailer-navbar {
+    min-width: 270px;
+    background-color: white;
 }
 
 .retailer-navbar-list{
@@ -70,7 +73,7 @@ body{
 }
 
 .search-btn{
-    background-image: url("./assets/search.png");
+    background-image: url("/src/assets/search.png");
 }
 .cart-btn{
     background-image: url("./assets/cart.png");

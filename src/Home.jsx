@@ -1,10 +1,13 @@
 import React from "react";
+import Navbar from "./Navbar";
 import Products from "./Products";
 import Footer from "./Footer";
+
 
 export default function Home(){
     return (
         <>
+        <Navbar user="customer"/>
         <div className="intro">
             <div className="intro-text">
                 <div className="intro-text-title">Vision care for you</div>

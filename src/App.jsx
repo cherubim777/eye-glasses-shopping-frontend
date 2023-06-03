@@ -16,8 +16,8 @@ export default function App() {
     {/* <Login /> */}
     {/* <Cart /> */}
     {/* <WishList /> */}
-    < Dashboard />
-    {/* <SellerSettings /> */}
+    {/* < Dashboard /> */}
+    <SellerSettings />
     </>
   )
 }

@@ -1,12 +1,13 @@
 .dashboard {
     display: flex;
-    justify-content: space-between;
+    background-color: #f1eef5;
 }
 
 .dashboard-body {
     background-color: #f1eef5;
     padding: 25px;
-    width: fit-content;
+    width: max-content;
+    /* width: 100%; */
 }
 
 .dashboard-title {
@@ -110,14 +111,14 @@
     height: 8px;
     background-color: #ddd;
     border-radius: 4px;
-  }
-  
-  .progress {
+}
+
+.progress {
     height: 100%;
     background-color: black;
     border-radius: 10px;
-  }
+}
 
-  .percentage {
+.percentage {
     text-align: end;
-  }
+}
