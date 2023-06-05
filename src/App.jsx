@@ -8,17 +8,19 @@ import WishList from './WishList'
 import Dashboard from './Dashboard'
 import SellerSettings from './SellerSettings'
 import Register from './Register'
+import AddProducts from './AddProducts'
 export default function App() {
 
   return (
     <>
     {/* <Home />     */}
-    {/* <Login /> */}
+    <Login />
     {/* <Cart /> */}
     {/* <WishList /> */}
-    < Dashboard />
+    {/* < Dashboard /> */}
     {/* <SellerSettings /> */}
     {/* <Register user="retailer"/> */}
+    <AddProducts />
     </>
   )
 }

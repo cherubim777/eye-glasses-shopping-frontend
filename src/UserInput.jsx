@@ -4,7 +4,7 @@ export default function UserInput(props){
     return (
         <>
         <div>{props.title}</div>
-        <input className="user-input-field" type={props.type} />
+        <input className="user-input-field" type={props.type} value={props.value} onChange={props.onChange}/>
     
         </>
 
