@@ -14,13 +14,13 @@ export default function App() {
   return (
     <>
     {/* <Home />     */}
-    <Login />
+    {/* <Login /> */}
     {/* <Cart /> */}
     {/* <WishList /> */}
     {/* < Dashboard /> */}
     {/* <SellerSettings /> */}
-    {/* <Register user="retailer"/> */}
-    <AddProducts />
+    <Register user="customer"/>
+    {/* <AddProducts /> */}
     </>
   )
 }
