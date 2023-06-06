@@ -105,10 +105,10 @@ let retailerRegister = <div className="login-page">
         <UserInput type="text" title="city"/>
         <UserInput type="file" title="photo"/>
         <label>
-  Accept custom order?
-  <input type="radio" name="custom-order" value="True" /> Yes
-  <input type="radio" name="custom-order" value="False" /> No
-</label>
+            Accept custom order?
+            <input type="radio" name="custom-order" value="True" /> Yes
+            <input type="radio" name="custom-order" value="False" /> No
+      </label>
         <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="src/assets/arrow.png"/></button>
 
         </div>

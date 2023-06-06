@@ -30,6 +30,8 @@ export default function login(){
         })
         .then(response => response.json())
         .then(data => {
+            const token = data.access;
+            localStorage.setItem('authToken',token);
         // Handle the response data here
         })
         .catch(error => {

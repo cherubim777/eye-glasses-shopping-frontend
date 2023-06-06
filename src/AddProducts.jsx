@@ -2,12 +2,16 @@ import React from "react";
 import UserInput from "./UserInput";
 export default function AddProducts(){
 
+    const token = localStorage.getItem('authToken');
+    const csrftoken = getCookie('csrftoken');
 
     let addProduct = function(){
         fetch('http://127.0.0.1:8000/product/addProduct/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+              'X-CSRFToken' : csrftoken
             },
             body: JSON.stringify({
               name: 'cool eye glass',
@@ -65,4 +69,20 @@ export default function AddProducts(){
         </>
       
     )
+
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
