@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Navbar from './Navbar'
 import Home from './Home'
@@ -13,14 +14,18 @@ export default function App() {
 
   return (
     <>
-    {/* <Home />     */}
-    {/* <Login /> */}
-    {/* <Cart /> */}
-    {/* <WishList /> */}
-    {/* < Dashboard /> */}
-    {/* <SellerSettings /> */}
-    {/* <Register user="customer"/> */}
-    <AddProducts />
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/customer' element={<Home />}/>
+      <Route path='/customer/register' element={<Register user="customer" />}/>
+      <Route path='/customer/login' element={<Login />}/>
+      <Route path='/customer/cart' element={<Cart />}/>
+      <Route path='/customer/wishlist' element={<WishList />}/>
+      <Route path='/retailer' element={<Dashboard />}/>
+      <Route path='/retailer/register' element={<Register user="retailer" />}/>
+      <Route path='/retailer/addProducts' element={<AddProducts />}/>
+      <Route path='/retailer/settings' element={<SellerSettings />}/>
+    </Routes>
     </>
   )
 }
