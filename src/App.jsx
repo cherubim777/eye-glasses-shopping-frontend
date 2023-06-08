@@ -19,8 +19,8 @@ export default function App() {
     {/* <WishList /> */}
     {/* < Dashboard /> */}
     {/* <SellerSettings /> */}
-    <Register user="customer"/>
-    {/* <AddProducts /> */}
+    {/* <Register user="customer"/> */}
+    <AddProducts />
     </>
   )
 }
