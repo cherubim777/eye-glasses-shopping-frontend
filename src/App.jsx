@@ -10,6 +10,7 @@ import Dashboard from './Dashboard'
 import SellerSettings from './SellerSettings'
 import Register from './Register'
 import AddProducts from './AddProducts'
+import UpdateProduct from './UpdateProduct'
 export default function App() {
 
   return (
@@ -24,6 +25,7 @@ export default function App() {
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
       <Route path='/retailer/addProducts' element={<AddProducts />}/>
+      <Route path='/retailer/updateProducts' element={<UpdateProduct />}/>
       <Route path='/retailer/settings' element={<SellerSettings />}/>
     </Routes>
     </>

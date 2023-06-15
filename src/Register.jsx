@@ -95,7 +95,7 @@ export default function Register(props){
                 <UserInput type="text" title="subcity" name="subcity" value={customerFields.subcity}  onChange={handleCustomerChange}/>
                 <UserInput type="text" title="city" name="city" value={customerFields.city}  onChange={handleCustomerChange}/>
                 <UserInput type="file" title="photo" name="photo" value={customerFields.photo}  onChange={handleCustomerChange}/>
-                <button onClick={customer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="src/assets/arrow.png"/></button>
+                <button onClick={customer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
 
                 </div>
                 </div>
@@ -123,7 +123,7 @@ let retailerRegister = <div className="login-page">
             <input type="radio" name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
             <input type="radio" name="accepts_custom_order" value="False" checked={retailerFields.accepts_custom_order ==="False"} onChange={handleRetailerChange}/> No
       </label>
-        <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="src/assets/arrow.png"/></button>
+        <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
 
         </div>
         </div>

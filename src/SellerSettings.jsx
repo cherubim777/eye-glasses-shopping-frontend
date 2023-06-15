@@ -11,7 +11,7 @@ export default function SellerSettings()
                 <h3>Store Details</h3>
                 <div className="profile">
                     <div className="profile-image">
-                    <img src="src/assets/profile-placeholder.png" width={130}/>
+                    <img src="/src/assets/profile-placeholder.png" width={130}/>
                     </div>
                     <div className="profile-info">
                         <div>Store profile</div>
@@ -43,7 +43,7 @@ export default function SellerSettings()
                         <td  className="profile-image-adder">
                             <div>
                                 <div className="profile-image-small">
-                                    <img src="src/assets/profile-placeholder.png" width={90}/>
+                                    <img src="/src/assets/profile-placeholder.png" width={90}/>
                                 </div>
                                 svg, png, jpg or gif (max 800x400px)
                             </div>

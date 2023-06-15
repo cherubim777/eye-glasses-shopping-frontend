@@ -49,14 +49,14 @@ export default function login(){
                     <UserInput type="text" title="user name" value={username} onChange={handleUsernameChange}/>
                     <div className="link-style forgot-password-link ">Forgot Password?</div>
                     <UserInput type="password" title="Password" value={password} onChange={handlePasswordChange}/>
-                    <button onClick={login} className="button-style theme-color login-btn">Log In <img className="login-btn-arrow"src="src/assets/arrow.png"/></button>
+                    <button onClick={login} className="button-style theme-color login-btn">Log In <img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
                     <div  className="signup">
                         <span className="signup-label">Don't have an account ? </span>
                         <span className="signup-link link-style">Sign Up</span>
                     </div>
                 </div>
             </div>      
-            <img className="login-image" src="src/assets/login-image.png"/>
+            <img className="login-image" src="/src/assets/login-image.png"/>
         </div>
 
     )
