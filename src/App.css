@@ -9,6 +9,10 @@ ul {
 li {
     cursor: pointer;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 .theme-color{
     color:white;
     background-color: black;

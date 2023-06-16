@@ -14,6 +14,7 @@ import UpdateProduct from './UpdateProduct'
 import UpdateProfile from './UpdateProfile'
 import CustomOrder from './CustomOrder'
 import AllProducts from './AllProducts'
+import ProductDetails from './ProductDetails'
 export default function App() {
 
   return (
@@ -33,6 +34,8 @@ export default function App() {
       <Route path='/customer/customOrder' element={<CustomOrder />}/>
       <Route path='/updateProfile' element={<UpdateProfile userType="customer" />} />
       <Route path='/customer/allProducts' element={<AllProducts />} />
+      <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
+
     </Routes>
     </>
   )
