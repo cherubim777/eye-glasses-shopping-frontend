@@ -68,8 +68,14 @@ body{
     height: 20px;
 }
 
-.clicked {
+.retailer-navbar a.active {
+    opacity: 1;
+}
+
+.retailer-navbar .inactive {
+    text-decoration: none;
     color: black;
+    opacity: 0.5;
 }
 
 .search-btn{

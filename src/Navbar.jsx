@@ -1,31 +1,8 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar(props){
-    let classNameArray = ["", "", "", "", "", ""]
-    switch(props.page){
-        case "Dashboard":
-            classNameArray[0] = "clicked"
-            break
-        case "Products":
-            classNameArray[1] = "clicked"
-            break
-        case "Orders":
-            classNameArray[2] = "clicked"
-            break
-        case "Transactions":
-            classNameArray[3] = "clicked"
-            break
-        case "Shipment":
-            classNameArray[4] = "clicked"
-            break
-        case "Settings":
-            classNameArray[5] = "clicked"
-            break
-
-
-    }
     
-
     const customerNavbar = 
         <div className="navbar">
             <div className="navbar-logo">VISION</div>
@@ -45,37 +22,37 @@ export default function Navbar(props){
                 <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/dashboard.png" alt="dashboard logo"/>
-                        <div className={classNameArray[0]}>Dashboard</div>
+                        <NavLink to="/retailer/" className="inactive">Dashboard</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/products.png" alt="Products logo"/>
-                        <div className={classNameArray[1]}>Products</div>
+                        <NavLink to="/retailer/products" className="inactive">Products</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/orders.png" alt="orders logo"/>
-                        <div className={classNameArray[2]}>Orders</div>
+                        <NavLink to="/retailer/orders" className="inactive">Orders</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/shipments.png" alt="Shipments logo"/>
-                        <div className={classNameArray[3]}>Shipments</div>
+                        <NavLink to="/retailer/shipments" className="inactive">Shipments</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/transactions.png" alt="transactions logo"/>
-                        <div className={classNameArray[4]}>Transactons</div>
+                        <NavLink to="/retailer/transactions" className="inactive">Transactons</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/settings.png" alt="settings logo"/>
-                        <div className={classNameArray[5]}>Settings</div>
+                        <NavLink to="/retailer/settings" className="inactive">Settings</NavLink>
                     </div>
                     </li>
             </ul>

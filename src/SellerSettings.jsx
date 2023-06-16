@@ -6,7 +6,7 @@ export default function SellerSettings()
 {
     return (
         <div className="settings">
-            <Navbar user="retailer" page="Settings"/>
+            <Navbar user="retailer" />
             <div className="settings-body">
                 <h3>Store Details</h3>
                 <div className="profile">
