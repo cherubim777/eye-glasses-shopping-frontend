@@ -11,9 +11,13 @@ export default function AllProducts() {
 
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/products')
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
+    fetch('http://127.0.0.1:8000/product/getProducts/')
+      .then((response) => response.json()) // return parsed JSON data
+      .then((data) => {
+        console.log(data); // log the parsed JSON data
+        setProducts(data); // set the products state variable
+        setFilteredProducts(data)
+      })
       .catch((error) => console.error(error));
   }, []);
 
@@ -21,7 +25,7 @@ export default function AllProducts() {
     const query = event.target.value;
     setSearchQuery(query);
 
-    if (query === '') {
+    if (query == '') {
       setFilteredProducts(products);
     } else {
       const filtered = products.filter((product) =>
