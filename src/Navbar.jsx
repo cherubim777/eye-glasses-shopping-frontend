@@ -1,8 +1,17 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props){
-    const [loggedIn, setLoggedIn] = React.useState(false)
+    const [loggedIn, setLoggedIn] = React.useState(true)
+    const navigate = useNavigate()
+    const userProfileElement =
+    <div className="user-profile">
+        <ul>
+            {loggedIn && <li> Profile</li>}
+            {loggedIn && <li> Settings</li>}
+            {loggedIn ? <li> Logout</li> : <li onClick={(event) => {event.preventDefault();navigate("/customer/login")}}>Login</li>}
+        </ul>
+    </div>
 
     const customerNavbar = 
         <div className="navbar">
@@ -15,7 +24,10 @@ export default function Navbar(props){
                 <div>
                     <NavLink className="logo search-btn"><img src="/src/assets/search.png" alt="Search" /></NavLink>
                     <NavLink className="logo cart-btn"><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
-                    <NavLink className="logo user-btn"><img src="/src/assets/user.png" alt="User" /></NavLink>
+                    <NavLink className="logo user-btn">
+                        <img src="/src/assets/user.png" alt="User" />
+                        {userProfileElement}
+                    </NavLink>
                 </div>
             </nav>
         </div>
