@@ -18,8 +18,8 @@ export default function Navbar(props){
             <div className="navbar-logo">VISION</div>
             <nav className="navbar-links">
                 <div>
-                    <li>Home</li>
-                    <li>Products</li>
+                    <div className="inactive">Home</div>
+                    <div>Products</div>
                 </div>
                 <div>
                     <NavLink className="logo search-btn"><img src="/src/assets/search.png" alt="Search" /></NavLink>

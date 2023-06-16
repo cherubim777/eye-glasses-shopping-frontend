@@ -26,8 +26,9 @@ export default function App() {
       <Route path='/customer/wishlist' element={<WishList />}/>
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
-      <Route path='/retailer/addProducts' element={<AddProducts />}/>
-      <Route path='/retailer/updateProducts' element={<UpdateProduct />}/>
+      <Route path='/retailer/addProduct' element={<AddProducts />}/>
+      <Route path='/retailer/updateProduct' element={<UpdateProduct />}/>
+      <Route path='/retailer/settings' element={<SellerSettings />}/>
       <Route path='/customer/customOrder' element={<CustomOrder />}/>
       <Route path='/updateProfile' element={<UpdateProfile userType="customer" />} />
     </Routes>
