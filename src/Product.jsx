@@ -3,7 +3,7 @@ import React from "react";
 export default function Product(props){
     return (
         <div className="product">
-            <img className="product-image" src={props.product.image} alt={props.product.name} />
+            <img className="product-image" src={`data:image/png;base64,${props.product.image}`} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
                 <span className="product-price">{props.product.price}</span>

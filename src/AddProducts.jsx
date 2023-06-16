@@ -10,11 +10,11 @@ export default function AddProducts(){
       brand: '',
       description: '',
       price: '',
-      image: ''
+      image: '',
+      quantity:'',
     });
 
     const token = localStorage.getItem('authToken');
-    const csrftoken = getCookie('csrftoken');
 
     const handleProductChange = (event) =>{
       const {name,value} = event.target;
@@ -27,7 +27,6 @@ export default function AddProducts(){
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
-              'X-CSRFToken' : csrftoken
             },
             body: JSON.stringify(product)
           })
@@ -82,6 +81,8 @@ export default function AddProducts(){
         .description} onChange={handleProductChange}></textarea>
         </label>
         <UserInput type="number" title="price" name="price" value={product.price} onChange={handleProductChange}/>
+        <UserInput type="number" min="1" max="10" title="quantity" name="quantity" value={product.quantity} onChange={handleProductChange}/>
+
         <UserInput type="file"  title="Product Image" name="image" value={product.image} onChange={handleProductChange} />
         <button  onClick={addProduct} className="button-style theme-color ">Submit</button>
 
@@ -93,17 +94,3 @@ export default function AddProducts(){
 
 }
 
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
