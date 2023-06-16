@@ -21,7 +21,7 @@ export default function Dashboard(){
       ];
     return (
         <div className="dashboard">
-            <Navbar user="retailer" page="Dashboard"/>
+            <Navbar user="retailer" />
             <div className="dashboard-body">
                 <div className="dashboard-title">Overview</div>
                 <div className="barchart">

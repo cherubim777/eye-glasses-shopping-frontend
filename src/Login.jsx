@@ -2,11 +2,15 @@ import React from "react";
 import UserInput from "./UserInput";
 import './Login.css'
 import {useState} from "react"
+import {useNavigate} from "react-router-dom"
+
 
 export default function login(){
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const navigate = useNavigate()
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -28,7 +32,20 @@ export default function login(){
             password: password
         })
         })
-        .then(response => response.json())
+        .then(response => {
+            switch (response.status){
+                case 200:
+                    navigate('/')
+                    break
+                case 400:
+                    alert("Error Occured. Please try again")
+                    break
+                case 401:
+                    alert("Incorrect Username or Password")
+                    break
+            }
+            return response.json()
+        })
         .then(data => {
             const token = data.access;
             localStorage.setItem('authToken',token);
