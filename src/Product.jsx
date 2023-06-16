@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function Product(){
+export default function Product(props){
     return (
         <div className="product">
-            <img className="product-image" src="./src/assets/sample-eyeglass3.png" alt="eyeglass" />
+            <img className="product-image" src={props.product.image} alt={props.product.name} />
             <div className="product-info">
-                <span className="product-name">Rayban</span>
-                <span className="product-price">30ETB</span>
+                <span className="product-name">{props.product.name}</span>
+                <span className="product-price">{props.product.price}</span>
             </div>
             <div className="product-buttons">
                 <button className="product-buy theme-color button-style">Buy Now</button>

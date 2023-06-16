@@ -10,14 +10,9 @@ export default function Products(props){
             </div>
             
             <div className="product-container">
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
+            {props.products.map((product) => (
+                 <Product key={product.id} product={product} />
+             ))}
             
              </div>
         </div>
