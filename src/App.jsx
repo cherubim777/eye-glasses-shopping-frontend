@@ -12,6 +12,7 @@ import Register from './Register'
 import AddProducts from './AddProducts'
 import UpdateProduct from './UpdateProduct'
 import UpdateProfile from './UpdateProfile'
+import CustomOrder from './CustomOrder'
 export default function App() {
 
   return (
@@ -27,7 +28,7 @@ export default function App() {
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
       <Route path='/retailer/addProducts' element={<AddProducts />}/>
       <Route path='/retailer/updateProducts' element={<UpdateProduct />}/>
-      <Route path='/retailer/settings' element={<SellerSettings />}/>
+      <Route path='/customer/customOrder' element={<CustomOrder />}/>
       <Route path='/updateProfile' element={<UpdateProfile userType="customer" />} />
     </Routes>
     </>
