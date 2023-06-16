@@ -16,6 +16,9 @@ body{
     padding: 8px 16px;
 }
 
+li {
+    cursor: pointer;
+}
 .link-style{
     cursor: pointer;
 }
@@ -27,7 +30,7 @@ body{
     padding: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 40px;
     box-shadow: 0px 0px 10px grey;
 }
 .navbar-logo{
@@ -35,11 +38,16 @@ body{
     font-weight: 700;
 }
 .navbar-links{
+    width: 100%;
     list-style-type: none;
     display: flex;
-    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
 }
-
+.navbar-links div {
+    display: flex;
+    gap: 30px;
+}
 .retailer-navbar {
     min-width: 270px;
     background-color: white;
@@ -61,8 +69,7 @@ body{
     width: 30px;
 
 }
-.retailer-navbar-links
-.logo{
+.retailer-navbar-links {
     background-size: 20px;
     width: 20px;
     height: 20px;
@@ -78,17 +85,10 @@ body{
     opacity: 0.5;
 }
 
-.search-btn{
-    background-image: url("/src/assets/search.png");
-}
-.cart-btn{
-    background-image: url("./assets/cart.png");
-}
-.user-btn{
-    background-image: url("./assets/user.png");
-}
+.logo img{
+    width: 25px;
 
-
+}
 
 .intro{
     min-height: 700px;

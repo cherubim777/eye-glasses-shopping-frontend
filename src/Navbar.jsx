@@ -2,17 +2,22 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 
 export default function Navbar(props){
-    
+    const [loggedIn, setLoggedIn] = React.useState(false)
+
     const customerNavbar = 
         <div className="navbar">
             <div className="navbar-logo">VISION</div>
-            <ul className="navbar-links">
-                <li>Home</li>
-                <li>Products</li>
-                <li className="logo search-btn"></li>
-                <li className="logo cart-btn"></li>
-                <li className="logo user-btn"></li>
-            </ul>
+            <nav className="navbar-links">
+                <div>
+                    <li>Home</li>
+                    <li>Products</li>
+                </div>
+                <div>
+                    <NavLink className="logo search-btn"><img src="/src/assets/search.png" alt="Search" /></NavLink>
+                    <NavLink className="logo cart-btn"><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
+                    <NavLink className="logo user-btn"><img src="/src/assets/user.png" alt="User" /></NavLink>
+                </div>
+            </nav>
         </div>
 
     const retailerNavbar = 
