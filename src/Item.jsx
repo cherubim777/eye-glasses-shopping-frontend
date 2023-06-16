@@ -6,11 +6,11 @@ export default function Item(props){
     <div className="item">
         <img className="item-image" src="/src/assets/sample-eyeglass3.png" alt="" />
         <div>
-            <div className="item-name">Product Name</div>
-            <div className="item-description">Product Description</div>
+            <div className="item-name">{props.name}</div>
+            <div className="item-description">{props.description}</div>
          </div>
         <input className="item-quantity" type="number" placeholder="1" min={1} max={6}/>
-        <div className="item-price">$432</div>
+        <div className="item-price">{props.price}</div>
         <img className="trash-btn" src="/src/assets/trash.png" alt="trash image" />
     </div> 
 

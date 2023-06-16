@@ -1,35 +1,57 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import Item from "./Item";
 import "./Cart.css"
 
 export default function Cart(){
+
+    const [cartItems, setCartItems] = useState(["a", "b"]);
+    const [subTotalPrice, setSubTotalPrice] = useState(0);
+
+    useEffect(() => {
+        fetch("http://127.0.0.1:8000/carts")
+        .then((response) => response.json())
+        .then((data) => {
+            setCartItems(data);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, []);
+
+    useEffect(() => {
+        const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
+        setSubTotalPrice(subtotal);
+      }, [cartItems]);
+
     return(
         <div className="cart">
             <p> &lt; Shopping Continue</p>
             <hr/>
             <p>Shopping Cart</p>
-            <p>You have 3 items in your cart</p>
+            <p>You have {cartItems.length} items in your cart</p>
             <div className="cart-body">
                 <div className="cart-items">
+                    {/* <Item user="customer"/>
                     <Item user="customer"/>
-                    <Item user="customer"/>
-                    <Item user="customer"/>
-                   
+                    <Item user="customer"/> */}
+                   {cartItems.map((item) => {
+                        return <Item key={item.id} user="customer" {...item} />
+                   })}
                    
                     
                 </div>
                 <div className="price theme-color">
                     <div className="price-value">
                         <span>Subtotal</span>
-                        <span>$1000</span>
+                        <span>{subTotalPrice}</span>
                     </div>
                     <div className="price-value">
                         <span>Shipping</span>
-                        <span>$5</span>
+                        <span>{subTotalPrice/200}</span>
                     </div>
                     <div className="price-value">
                         <span>Total(Tax.incl)</span>
-                        <span>$1005</span>
+                        <span>{subTotalPrice+subTotalPrice/200}</span>
                     </div>
                     <div className="check-out" >
                         <span>$1005</span>

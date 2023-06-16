@@ -23,7 +23,7 @@ export default function Navbar(props){
                 </div>
                 <div>
                     <NavLink className="logo search-btn"><img src="/src/assets/search.png" alt="Search" /></NavLink>
-                    <NavLink className="logo cart-btn"><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
+                    <NavLink className="logo cart-btn" onClick={(event) => {event.preventDefault();navigate("/customer/cart")}}><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
                         <img src="/src/assets/user.png" alt="User" />
                         {userProfileElement}
