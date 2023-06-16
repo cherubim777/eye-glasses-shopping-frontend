@@ -7,9 +7,13 @@ export default function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/products')
+    fetch('http://127.0.0.1:8000/product/getProducts/')
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => 
+      {
+        setProducts(data)
+        console.log(data)
+    })
       .catch((error) => console.error(error));
   }, []);
 
