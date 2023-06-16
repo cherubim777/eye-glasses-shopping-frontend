@@ -3,7 +3,12 @@ body{
     font-family: 'Poppins', sans-serif;
 
 }
-
+ul {
+    list-style-type: none;
+}
+li {
+    cursor: pointer;
+}
 .theme-color{
     color:white;
     background-color: black;
@@ -43,8 +48,8 @@ li {
 .navbar-links{
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    gap: 40px;
 }
 .navbar-links div {
     display: flex;
@@ -71,11 +76,11 @@ li {
     width: 30px;
 
 }
-.retailer-navbar-links {
+/* .retailer-navbar-links {
     background-size: 20px;
     width: 20px;
     height: 20px;
-}
+} */
 
 .retailer-navbar a.active {
     opacity: 1;
