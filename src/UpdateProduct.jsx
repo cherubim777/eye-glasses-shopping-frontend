@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import UserInput from "./UserInput";
 
-export default function UpdateProduct({ productId }) {
+export default function UpdateProduct() {
+
+  const location = useLocation()
+  const productId = location.state?.id
   const [product, setProduct] = useState({
     name: "",
     age_group: "",
@@ -55,13 +59,14 @@ export default function UpdateProduct({ productId }) {
     fetch(`http://127.0.0.1:8000/product/updateProduct/${productId}/`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify(product),
+      body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(formData)
         // Handle the response data here
       })
       .catch((error) => {
@@ -179,7 +184,7 @@ export default function UpdateProduct({ productId }) {
             title="Product Image"
             name="image"
             value={product.image}
-            onChange={handleProductChange}
+            onChange={handleImageChange}
           />
            <UserInput
               type="submit"
