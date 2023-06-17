@@ -29,7 +29,7 @@ export default function Product(props){
     }
     return (
       <div className="product">
-              <Link to={`/customer/productDetails/${props.product.id}`}>
+              <Link to={`/customer/productDetails/${props.product.id}`} state={{id: props.product.id}}>
             <img className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
