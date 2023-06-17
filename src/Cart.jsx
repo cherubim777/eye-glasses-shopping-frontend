@@ -9,12 +9,19 @@ export default function Cart(){
     const [subTotalPrice, setSubTotalPrice] = useState(0);
 
     const navigate = useNavigate()
-
+    const token = localStorage.getItem('customerToken');
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/cart/carts")
+        fetch("http://127.0.0.1:8000/cart/carts", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        }
+        )
           .then((response) => response.json())
           .then((data) => {
-            setCartItems(data);
+            setCartItems(data.items);
           })
           .catch((error) => {
             console.error(error);
