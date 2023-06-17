@@ -10,7 +10,7 @@ export default function AddProducts(){
       brand: '',
       description: '',
       price: '',
-      image: '',
+      image: null,
       quantity:'',
     });
 
@@ -20,15 +20,29 @@ export default function AddProducts(){
       const {name,value} = event.target;
       setProduct({...product,[name]:value})
     };
+    const handleImageChange = (event) => {
+      setProduct({ ...product, image: event.target.files[0] });
+    };
 
     let addProduct = function(){
+        
+        const formData = new FormData();
+        formData.append('name', product.name);
+        formData.append('age_group', product.age_group);
+        formData.append('gender_category', product.gender_category);
+        formData.append('category', product.category);
+        formData.append('brand', product.brand);
+        formData.append('description', product.description);
+        formData.append('price', product.price);
+        formData.append('quantity', product.quantity);
+        formData.append('image', product.image);
         fetch('http://127.0.0.1:8000/product/addProduct/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
+              // 'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(product)
+            body: formData
           })
           .then(response => response.json())
           .then(data => {
@@ -39,12 +53,17 @@ export default function AddProducts(){
           });
 
         }
+        const handleSubmit = (event) => {
+          event.preventDefault();
+          addProduct();
+        };
 
     return (
         <>
         <div className="login-left">
         <div className="login-form">
           <h1> Add product</h1>
+          <form onSubmit={handleSubmit}>
             <UserInput type="text" title="name" name="name" value={product.name} onChange={handleProductChange}/>
         <label>
             Age Group 
@@ -83,9 +102,13 @@ export default function AddProducts(){
         <UserInput type="number" title="price" name="price" value={product.price} onChange={handleProductChange}/>
         <UserInput type="number" min="1" max="10" title="quantity" name="quantity" value={product.quantity} onChange={handleProductChange}/>
 
-        <UserInput type="file"  title="Product Image" name="image" value={product.image} onChange={handleProductChange} />
-        <button  onClick={addProduct} className="button-style theme-color ">Submit</button>
-
+        <UserInput type="file"  accept="image/*" title="Product Image" name="image"  onChange={handleImageChange} />
+        <UserInput
+              type="submit"
+              value="Submit"
+              className="button-style theme-color"
+            />
+            </form>
         </div>
         </div>
         </>
