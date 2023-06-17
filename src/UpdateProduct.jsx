@@ -13,7 +13,7 @@ export default function UpdateProduct({ productId }) {
     image: "",
   });
 
-  const token = localStorage.getItem("authToken");
+  const token = localStorage.getItem("retailerToken");
   // const csrftoken = getCookie("csrftoken");
 
   useEffect(() => {

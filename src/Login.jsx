@@ -46,11 +46,23 @@ export default function login(){
             }
             return response.json()
         })
-        .then(data => {
+        .then(data => 
+            {
+                if (data) {
             const token = data.access;
-            localStorage.setItem('authToken',token);
-        // Handle the response data here
-        })
+            const userType = data.userType;
+      
+            // Store the JWT token in localStorage for customers
+            if (userType === 'customer') {
+              localStorage.setItem('customerToken', token);
+            }
+      
+            // Store the JWT token in localStorage as 'retailertoken' for retailers
+            if (userType === 'retailer') {
+              localStorage.setItem('retailerToken', token);
+            }
+                }}
+      )
         .catch(error => {
         // Handle any errors that occurred during the request
         });
