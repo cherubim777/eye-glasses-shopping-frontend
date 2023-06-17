@@ -3,18 +3,24 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props){
     const [loggedIn, setLoggedIn] = React.useState(() => {
-        return Boolean(localStorage.getItem('authToken'));
+        return Boolean(localStorage.getItem('customerToken'));
       });
+
+    React.useEffect(() => {
+        setLoggedIn(Boolean(localStorage.getItem('customerToken')))
+    },[localStorage.getItem('customerToken')])
+
     const navigate = useNavigate()
-    
+    console.log(loggedIn)
     function handleLogin(event) {
         event.preventDefault();
         navigate("/customer/login")
+        
     }
 
     function handleLogout(event) {
         event.preventDefault();
-        localStorage.removeItem('authToken');
+        localStorage.removeItem('customerToken');
         setLoggedIn(false);
     }
 
