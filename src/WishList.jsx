@@ -1,9 +1,12 @@
 import React from "react";
+import {useNavigate} from 'react-router-dom'
 import Item from "./Item";
+
 export default function WishList(){
+    const navigate = useNavigate()
     return(
         <div className="cart">
-            <p> &lt; Shopping Continue</p>
+            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}> &lt; Shopping Continue</p>
             <hr/>
             <p>Shopping Wishlist</p>
             <p>You have 3 items in your wish List</p>

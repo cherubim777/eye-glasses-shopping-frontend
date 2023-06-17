@@ -41,8 +41,9 @@ export default function RetailerProducts(){
 
  
   return (
-    <>
+    <div className="dashboard">
       <Navbar user="retailer" />
+      <div>
       <div className="login-form">
         <UserInput
           type="text"
@@ -52,6 +53,7 @@ export default function RetailerProducts(){
         />
       </div>
       <Products products={filteredProducts} user="retailer"/>
-    </>
+      </div>
+    </div>
   );
 }
