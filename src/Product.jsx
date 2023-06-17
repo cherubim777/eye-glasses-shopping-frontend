@@ -23,6 +23,10 @@ export default function Product(props){
             // Handle any errors that occurred during the request
           });
     }
+
+    const handlePurchase = () => {
+      navigate("/customer/checkout", {state: {cartItems: [props.product]}})
+    }
     return (
       <div className="product">
               <Link to={`/customer/productDetails/${props.product.id}`}>
@@ -35,7 +39,7 @@ export default function Product(props){
                 <div className="product-buttons">
                   {props.user === "customer" ?
                     <>
-                    <button className="product-buy theme-color button-style">Buy Now</button>
+                    <button className="product-buy theme-color button-style" onClick={handlePurchase}>Buy Now</button>
                     <button onClick={(event) => addToCart} className="product-add theme-color button-style">Add to cart</button></>
                     :
                     <>
