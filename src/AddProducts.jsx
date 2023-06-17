@@ -14,7 +14,7 @@ export default function AddProducts(){
       quantity:'',
     });
 
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('retailerToken');
 
     const handleProductChange = (event) =>{
       const {name,value} = event.target;

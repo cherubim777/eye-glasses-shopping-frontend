@@ -11,15 +11,15 @@ export default function Cart(){
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/carts/cart")
-        .then((response) => response.json())
-        .then((data) => {
+        fetch("http://127.0.0.1:8000/cart/carts")
+          .then((response) => response.json())
+          .then((data) => {
             setCartItems(data);
-        })
-        .catch((error) => {
+          })
+          .catch((error) => {
             console.error(error);
-        });
-    }, []);
+          });
+      }, []);
 
     useEffect(() => {
         const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
