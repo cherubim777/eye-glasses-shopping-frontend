@@ -1,14 +1,17 @@
 import {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import Item from "./Item";
 import "./Cart.css"
 
 export default function Cart(){
 
-    const [cartItems, setCartItems] = useState(["a", "b"]);
+    const [cartItems, setCartItems] = useState([]);
     const [subTotalPrice, setSubTotalPrice] = useState(0);
 
+    const navigate = useNavigate()
+
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/carts")
+        fetch("http://127.0.0.1:8000/carts/cart")
         .then((response) => response.json())
         .then((data) => {
             setCartItems(data);
@@ -53,7 +56,7 @@ export default function Cart(){
                         <span>Total(Tax.incl)</span>
                         <span>{subTotalPrice+subTotalPrice/200}</span>
                     </div>
-                    <div className="check-out" >
+                    <div onClick={() => navigate("/customer/checkout", {state: { cartItems }})} className="check-out" >
                         <span>$1005</span>
                         <span>Checkout ➜</span>
                     </div>

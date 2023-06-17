@@ -15,6 +15,7 @@ import UpdateProfile from './UpdateProfile'
 import CustomOrder from './CustomOrder'
 import AllProducts from './AllProducts'
 import ProductDetails from './ProductDetails'
+import Checkout from './Checkout'
 export default function App() {
 
   return (
@@ -35,7 +36,8 @@ export default function App() {
       <Route path='/updateProfile' element={<UpdateProfile userType="customer" />} />
       <Route path='/customer/allProducts' element={<AllProducts />} />
       <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
-
+      <Route path='/customer/checkout' element={<Checkout />} />
+      
     </Routes>
     </>
   )
