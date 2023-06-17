@@ -40,6 +40,7 @@ export default function App() {
       <Route path='/customer/allProducts' element={<AllProducts />} />
       <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
       <Route path='/customer/checkout' element={<Checkout />} />
+      <Route path='/customer/updateProfile' element={<UpdateProfile />} />
       <Route path='/retailer/orders' element={<Orders />} />
     </Routes>
     </>

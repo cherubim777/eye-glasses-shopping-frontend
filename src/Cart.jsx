@@ -28,7 +28,7 @@ export default function Cart(){
 
     return(
         <div className="cart">
-            <p> &lt; Shopping Continue</p>
+            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}> &lt; Shopping Continue</p>
             <hr/>
             <p>Shopping Cart</p>
             <p>You have {cartItems.length} items in your cart</p>
@@ -46,18 +46,18 @@ export default function Cart(){
                 <div className="price theme-color">
                     <div className="price-value">
                         <span>Subtotal</span>
-                        <span>{subTotalPrice}</span>
+                        <span>{`${subTotalPrice} ETB`}</span>
                     </div>
                     <div className="price-value">
                         <span>Shipping</span>
-                        <span>{subTotalPrice/200}</span>
+                        <span>{`${subTotalPrice/200} ETB`}</span>
                     </div>
                     <div className="price-value">
                         <span>Total(Tax.incl)</span>
-                        <span>{subTotalPrice+subTotalPrice/200}</span>
+                        <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
                     </div>
-                    <div onClick={() => navigate("/customer/checkout", {state: { cartItems }})} className="check-out" >
-                        <span>$1005</span>
+                    <div onClick={() => navigate("/customer/checkout", {state: { cartItems }})} style={{cursor: "pointer"}} className="check-out" >
+                        <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
                         <span>Checkout ➜</span>
                     </div>
                 </div>
