@@ -2,24 +2,39 @@ import React from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props){
-    const [loggedIn, setLoggedIn] = React.useState(true)
+    const [loggedIn, setLoggedIn] = React.useState(() => {
+        return Boolean(localStorage.getItem('authToken'));
+      });
     const navigate = useNavigate()
+    
+    function handleLogin(event) {
+        event.preventDefault();
+        navigate("/customer/login")
+    }
+
+    function handleLogout(event) {
+        event.preventDefault();
+        localStorage.removeItem('authToken');
+        setLoggedIn(false);
+    }
+
     const userProfileElement =
     <div className="user-profile">
         <ul>
             {loggedIn && <li> Profile</li>}
             {loggedIn && <li> Settings</li>}
-            {loggedIn ? <li> Logout</li> : <li onClick={(event) => {event.preventDefault();navigate("/customer/login")}}>Login</li>}
+            {loggedIn ? <li onClick={((event) => handleLogout(event)) }> Logout</li> : <li onClick={(event) => handleLogin(event)}>Login</li>}
         </ul>
     </div>
 
+    const style = ({isActive}) => { return isActive ?  {fontWeight: "bold"} :  {opacity: 0.3}}
     const customerNavbar = 
         <div className="navbar">
-            <div className="navbar-logo">VISION</div>
+            <NavLink to="/" className="navbar-logo">VISION</NavLink>
             <nav className="navbar-links">
                 <div>
-                    <div className="inactive">Home</div>
-                    <div>Products</div>
+                    <NavLink style={style} to="/" className="inactive">Home</NavLink>
+                    <NavLink style={style} to="/customer/allProducts">Products</NavLink>
                 </div>
                 <div>
                     <NavLink className="logo search-btn"><img src="/src/assets/search.png" alt="Search" /></NavLink>

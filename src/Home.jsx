@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Products from './Products';
 import Footer from './Footer';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/product/getProducts/')
@@ -26,7 +28,7 @@ export default function Home() {
           <div className="intro-text-description">
             Discover a range of stylish and affordable eyeglasses that provide the vision care you deserve, all from the comfort of your own home.
           </div>
-          <button className="theme-color button-style">Explore</button>
+          <button onClick={() => navigate("/customer/allProducts")} className="theme-color button-style">Explore</button>
         </div>
         <div className="intro-images">
           <div className="intro-images-vertical">

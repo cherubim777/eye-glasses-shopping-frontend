@@ -35,7 +35,7 @@ export default function login(){
         .then(response => {
             switch (response.status){
                 case 200:
-                    navigate('/')
+                    navigate('/', {replace: true})
                     break
                 case 400:
                     alert("Error Occured. Please try again")
