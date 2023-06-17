@@ -39,7 +39,7 @@ export default function Product(props){
                     <button onClick={(event) => addToCart} className="product-add theme-color button-style">Add to cart</button></>
                     :
                     <>
-                    <button className="product-buy theme-color button-style">Edit</button>
+                    <button className="product-buy theme-color button-style" onClick={() => navigate("/retailer/updateProduct", {state: {id: props.product.id}})}>Edit</button>
                     <button  className="product-add theme-color button-style">Remove</button>
                     </>
                   }
