@@ -10,7 +10,7 @@ export default function AddProducts(){
       brand: '',
       description: '',
       price: '',
-      image: null,
+      photo: null,
       quantity:'',
     });
 
@@ -21,7 +21,8 @@ export default function AddProducts(){
       setProduct({...product,[name]:value})
     };
     const handleImageChange = (event) => {
-      setProduct({ ...product, image: event.target.files[0] });
+      setProduct({ ...product, photo: event.target.files[0] });
+      console.log(product.photo)
     };
 
     let addProduct = function(){
@@ -35,7 +36,7 @@ export default function AddProducts(){
         formData.append('description', product.description);
         formData.append('price', product.price);
         formData.append('quantity', product.quantity);
-        formData.append('image', product.image);
+        formData.append('photo', product.photo);
         fetch('http://127.0.0.1:8000/product/addProduct/', {
             method: 'POST',
             headers: {
@@ -43,6 +44,7 @@ export default function AddProducts(){
               'Authorization': `Bearer ${token}`,
             },
             body: formData
+          
           })
           .then(response => response.json())
           .then(data => {
