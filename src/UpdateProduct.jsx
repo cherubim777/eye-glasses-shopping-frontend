@@ -34,13 +34,29 @@ export default function UpdateProduct({ productId }) {
     setProduct({ ...product, [name]: value });
   };
 
+  const handleImageChange = (event) => {
+    setProduct({ ...product, photo: event.target.files[0] });
+    console.log(product.photo)
+  };
+
+
   const updateProduct = () => {
+
+    const formData = new FormData();
+    formData.append('name', product.name);
+    formData.append('age_group', product.age_group);
+    formData.append('gender_category', product.gender_category);
+    formData.append('category', product.category);
+    formData.append('brand', product.brand);
+    formData.append('description', product.description);
+    formData.append('price', product.price);
+    formData.append('quantity', product.quantity);
+    formData.append('photo', product.photo);
     fetch(`http://127.0.0.1:8000/product/updateProduct/${productId}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        "X-CSRFToken": csrftoken,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(product),
     })
@@ -52,12 +68,17 @@ export default function UpdateProduct({ productId }) {
         // Handle any errors that occurred during the request
       });
   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    updateProduct();
+  };
 
   return (
     <>
       <div className="login-left">
         <div className="login-form">
           <h1> Update product</h1>
+          <form onSubmit={handleSubmit}>
           <UserInput
             type="text"
             title="name"
@@ -160,12 +181,12 @@ export default function UpdateProduct({ productId }) {
             value={product.image}
             onChange={handleProductChange}
           />
-          <button
-            onClick={updateProduct}
-            className="button-style theme-color "
-          >
-            Submit
-          </button>
+           <UserInput
+              type="submit"
+              value="Submit"
+              className="button-style theme-color"
+            />
+          </form>
         </div>
       </div>
     </>

@@ -15,7 +15,8 @@ export default function Register(props){
     store_name:'',
     city: '',
     photo: '',
-    accepts_custom_order:''
+    accepts_custom_order:'',
+    custom_order_price:''
   });
   const [customerFields, setCustomerFields] = useState({
     first_name: '',
@@ -123,6 +124,8 @@ let retailerRegister = <div className="login-page">
             <input type="radio" name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
             <input type="radio" name="accepts_custom_order" value="False" checked={retailerFields.accepts_custom_order ==="False"} onChange={handleRetailerChange}/> No
       </label>
+      <UserInput type="number" title="custom order price" name="custom_order_price" value={retailerFields.custom_order_price}  onChange={handleRetailerChange}/>
+
         <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
 
         </div>

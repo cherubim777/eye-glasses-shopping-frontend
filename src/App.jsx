@@ -16,6 +16,8 @@ import CustomOrder from './CustomOrder'
 import AllProducts from './AllProducts'
 import ProductDetails from './ProductDetails'
 import Checkout from './Checkout'
+import RetailerProducts from './RetailerProducts'
+import Orders from './Orders'
 export default function App() {
 
   return (
@@ -30,6 +32,7 @@ export default function App() {
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
       <Route path='/retailer/addProduct' element={<AddProducts />}/>
+      <Route path='/retailer/products'  element={<RetailerProducts /> }/>
       <Route path='/retailer/updateProduct' element={<UpdateProduct />}/>
       <Route path='/retailer/settings' element={<SellerSettings />}/>
       <Route path='/customer/customOrder' element={<CustomOrder />}/>
@@ -37,7 +40,7 @@ export default function App() {
       <Route path='/customer/allProducts' element={<AllProducts />} />
       <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
       <Route path='/customer/checkout' element={<Checkout />} />
-      
+      <Route path='/retailer/orders' element={<Orders />} />
     </Routes>
     </>
   )

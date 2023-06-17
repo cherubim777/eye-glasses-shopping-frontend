@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Products from './Products';
-import Footer from './Footer';
-import UserInput from './UserInput';
+import {useState,useEffect} from "react";
+import Navbar from "./Navbar";
+import Products from "./Products";
+import UserInput from "./UserInput";
+export default function RetailerProducts(){
 
-export default function AllProducts() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
 
-
+  const  token = localStorage.getItem('retailerToken')
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/product/getProducts/')
+    fetch('http://127.0.0.1:8000/product/getRetailerProducts/',{
+       headers: {
+        Authorization: `Bearer ${token}`,
+       } 
+    })
       .then((response) => response.json()) // return parsed JSON data
       .then((data) => {
         console.log(data); // log the parsed JSON data
@@ -39,7 +42,7 @@ export default function AllProducts() {
  
   return (
     <>
-      <Navbar user="customer" />
+      <Navbar user="retailer" />
       <div className="login-form">
         <UserInput
           type="text"
@@ -48,8 +51,7 @@ export default function AllProducts() {
           onChange={handleSearchInputChange}
         />
       </div>
-      <Products products={filteredProducts}  user="customer"/>
-      <Footer />
+      <Products products={filteredProducts} user="retailer"/>
     </>
   );
 }

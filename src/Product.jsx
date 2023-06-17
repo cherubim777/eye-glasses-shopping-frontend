@@ -26,15 +26,23 @@ export default function Product(props){
     return (
       <div className="product">
               <Link to={`/customer/productDetails/${props.product.id}`}>
-            <img className="product-image" src={`http://127.0.0.1:8000${props.product.photo}`} alt={props.product.name} />
+            <img className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
                 <span className="product-price">{props.product.price}</span>
             </div>
         </Link>
                 <div className="product-buttons">
+                  {props.user === "customer" ?
+                    <>
                     <button className="product-buy theme-color button-style">Buy Now</button>
-                    <button onClick={addToCart} className="product-add theme-color button-style">Add to cart</button>
+                    <button onClick={(event) => addToCart} className="product-add theme-color button-style">Add to cart</button></>
+                    :
+                    <>
+                    <button className="product-buy theme-color button-style">Edit</button>
+                    <button  className="product-add theme-color button-style">Remove</button>
+                    </>
+                  }
                 </div>
             </div>
     )
