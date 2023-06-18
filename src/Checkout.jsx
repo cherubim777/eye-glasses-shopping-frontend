@@ -6,8 +6,7 @@ import Item from './Item';
 export default function Checkout(){
 
     const location = useLocation();
-    const cartItems = location.state?.cartItems;
-    console.log(cartItems)
+    const cartItems = location.state.cartItems;
     const [checkoutFields, setCheckoutFields] = useState({
         full_name: '',
         phone_number: '',
@@ -35,7 +34,7 @@ export default function Checkout(){
             <input type="radio" name="payment_method" value="amole" checked={checkoutFields.payment_method ==="amole"} onChange={handleCheckoutChange}/> Amole
             <h2>3. Items and Shipping</h2>
             {cartItems.map((item) => {
-                        return <Item key={item.id} user="customer" {...item} />
+                        return <Item key={item.id} user="customer" product={item} />
                    })}
             <button className='button-style theme-color'>Place Order</button>
         </div>

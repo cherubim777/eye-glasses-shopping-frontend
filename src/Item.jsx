@@ -16,7 +16,7 @@ export default function Item(props){
 
     const customer =  
     <div className="item">
-        <img className="item-image" src={'http://127.0.0.1:8000'+product.photo} alt="" />
+        <img className="item-image" src={product.photo} alt="" />
         <div>
             <div className="item-name">{product.name}</div>
             <div className="item-description">{product.description}</div>

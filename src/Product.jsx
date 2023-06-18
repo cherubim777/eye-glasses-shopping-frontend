@@ -13,7 +13,7 @@ export default function Product(props){
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(props.product)
+            body: JSON.stringify({"cart": 1, "quantity": 1, "product": props.product.id})
           })
           .then(response => response.json())
           .then(data => {
@@ -25,7 +25,7 @@ export default function Product(props){
     }
 
     const handlePurchase = () => {
-      navigate("/customer/checkout", {state: {cartItems: [props.product]}})
+      navigate("/customer/checkout", {state: {cartItems: [props.product.id]}})
     }
     return (
       <div className="product">
@@ -40,7 +40,7 @@ export default function Product(props){
                   {props.user === "customer" ?
                     <>
                     <button className="product-buy theme-color button-style" onClick={handlePurchase}>Buy Now</button>
-                    <button onClick={(event) => addToCart} className="product-add theme-color button-style">Add to cart</button></>
+                    <button onClick={addToCart} className="product-add theme-color button-style">Add to cart</button></>
                     :
                     <>
                     <button className="product-buy theme-color button-style" onClick={() => navigate("/retailer/updateProduct", {state: {id: props.product.id}})}>Edit</button>
