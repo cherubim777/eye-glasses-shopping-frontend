@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Order from "./Order";
-export default function Orders(){
+export default function RetailerOrders(){
 
     const token = localStorage.getItem("retailerToken")
     const [orders, setOrders] = React.useState([])
@@ -18,12 +18,14 @@ export default function Orders(){
         })
         .catch((error) => console.error(error));
       }, [])
-    const orderElements = orders.map((order) => <Order order={order}/>)
+    const orderElements = orders.map((order) => <Order for="retailer" order={order}/>)
 
     return (
         <div className="dashboard">
-            <Navbar user="retailer"/>
+            <Navbar  user="retailer"/>
+            <div className="cart">
             {orderElements}
+            </div>
         </div>
     )
 }

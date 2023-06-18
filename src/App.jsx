@@ -17,7 +17,8 @@ import AllProducts from './AllProducts'
 import ProductDetails from './ProductDetails'
 import Checkout from './Checkout'
 import RetailerProducts from './RetailerProducts'
-import Orders from './Orders'
+import RetailerOrders from './RetailerOrders'
+import CustomerOrders from './CustomerOrders'
 export default function App() {
 
   return (
@@ -28,6 +29,7 @@ export default function App() {
       <Route path='/customer/register' element={<Register user="customer" />}/>
       <Route path='/customer/login' element={<Login />}/>
       <Route path='/customer/cart' element={<Cart />}/>
+      <Route path='/customer/orders' element={<CustomerOrders />}/>
       <Route path='/customer/wishlist' element={<WishList />}/>
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
@@ -41,7 +43,7 @@ export default function App() {
       <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
       <Route path='/customer/checkout' element={<Checkout />} />
       <Route path='/customer/updateProfile' element={<UpdateProfile />} />
-      <Route path='/retailer/orders' element={<Orders />} />
+      <Route path='/retailer/orders' element={<RetailerOrders />} />
     </Routes>
     </>
   )

@@ -53,7 +53,7 @@ export default function Item(props){
 </div> 
 
    const order = 
-   <div className="item" style={{width: 300}}>
+   <div className="item" style={{width: 600}}>
       <img className="item-image" src={props.photo} alt="" />
     <div>
         <div className="item-name">{props.name}</div>
