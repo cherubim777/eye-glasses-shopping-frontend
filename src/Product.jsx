@@ -25,7 +25,7 @@ export default function Product(props){
     }
 
     const handlePurchase = () => {
-      navigate("/customer/checkout", {state: {cartItems: [{"product_id": props.product.id}]}})
+      navigate("/customer/checkout", {state: {cartItem: [{"product_id": props.product.id}]}})
     }
     return (
       <div className="product">
