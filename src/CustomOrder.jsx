@@ -13,7 +13,7 @@ export default function CustomOrder() {
     right_prism: '',
     left_prism: '',
     payment_method: '',
-    retailer:2,
+    retailer:'' ,
     delivery:'',
   });
   const authToken = localStorage.getItem('customerToken');
@@ -33,7 +33,7 @@ export default function CustomOrder() {
       .then((data) => {
         console.log(data); // log the parsed JSON data
         setRetailers(data); // Update the retailers state with the fetched data
-        // setFormData((prevFormData) => ({ ...prevFormData, retailer: data[0].user }));
+        setFormData((prevFormData) => ({ ...prevFormData, retailer: data[0].user }));
       })
       .catch((error) => console.error(error));
   }, []);
@@ -105,7 +105,7 @@ export default function CustomOrder() {
 </label>
 <label><br/>
   Choose Retailer
-  <select className="store-dropdown" onChange={handleRetailerChange}>
+  <select className="store-dropdown"  onChange={handleRetailerChange}>
   {retailers.map(retailer => (
   <option key={retailer.user} value={retailer.user}>{retailer.store_name}</option>
   ))}
