@@ -74,10 +74,14 @@ export default function Checkout(){
         (fetch('http://127.0.0.1:8000/order/placeCartOrder/', {
             method: 'POST',
             headers: {
-              // 'Content-Type': 'application/json',
+              'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             },
-            body: {}
+            body: JSON.stringify({
+                "shipping_address": {"local_address": checkoutFields.local_address, "city": checkoutFields.city},
+                "payment_method": checkoutFields.payment_method,
+                "delivery": checkoutFields.delivery
+            })
           
           })
           .then(response => response.json())
@@ -116,7 +120,8 @@ export default function Checkout(){
             <br />
             <input type="radio" name="delivery" value="Awra Delivery" checked={checkoutFields.delivery === "Awra Delivery"} onChange={handleCheckoutChange}/>
             <label>Awra Delivery</label>
-            {cartItem.map((item) => {
+
+            {(cartItem ? cartItem: cartItems).map((item) => {
                 console.log(item)
                         return <Item key={item.id} user="customer" {...item} />
                    })}

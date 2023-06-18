@@ -29,7 +29,7 @@ export default function Cart(){
       }, []);
 
     useEffect(() => {
-        const subtotal = cartItems.reduce((total, item) => total + item.price, 0);
+        const subtotal = cartItems.reduce((total, item) => total + (item.price*item.quantity), 0);
         setSubTotalPrice(subtotal);
       }, [cartItems]);
 
