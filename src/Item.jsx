@@ -4,7 +4,7 @@ export default function Item(props){
 
    const [product, setProduct] = React.useState([])
      React.useEffect(() => {
-        fetch('http://127.0.0.1:8000/product/getProduct/' + props.product)
+        fetch('http://127.0.0.1:8000/product/getProduct/' + props.product_id)
           .then((response) => response.json()) // return parsed JSON data
           .then((data) => {
             console.log(data); // log the parsed JSON data

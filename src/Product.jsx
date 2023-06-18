@@ -13,7 +13,7 @@ export default function Product(props){
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify({"cart": 1, "quantity": 1, "product": props.product.id})
+            body: JSON.stringify({"cart": 1, "quantity": 1, "product_id": props.product.id})
           })
           .then(response => response.json())
           .then(data => {
@@ -25,7 +25,7 @@ export default function Product(props){
     }
 
     const handlePurchase = () => {
-      navigate("/customer/checkout", {state: {cartItems: [props.product.id]}})
+      navigate("/customer/checkout", {state: {cartItems: [{"product_id": props.product.id}]}})
     }
     return (
       <div className="product">

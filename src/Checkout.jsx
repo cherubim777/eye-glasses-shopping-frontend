@@ -34,7 +34,8 @@ export default function Checkout(){
             <input type="radio" name="payment_method" value="amole" checked={checkoutFields.payment_method ==="amole"} onChange={handleCheckoutChange}/> Amole
             <h2>3. Items and Shipping</h2>
             {cartItems.map((item) => {
-                        return <Item key={item.id} user="customer" product={item} />
+                console.log(item)
+                        return <Item key={item.id} user="customer" {...item} />
                    })}
             <button className='button-style theme-color'>Place Order</button>
         </div>
