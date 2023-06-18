@@ -39,30 +39,30 @@
     gap: 30px;
 }
 
-.settings-body > table {
+.settings-body  table {
     border: 1px solid #d3d3d3;
     width: 100%;
     margin-top: 40px;
     
 }
 
-.settings-body > table th {
+.settings-body  table th {
     text-align: start;
     border-bottom: 1px solid #d3d3d3;
 }
-.settings-body > table tr:last-child > td{
+.settings-body  table tr:last-child > td{
     text-align: end;
     border-top: 1px solid #d3d3d3;
     padding-bottom: 10px;
 }
 
-.settings-body > table th,
-.settings-body > table td {
+.settings-body  table th,
+.settings-body  table td {
     padding: 14px 24px 0px 24px;
     width: 50%;
 }
 
-.settings-body > table input {
+.settings-body  table input {
     width: 100%;
     height: 40px;
 }
