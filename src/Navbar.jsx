@@ -11,7 +11,6 @@ export default function Navbar(props){
     },[localStorage.getItem('customerToken')])
 
     const navigate = useNavigate()
-    console.log(loggedIn)
     function handleLogin(event) {
         event.preventDefault();
         navigate("/customer/login")
@@ -41,6 +40,7 @@ export default function Navbar(props){
                 <div>
                     <NavLink style={style} to="/" className="inactive">Home</NavLink>
                     <NavLink style={style} to="/customer/allProducts">Products</NavLink>
+                    <NavLink style={style} to={loggedIn ? "/customer/orders" : "/customer/login"}>Orders</NavLink>
                 </div>
                 <div>
                     <NavLink className="logo wishlist-btn" onClick={(event) => {event.preventDefault();navigate("/customer/wishlist")}}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
