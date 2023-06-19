@@ -2,7 +2,7 @@ import React from "react";
 import UserInput from "./UserInput";
 import './Login.css'
 import {useState} from "react"
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 
 export default function login(){
@@ -81,6 +81,11 @@ export default function login(){
                     <div  className="signup">
                         <span className="signup-label">Don't have an account ? </span>
                         <span className="signup-link link-style">Sign Up</span>
+                        <div>
+                            <Link to="/customer/register">As customer</Link>
+                            <br />
+                            <Link to="/retailer/register">As Retailer</Link>
+                        </div>
                     </div>
                 </div>
             </div>      

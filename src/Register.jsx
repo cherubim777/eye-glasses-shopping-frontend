@@ -1,8 +1,9 @@
 import React ,{ useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 
 export default function Register(props){
-
+  const navigate = useNavigate()
   const [retailerFields, setRetailerFields] = useState({
     first_name: '',
     last_name: '',
@@ -51,7 +52,10 @@ export default function Register(props){
         },
         body: JSON.stringify(customerFields)
       })
-      .then(response => response.json())
+      .then(response => {
+        if(response.ok)
+          navigate("/customer/login")
+      })
       .then(data => {
         // Handle the response data here
       })
@@ -69,7 +73,10 @@ export default function Register(props){
         },
         body: JSON.stringify(retailerFields)
       })
-      .then(response => response.json())
+      .then(response => {
+        if(response.ok)
+          navigate("/customer/login")
+      })
       .then(data => {
         // Handle the response data here
       })
