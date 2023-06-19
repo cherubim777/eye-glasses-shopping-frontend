@@ -3,7 +3,8 @@ import React from "react";
 export default function Item(props){
 
    const [product, setProduct] = React.useState([])
-     React.useEffect(() => {
+   if(props.product_id)
+     {React.useEffect(() => {
         fetch('http://127.0.0.1:8000/product/getProduct/' + props.product_id)
           .then((response) => response.json()) // return parsed JSON data
           .then((data) => {
@@ -12,7 +13,7 @@ export default function Item(props){
             
           })
           .catch((error) => console.error(error));
-      }, []);
+      }, []);}
 
     const customer =  
     <div className="item">
@@ -30,8 +31,8 @@ export default function Item(props){
     <div className="item">
         <img className="item-image" src="/src/assets/sample-eyeglass3.png" alt="" />
     <div>
-        <div className="item-name">Samsung S20 128 GB</div>
-        <div className="item-description">Pink - 50 orders</div>
+        <div className="item-name"></div>
+        <div className="item-description"></div>
      </div>
      <div>
         <div className="item-name">Inventory</div>
@@ -51,9 +52,21 @@ export default function Item(props){
      </div>
 </div> 
 
+   const order = 
+   <div className="item" style={{width: 500}}>
+      <img className="item-image" src={props.photo} alt="" />
+    <div>
+        <div className="item-name">{props.name}</div>
+        <div className="item-description">{props.quantity}</div>
+     </div>
+   </div>
+
     return(
        <>
-            {props.user == "customer" ? customer : retailer}
+            {props.user == "customer" && customer}
+            {props.user == "retailer" && retailer}
+            {props.user == "order" && order}
+            
        </>
         
         

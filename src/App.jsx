@@ -19,6 +19,8 @@ import Checkout from './Checkout'
 import RetailerProducts from './RetailerProducts'
 import Orders from './Orders'
 import PasswordReset from './PasswordReset'
+import RetailerOrders from './RetailerOrders'
+import CustomerOrders from './CustomerOrders'
 export default function App() {
 
   return (
@@ -29,6 +31,7 @@ export default function App() {
       <Route path='/customer/register' element={<Register user="customer" />}/>
       <Route path='/customer/login' element={<Login />}/>
       <Route path='/customer/cart' element={<Cart />}/>
+      <Route path='/customer/orders' element={<CustomerOrders />}/>
       <Route path='/customer/wishlist' element={<WishList />}/>
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
@@ -44,6 +47,7 @@ export default function App() {
       <Route path='/customer/updateProfile' element={<UpdateProfile />} />
       <Route path='/retailer/orders' element={<Orders />} />
       <Route path='/resetPassword' element={<PasswordReset />} />
+      <Route path='/retailer/orders' element={<RetailerOrders />} />
     </Routes>
     </>
   )
