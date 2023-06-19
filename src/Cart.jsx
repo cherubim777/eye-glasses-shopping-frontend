@@ -35,9 +35,9 @@ export default function Cart(){
 
     return(
         <div className="cart">
-            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}> &lt; Shopping Continue</p>
+            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}>&lt; <b> Continue Shopping</b></p>
             <hr/>
-            <p>Shopping Cart</p>
+            <h2>Shopping Cart</h2>
             <p>You have {cartItems.length} items in your cart</p>
             <div className="cart-body">
                 <div className="cart-items">

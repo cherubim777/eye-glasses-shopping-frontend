@@ -50,8 +50,8 @@ export default function Navbar(props){
                     <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/customer/login"}>Orders</NavLink>
                 </div>
                 <div>
-                    <NavLink className="logo wishlist-btn" onClick={(event) => {event.preventDefault();navigate("/customer/wishlist")}}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
-                    <NavLink className="logo cart-btn" onClick={(event) => {event.preventDefault();navigate("/customer/cart")}}><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
+                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/customer/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
+                    <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/customer/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
                         <img src="/src/assets/user.png" alt="User" />
                         {userProfileElement}
