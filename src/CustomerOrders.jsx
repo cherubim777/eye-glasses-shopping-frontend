@@ -7,10 +7,17 @@ import Navbar from "./Navbar";
 export default function CustomerOrders(){
     const [orderedItems, setOrderedItems] = useState([]);
     const [orderedCustomItems,setOrderedCustomItems] = useState([]);
+    const [toggle, setToggle] = useState(false)
+
+    const reloadOrders = () => {
+        
+      setToggle(state => !state)
+    }
     const navigate = useNavigate()
     const token = localStorage.getItem("customerToken");
 
     useEffect(() => {
+        console.log('in effffect')
         fetch("http://127.0.0.1:8000/order/getCustomerOrders/", {
             method: "GET",
             headers: {
@@ -36,13 +43,14 @@ export default function CustomerOrders(){
         )
           .then((response) => response.json())
           .then((data) => {
+            console.log(data.custom_orders)
             setOrderedCustomItems(data.custom_orders);
           })
           .catch((error) => {
             console.error(error);
           });
 
-      }, [])
+      }, [toggle])
 
 
     return (
@@ -57,7 +65,7 @@ export default function CustomerOrders(){
                 <div className="cart-body">
                     <div className="cart-items">
                        {orderedItems.map((item) => {
-                           return <Order for="customer" order={item} />
+                           return <Order for="customer" order={item} reloadOrders={reloadOrders}/>
                         })}
                           
                     </div>
@@ -70,7 +78,7 @@ export default function CustomerOrders(){
                 <div className="cart-body">
                     <div className="cart-items">
                        {orderedCustomItems.map((item) => {
-                           return <Order for="customer" custom_order={item} custom={true} />
+                           return <Order for="customer" custom_order={item} reloadOrders={reloadOrders} custom={true} />
                         })}
                           
                     </div>

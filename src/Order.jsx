@@ -4,15 +4,20 @@ import Item from "./Item";
 export default function Order(props){
     const token = localStorage.getItem('customerToken')
     const retailerToken = localStorage.getItem('retailerToken');
-    const handleDelivery = () => {
-        fetch(`http://127.0.0.1:8000/order/orderFulfilled/${props.order.order.id}/`, {
+
+    const handleDelivery = (endPoint, id, isReady) => {
+        if(isReady === false){
+            alert("The Order Is Not Ready Yet.")
+            return
+        }
+        fetch(`http://127.0.0.1:8000/order/${endPoint}/${id}/`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             
-        }).then((response) => response.json()) // return parsed JSON data
+        }).then((response) => {props.reloadOrders()}) // return parsed JSON data
         .catch((error) => console.error(error));
     }
 
@@ -24,7 +29,7 @@ export default function Order(props){
                 'Authorization': `Bearer ${retailerToken}`
             },
             
-        }).then((response) => response.json()) // return parsed JSON data
+        }).then(props.reloadOrders()) // return parsed JSON data
         .catch((error) => console.error(error));
         
     }
@@ -38,6 +43,7 @@ export default function Order(props){
             <Item user="order" name={props.order.order_data.product_name} quantity={props.order.order_data.quantity} photo={props.order.order_data.photo}/>
             <p>Customer Name: {props.order.order_data.customer}</p>
             <p>Order Date: {props.order.order.createdAt}</p>
+            <p>Order Status: {props.order.order.isDelivered ? "Delivered" : "Pending Delivery"}</p>
             {/* <button className="button-style theme-color" onClick={handleDelivery}>Delivered</button> */}
             <hr />
         </div>
@@ -67,14 +73,16 @@ export default function Order(props){
             <Item user="order" name={props.order.order_data.product_name} quantity={props.order.order_data.quantity} photo={props.order.order_data.photo}/>
             <p>Store Name: {props.order.order_data.store_name}</p>
             <p>Order Date: {props.order.order.createdAt}</p>
-            <button className="button-style theme-color" onClick={handleDelivery}>Delivered</button>
+            <p>Order Status: {props.order.order.isDelivered ? "Delivered" : "Pending Delivery"}</p>
+            <button className="button-style theme-color" onClick={() => handleDelivery("orderFulfilled", props.order.order.id) }>Delivered</button>
         </div>
   :
     <div>
-            {/* <p>Store Name: {props.order.order_data.store_name}</p> */}
+            <p>Store Name: {props.custom_order.order_data.store_name}</p>
             {props.custom_order.custom_order && <p>Custom Order Date: {props.custom_order.custom_order.createdAt}</p>}
-            {props.custom_order.custom_order && <p>Custom Order Status: {props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
-            <button className="button-style theme-color" onClick={handleDelivery}>Delivered</button>
+            {props.custom_order.custom_order && <p>Custom Order Status: {props.custom_order.custom_order.isDelivered ? "Delivered" : props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
+            <button className="button-style theme-color" onClick={() => handleDelivery("customOrderFulfilled", props.custom_order.custom_order.id, props.custom_order.custom_order.isReady)} >Delivered</button>
+            <hr />
     </div>
 }  
 

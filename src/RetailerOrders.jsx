@@ -6,7 +6,11 @@ export default function RetailerOrders(){
     const token = localStorage.getItem("retailerToken")
     const [orders, setOrders] = React.useState([])
     const [customOrders, setCustomOrders] = React.useState([])
-    
+    const [toggle, setToggle] = React.useState(false)
+
+    const reloadOrders = () => {
+      setToggle(state => !state)
+    }
     React.useEffect(() => {
         fetch('http://127.0.0.1:8000/order/getRetailerOrders/', {
         headers: {
@@ -29,9 +33,9 @@ export default function RetailerOrders(){
           setCustomOrders(data.custom_orders)
         })
         .catch((error) => console.error(error));
-      }, [])
-    const orderElements = orders.map((order) => <Order for="retailer" order={order}/>)
-    const customOrderElements = customOrders.map((order) => <Order for="retailer" custom_order={order} custom={true}/>)
+      }, [toggle])
+    const orderElements = orders.map((order) => <Order for="retailer" order={order} reloadOrders={reloadOrders}/>)
+    const customOrderElements = customOrders.map((order) => <Order for="retailer" custom_order={order} reloadOrders={reloadOrders} custom={true}/>)
 
     return (
         <div className="dashboard">
