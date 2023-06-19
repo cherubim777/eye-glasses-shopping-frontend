@@ -18,6 +18,7 @@ import ProductDetails from './ProductDetails'
 import Checkout from './Checkout'
 import RetailerProducts from './RetailerProducts'
 import Orders from './Orders'
+import PasswordReset from './PasswordReset'
 export default function App() {
 
   return (
@@ -42,6 +43,7 @@ export default function App() {
       <Route path='/customer/checkout' element={<Checkout />} />
       <Route path='/customer/updateProfile' element={<UpdateProfile />} />
       <Route path='/retailer/orders' element={<Orders />} />
+      <Route path='/resetPassword' element={<PasswordReset />} />
     </Routes>
     </>
   )
