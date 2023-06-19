@@ -34,9 +34,6 @@ export default function login(){
         })
         .then(response => {
             switch (response.status){
-                case 200:
-                    navigate('/', {reloadDocument: true})
-                    break
                 case 400:
                     alert("Error Occured. Please try again")
                     break
@@ -55,11 +52,13 @@ export default function login(){
             // Store the JWT token in localStorage for customers
             if (userType === 'customer') {
               localStorage.setItem('customerToken', token);
+              navigate('/', {reloadDocument: true})
             }
       
             // Store the JWT token in localStorage as 'retailertoken' for retailers
             if (userType === 'retailer') {
               localStorage.setItem('retailerToken', token);
+              navigate('/retailer/', {reloadDocument: true})
             }
                 }}
       )
@@ -76,7 +75,7 @@ export default function login(){
                     <div className="welcome">Welcome Back!!!</div>
                     <div className="logIn">Log in</div>
                     <UserInput type="text" title="user name" value={username} onChange={handleUsernameChange}/>
-                    <div className="link-style forgot-password-link ">Forgot Password?</div>
+                    <div onClick={() => navigate("/resetPassword")} className="link-style forgot-password-link ">Forgot Password?</div>
                     <UserInput type="password" title="Password" value={password} onChange={handlePasswordChange}/>
                     <button onClick={login} className="button-style theme-color login-btn">Log In <img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
                     <div  className="signup">
