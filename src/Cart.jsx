@@ -54,30 +54,25 @@ export default function Cart(){
             <p>You have {cartItems.length} items in your cart</p>
             <div className="cart-body">
                 <div className="cart-items">
-                    {/* <Item user="customer"/>
-                    <Item user="customer"/>
-                    <Item user="customer"/> */}
                    {cartItems.map((item) => {
                         return <Item key={item.id} reloadCart={reloadCart} user="customer" {...item} />
                    })}
-                   
-                    
                 </div>
                 <div className="price theme-color">
                     <div className="price-value">
                         <span>Subtotal</span>
-                        <span>{`${subTotalPrice} ETB`}</span>
+                        <span>{`${subTotalPrice.toFixed(2)} ETB`}</span>
                     </div>
                     <div className="price-value">
                         <span>Shipping</span>
-                        <span>{`${subTotalPrice/200} ETB`}</span>
+                        <span>{`${(subTotalPrice/200).toFixed(2)} ETB`}</span>
                     </div>
                     <div className="price-value">
                         <span>Total(Tax.incl)</span>
-                        <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
+                        <span>{`${(subTotalPrice+subTotalPrice/200).toFixed(2)} ETB`}</span>
                     </div>
                     <div onClick={handleCheckout} style={{cursor: "pointer"}} className="check-out" >
-                        <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
+                        <span>{`${(subTotalPrice+subTotalPrice/200).toFixed(2)} ETB`}</span>
                         <span>Checkout ➜</span>
                     </div>
                 </div>
