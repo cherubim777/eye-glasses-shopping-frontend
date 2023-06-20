@@ -226,7 +226,7 @@ li {
     flex: 0 0 auto;
     padding: 20px 20px 40px 20px;
     background-color: white;
-
+    border-radius: 15px 0 15px 0;
 
 }
 .product-info {

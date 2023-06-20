@@ -40,8 +40,9 @@ export default function AllProducts() {
   return (
     <>
       <Navbar user="customer" />
-      <div className="login-form">
+      <div style={{textAlign: "center"}}>
         <UserInput
+          className="search-bar"
           type="text"
           placeholder="Search for a product"
           value={searchQuery}

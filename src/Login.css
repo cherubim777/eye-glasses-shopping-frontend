@@ -45,6 +45,14 @@
     margin-bottom:23px;
 
 }
+
+.search-bar {
+    width: 50%;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 5px 15px;
+
+}
 .login-btn{
     width: fit-content;
     height: 40px;
