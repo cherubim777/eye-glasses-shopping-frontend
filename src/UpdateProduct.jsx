@@ -94,6 +94,7 @@ export default function UpdateProduct() {
           <label>
             Age Group
             <input
+              required
               type="radio"
               name="age_group"
               value="K"
@@ -130,6 +131,7 @@ export default function UpdateProduct() {
           <label>
             Gender Group
             <input
+              required
               type="radio"
               name="gender_category"
               value="M"
@@ -186,11 +188,10 @@ export default function UpdateProduct() {
             value={product.image}
             onChange={handleImageChange}
           />
-           <UserInput
+           <button
               type="submit"
-              value="Submit"
               className="button-style theme-color"
-            />
+            >Submit</button>
           </form>
         </div>
       </div>

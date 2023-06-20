@@ -69,7 +69,7 @@ export default function AddProducts(){
             <UserInput type="text" title="name" name="name" value={product.name} onChange={handleProductChange}/>
         <label>
             Age Group 
-            <input type="radio" name="age_group" value="K" checked={product.age_group ==="K"} onChange={handleProductChange}/> Kids
+            <input type="radio" required name="age_group" value="K" checked={product.age_group ==="K"} onChange={handleProductChange}/> Kids
             <input type="radio" name="age_group" value="T" checked={product.age_group ==="T"} onChange={handleProductChange}/> Teens 
             <input type="radio" name="age_group" value="A" checked={product.age_group ==="A"} onChange={handleProductChange}/> Adults
             <input type="radio" name="age_group" value="S" checked={product.age_group ==="S"} onChange={handleProductChange}/> Seniors
@@ -77,14 +77,14 @@ export default function AddProducts(){
      <br/>
      <label>
             Gender Group
-            <input type="radio" name="gender_category" value="M" checked={product.gender_category==="M"} onChange={handleProductChange}/> Male
+            <input type="radio" required name="gender_category" value="M" checked={product.gender_category==="M"} onChange={handleProductChange}/> Male
             <input type="radio" name="gender_category" value="F" checked={product.gender_category==="F"} onChange={handleProductChange}/> Female 
             <input type="radio" name="gender_category" value="U" checked={product.gender_category==="U"} onChange={handleProductChange} /> Unisex
      </label>
      
      <label><br/>
            Product Category
-          <input type="radio" name="category" value="Oversized" checked={product.category === "Oversized"} onChange={handleProductChange}/> Oversized
+          <input type="radio" required name="category" value="Oversized" checked={product.category === "Oversized"} onChange={handleProductChange}/> Oversized
           <input type="radio" name="category" value="Sports" checked={product.category === "Sports"} onChange={handleProductChange} />Sports
           <input type="radio" name="category" value="Mirrored" checked={product.category === "Mirrored"} onChange={handleProductChange} /> Mirrored
           <input type="radio" name="category" value="Gradient" checked={product.category === "Gradient"} onChange={handleProductChange} />Gradient
@@ -98,7 +98,7 @@ export default function AddProducts(){
         <UserInput type="text" title="Brand" name="brand" value={product.brand} onChange={handleProductChange}/>
         <label>
         Description
-        <textarea  name="description" cols="60" rows="10" placeholder="short description about the product" value={product
+        <textarea name="description" cols="60" rows="10" placeholder="short description about the product" value={product
         .description} onChange={handleProductChange}></textarea>
         </label>
         <UserInput type="number" title="price" name="price" value={product.price} onChange={handleProductChange}/>

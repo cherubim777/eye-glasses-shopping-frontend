@@ -49,7 +49,8 @@ export default function Register(props){
   }
 
 
-    let customer_register =  function (){
+    let customer_register =  function (event){
+      event.preventDefault();
       if (!passwordsMatch(customerFields)){
         alert("Passwords do not match")
         return
@@ -74,7 +75,8 @@ export default function Register(props){
       console.log(customerFields)
     }
 
-    let retailer_register =  function (){
+    let retailer_register =  function (event){
+      event.preventDefault();
       if (!passwordsMatch(retailerFields)){
         alert("Passwords do not match")
         return
@@ -105,19 +107,20 @@ export default function Register(props){
             <div className="login-form">
                 <div className="navbar-logo">VISION</div>
                 <div className="logIn">Register</div>
-                <UserInput type="text" title="User Name" name="username" value={customerFields.username}  onChange={handleCustomerChange}/>
-                <UserInput type="text" title="first name"name="first_name" value={customerFields.first_name}  onChange={handleCustomerChange}/>
-                <UserInput type="text" title="last name" name="last_name" value={customerFields.last_name}  onChange={handleCustomerChange}/>
-                <UserInput type="number" title="phone number" name="phone_number" value={customerFields.phone_number}  onChange={handleCustomerChange}/>
-                <UserInput type="password" title="Password" name="password" value={customerFields.password}  onChange={handleCustomerChange}/>
-                <UserInput type="password" title="confirm_password" name="confirm_password" value={customerFields.confirm_password} onChange={handleCustomerChange}/>
-                <UserInput type="email" title="email address" name="email"value={customerFields.email}  onChange={handleCustomerChange}/>
-                <UserInput type="text" title="local address" name="local_address" value={customerFields.local_address}  onChange={handleCustomerChange}/>
-                <UserInput type="text" title="subcity" name="subcity" value={customerFields.subcity}  onChange={handleCustomerChange}/>
-                <UserInput type="text" title="city" name="city" value={customerFields.city}  onChange={handleCustomerChange}/>
-                <UserInput type="file" title="photo" name="photo" value={customerFields.photo}  onChange={handleCustomerChange}/>
-                <button onClick={customer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
-
+                <form onSubmit={(event) => customer_register(event)}>
+                  <UserInput type="text" title="User Name" name="username" value={customerFields.username}  onChange={handleCustomerChange}/>
+                  <UserInput type="text" title="first name"name="first_name" value={customerFields.first_name}  onChange={handleCustomerChange}/>
+                  <UserInput type="text" title="last name" name="last_name" value={customerFields.last_name}  onChange={handleCustomerChange}/>
+                  <UserInput type="number" title="phone number" name="phone_number" value={customerFields.phone_number}  onChange={handleCustomerChange}/>
+                  <UserInput type="password" title="Password" name="password" value={customerFields.password}  onChange={handleCustomerChange}/>
+                  <UserInput type="password" title="confirm_password" name="confirm_password" value={customerFields.confirm_password} onChange={handleCustomerChange}/>
+                  <UserInput type="email" title="email address" name="email"value={customerFields.email}  onChange={handleCustomerChange}/>
+                  <UserInput type="text" title="local address" name="local_address" value={customerFields.local_address}  onChange={handleCustomerChange}/>
+                  <UserInput type="text" title="subcity" name="subcity" value={customerFields.subcity}  onChange={handleCustomerChange}/>
+                  <UserInput type="text" title="city" name="city" value={customerFields.city}  onChange={handleCustomerChange}/>
+                  <UserInput type="file" title="photo" name="photo" value={customerFields.photo}  onChange={handleCustomerChange}/>
+                  <button className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
+                </form>
                 </div>
                 </div>
     </div>
@@ -127,27 +130,28 @@ let retailerRegister = <div className="login-page">
     <div className="login-form">
         <div className="navbar-logo">VISION</div>
         <div className="logIn">Register</div>
-        <UserInput type="text" title="User Name" name="username" value={retailerFields.username}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="first name" name="first_name" value={retailerFields.first_name}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="last name" name="last_name" value={retailerFields.last_name}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="Store name" name="store_name" value={retailerFields.store_name}  onChange={handleRetailerChange}/>
-        <UserInput type="number" title="phone number" name="phone_number" value={retailerFields.phone_number}  onChange={handleRetailerChange}/>
-        <UserInput type="password" title="Password"  name="password" value={retailerFields.password}  onChange={handleRetailerChange}/>
-        <UserInput type="password" title="confirm_password" name="confirm_password" value={retailerFields.confirm_password}  onChange={handleRetailerChange}/>
-        <UserInput type="email" title="email address" name="email" value={retailerFields.email}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="local address" name="local_address" value={retailerFields.local_address}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="subcity" name="subcity" value={retailerFields.subcity}  onChange={handleRetailerChange}/>
-        <UserInput type="text" title="city" name="city" value={retailerFields.city}  onChange={handleRetailerChange}/>
-        <UserInput type="file" title="photo" name="photo" value={retailerFields.photo}  onChange={handleRetailerChange}/>
+        <form onSubmit={(event) => retailer_register(event)}>
+          <UserInput type="text" title="User Name" name="username" value={retailerFields.username}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="first name" name="first_name" value={retailerFields.first_name}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="last name" name="last_name" value={retailerFields.last_name}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="Store name" name="store_name" value={retailerFields.store_name}  onChange={handleRetailerChange}/>
+          <UserInput type="number" title="phone number" name="phone_number" value={retailerFields.phone_number}  onChange={handleRetailerChange}/>
+          <UserInput type="password" title="Password"  name="password" value={retailerFields.password}  onChange={handleRetailerChange}/>
+          <UserInput type="password" title="confirm_password" name="confirm_password" value={retailerFields.confirm_password}  onChange={handleRetailerChange}/>
+          <UserInput type="email" title="email address" name="email" value={retailerFields.email}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="local address" name="local_address" value={retailerFields.local_address}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="subcity" name="subcity" value={retailerFields.subcity}  onChange={handleRetailerChange}/>
+          <UserInput type="text" title="city" name="city" value={retailerFields.city}  onChange={handleRetailerChange}/>
+          <UserInput type="file" title="photo" name="photo" value={retailerFields.photo}  onChange={handleRetailerChange}/>
         <label>
             Accept custom order?
-            <input type="radio" name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
+            <input type="radio" required name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
             <input type="radio" name="accepts_custom_order" value="False" checked={retailerFields.accepts_custom_order ==="False"} onChange={handleRetailerChange}/> No
       </label>
       {retailerFields.accepts_custom_order === "True" && <UserInput type="number" title="custom order price" name="custom_order_price" value={retailerFields.custom_order_price}  onChange={handleRetailerChange}/>}
 
-        <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
-
+        <button className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
+        </form>
         </div>
         </div>
 </div>
