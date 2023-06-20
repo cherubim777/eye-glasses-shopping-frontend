@@ -36,7 +36,7 @@ export default function Item(props){
             <div className="item-description">{product.description}</div>
          </div>
         <input className="item-quantity" type="number" placeholder="1" min={1} max={6} value={props.quantity}/>
-        <div className="item-price">{product.price}</div>
+        <div className="item-price">{`${product.price} ETB`}</div>
         <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />
     </div> 
 
