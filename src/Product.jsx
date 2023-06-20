@@ -33,7 +33,7 @@ export default function Product(props){
             <img className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
-                <span className="product-price">{props.product.price}</span>
+                <span className="product-price">{`${props.product.price} ETB`}</span>
             </div>
         </Link>
                 <div className="product-buttons">

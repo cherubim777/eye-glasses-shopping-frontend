@@ -9,6 +9,7 @@ export default function Register(props){
     last_name: '',
     username: '',
     password: '',
+    confirm_password: '',
     phone_number: '',
     email: '',
     local_address: '',
@@ -17,13 +18,14 @@ export default function Register(props){
     city: '',
     photo: '',
     accepts_custom_order:'',
-    custom_order_price:''
+    custom_order_price: 0
   });
   const [customerFields, setCustomerFields] = useState({
     first_name: '',
     last_name: '',
     username: '',
     password: '',
+    confirm_password: '',
     phone_number: '',
     email: '',
     local_address: '',
@@ -42,9 +44,16 @@ export default function Register(props){
     setCustomerFields({ ...customerFields, [name]: value });
   };
 
+  const passwordsMatch = (field) => {
+    return field.password == field.confirm_password
+  }
 
 
     let customer_register =  function (){
+      if (!passwordsMatch(customerFields)){
+        alert("Passwords do not match")
+        return
+      }
         fetch('http://127.0.0.1:8000/user/customer/', {
         method: 'POST',
         headers: {
@@ -66,6 +75,10 @@ export default function Register(props){
     }
 
     let retailer_register =  function (){
+      if (!passwordsMatch(retailerFields)){
+        alert("Passwords do not match")
+        return
+      }
         fetch('http://127.0.0.1:8000/user/retailer/', {
         method: 'POST',
         headers: {
@@ -97,7 +110,7 @@ export default function Register(props){
                 <UserInput type="text" title="last name" name="last_name" value={customerFields.last_name}  onChange={handleCustomerChange}/>
                 <UserInput type="number" title="phone number" name="phone_number" value={customerFields.phone_number}  onChange={handleCustomerChange}/>
                 <UserInput type="password" title="Password" name="password" value={customerFields.password}  onChange={handleCustomerChange}/>
-                <UserInput type="password" title="re-enter password"/>
+                <UserInput type="password" title="confirm_password" name="confirm_password" value={customerFields.confirm_password} onChange={handleCustomerChange}/>
                 <UserInput type="email" title="email address" name="email"value={customerFields.email}  onChange={handleCustomerChange}/>
                 <UserInput type="text" title="local address" name="local_address" value={customerFields.local_address}  onChange={handleCustomerChange}/>
                 <UserInput type="text" title="subcity" name="subcity" value={customerFields.subcity}  onChange={handleCustomerChange}/>
@@ -120,7 +133,7 @@ let retailerRegister = <div className="login-page">
         <UserInput type="text" title="Store name" name="store_name" value={retailerFields.store_name}  onChange={handleRetailerChange}/>
         <UserInput type="number" title="phone number" name="phone_number" value={retailerFields.phone_number}  onChange={handleRetailerChange}/>
         <UserInput type="password" title="Password"  name="password" value={retailerFields.password}  onChange={handleRetailerChange}/>
-        <UserInput type="password" title="re-enter password"/>
+        <UserInput type="password" title="confirm_password" name="confirm_password" value={retailerFields.confirm_password}  onChange={handleRetailerChange}/>
         <UserInput type="email" title="email address" name="email" value={retailerFields.email}  onChange={handleRetailerChange}/>
         <UserInput type="text" title="local address" name="local_address" value={retailerFields.local_address}  onChange={handleRetailerChange}/>
         <UserInput type="text" title="subcity" name="subcity" value={retailerFields.subcity}  onChange={handleRetailerChange}/>
@@ -131,7 +144,7 @@ let retailerRegister = <div className="login-page">
             <input type="radio" name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
             <input type="radio" name="accepts_custom_order" value="False" checked={retailerFields.accepts_custom_order ==="False"} onChange={handleRetailerChange}/> No
       </label>
-      <UserInput type="number" title="custom order price" name="custom_order_price" value={retailerFields.custom_order_price}  onChange={handleRetailerChange}/>
+      {retailerFields.accepts_custom_order === "True" && <UserInput type="number" title="custom order price" name="custom_order_price" value={retailerFields.custom_order_price}  onChange={handleRetailerChange}/>}
 
         <button onClick={retailer_register} className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
 
