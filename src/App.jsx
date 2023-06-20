@@ -20,6 +20,8 @@ import RetailerProducts from './RetailerProducts'
 import PasswordReset from './PasswordReset'
 import RetailerOrders from './RetailerOrders'
 import CustomerOrders from './CustomerOrders'
+import SubmitReview from './SubmitReview'
+
 export default function App() {
 
   return (
@@ -47,6 +49,7 @@ export default function App() {
       <Route path='/retailer/orders' element={<RetailerOrders />} />
       <Route path='/resetPassword' element={<PasswordReset />} />
       <Route path='/retailer/orders' element={<RetailerOrders />} />
+      <Route path='/review' element={<SubmitReview/>}/>
     </Routes>
     </>
   )

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
+import SubmitReview from './SubmitReview';
+import ReactStars from 'react-rating-stars-component';
 
 export default function ProductDetails(){
 
@@ -30,7 +32,12 @@ export default function ProductDetails(){
                 <div>{product.category}</div>
                 <div>{product.gender_category}</div>
                 <div>{product.age_group}</div>
+                {product.rating && <ReactStars value={parseFloat(product.rating)}
+                    edit={false}
+                    isHalf={true}
+                />}
             </div>
+            <SubmitReview id={product.id}/>
         </div>
     )
 }
