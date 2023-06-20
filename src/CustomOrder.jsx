@@ -84,14 +84,14 @@ export default function CustomOrder() {
       <label>
         Payment Method
         <br/>
-        <input type="radio" name="payment_method" value="telebirr" checked={formData.payment_method === 'telebirr'} onChange={handleFieldChange} /> TeleBirr
+        <input type="radio" required name="payment_method" value="telebirr" checked={formData.payment_method === 'telebirr'} onChange={handleFieldChange} /> TeleBirr
         <input type="radio" name="payment_method" value="cbebirr" checked={formData.payment_method === 'cbebirr'} onChange={handleFieldChange} /> CBEBirr
         <input type="radio" name="payment_method" value="amole" checked={formData.payment_method === 'amole'} onChange={handleFieldChange} /> Amole
       </label><br />
       <label>
       Delivery Method
   <br />
-  <input type="radio" name="delivery" value="GO Delivery Ethiopia" checked={formData.delivery === "GO Delivery Ethiopia"} onChange={handleFieldChange}/>
+  <input type="radio" required name="delivery" value="GO Delivery Ethiopia" checked={formData.delivery === "GO Delivery Ethiopia"} onChange={handleFieldChange}/>
   <label>GO Delivery Ethiopia</label>
   <br />
   <input type="radio" name="delivery" value="WeDeliver" checked={formData.delivery === "WeDeliver"} onChange={handleFieldChange}/>
@@ -105,7 +105,7 @@ export default function CustomOrder() {
 </label>
 <label><br/>
   Choose Retailer
-  <select className="store-dropdown"  onChange={handleRetailerChange}>
+  <select required className="store-dropdown"  onChange={handleRetailerChange}>
   {retailers.map(retailer => (
   <option key={retailer.user} value={retailer.user}>{retailer.store_name}</option>
   ))}

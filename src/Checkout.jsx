@@ -46,7 +46,8 @@ export default function Checkout(){
         setCheckoutFields({ ...checkoutFields, [name]: value });
       };
 
-    const handlePlaceOrder = () => {
+    const handlePlaceOrder = (event) => {
+      event.preventDefault();
         cartItem ?
         (fetch('http://127.0.0.1:8000/order/placeOrder/', {
             method: 'POST',
@@ -107,39 +108,41 @@ export default function Checkout(){
 
     return (
         <div className='login-form'>
-            <h1>Checkout</h1>
-            <h2>1. Shipping Address</h2>
-            <UserInput type="text" title="Full name" name="full_name" value={checkoutFields.full_name}  onChange={handleCheckoutChange} readOnly={true}/>
-            <UserInput type="number" title="phone number" name="phone_number" value={checkoutFields.phone_number}  onChange={handleCheckoutChange} readOnly={true}/>
-            <UserInput type="text" title="local address" name="local_address" value={checkoutFields.local_address}  onChange={handleCheckoutChange}/>
-            <UserInput type="text" title="city" name="city" value={checkoutFields.city}  onChange={handleCheckoutChange}/>
-            <h2>2. Payment Method</h2>
-            <input type="radio" name="payment_method" value="telebirr" checked={checkoutFields.payment_method ==="telebirr"} onChange={handleCheckoutChange}/> Tele Birr
-            <input type="radio" name="payment_method" value="cbebirr" checked={checkoutFields.payment_method ==="cbebirr"} onChange={handleCheckoutChange}/> CBE Birr
-            <input type="radio" name="payment_method" value="amole" checked={checkoutFields.payment_method ==="amole"} onChange={handleCheckoutChange}/> Amole
-            
-            <h2>3. Items and Shipping</h2>
-            <h3>Delivery Method</h3>
-            <br />
-            <input type="radio" name="delivery" value="GO Delivery Ethiopia" checked={checkoutFields.delivery === "GO Delivery Ethiopia"} onChange={handleCheckoutChange}/>
-            <label>GO Delivery Ethiopia</label>
-            <br />
-            <input type="radio" name="delivery" value="WeDeliver" checked={checkoutFields.delivery === "WeDeliver"} onChange={handleCheckoutChange}/>
-            <label>WeDeliver</label>
-            <br />
-            <input type="radio" name="delivery" value="Eshi Express" checked={checkoutFields.delivery === "Eshi Express"} onChange={handleCheckoutChange}/>
-            <label>Eshi Express</label>
-            <br />
-            <input type="radio" name="delivery" value="Awra Delivery" checked={checkoutFields.delivery === "Awra Delivery"} onChange={handleCheckoutChange}/>
-            <label>Awra Delivery</label>
+            <form onSubmit={(event) => handlePlaceOrder(event)}>
+              <h1>Checkout</h1>
+              <h2>1. Shipping Address</h2>
+              <UserInput type="text" title="Full name" name="full_name" value={checkoutFields.full_name}  onChange={handleCheckoutChange} readOnly={true}/>
+              <UserInput type="number" title="phone number" name="phone_number" value={checkoutFields.phone_number}  onChange={handleCheckoutChange} readOnly={true}/>
+              <UserInput type="text" title="local address" name="local_address" value={checkoutFields.local_address}  onChange={handleCheckoutChange}/>
+              <UserInput type="text" title="city" name="city" value={checkoutFields.city}  onChange={handleCheckoutChange}/>
+              <h2>2. Payment Method</h2>
+              <input type="radio" required name="payment_method" value="telebirr" checked={checkoutFields.payment_method ==="telebirr"} onChange={handleCheckoutChange}/> Tele Birr
+              <input type="radio" name="payment_method" value="cbebirr" checked={checkoutFields.payment_method ==="cbebirr"} onChange={handleCheckoutChange}/> CBE Birr
+              <input type="radio" name="payment_method" value="amole" checked={checkoutFields.payment_method ==="amole"} onChange={handleCheckoutChange}/> Amole
+              
+              <h2>3. Items and Shipping</h2>
+              <h3>Delivery Method</h3>
+              <br />
+              <input type="radio" required name="delivery" value="GO Delivery Ethiopia" checked={checkoutFields.delivery === "GO Delivery Ethiopia"} onChange={handleCheckoutChange}/>
+              <label>GO Delivery Ethiopia</label>
+              <br />
+              <input type="radio" name="delivery" value="WeDeliver" checked={checkoutFields.delivery === "WeDeliver"} onChange={handleCheckoutChange}/>
+              <label>WeDeliver</label>
+              <br />
+              <input type="radio" name="delivery" value="Eshi Express" checked={checkoutFields.delivery === "Eshi Express"} onChange={handleCheckoutChange}/>
+              <label>Eshi Express</label>
+              <br />
+              <input type="radio" name="delivery" value="Awra Delivery" checked={checkoutFields.delivery === "Awra Delivery"} onChange={handleCheckoutChange}/>
+              <label>Awra Delivery</label>
 
-            {(cartItem ? cartItem: cartItems).map((item) => {
-                console.log(item)
-                        return <Item key={item.id} user="customer" {...item} />
-                   })}
+              {(cartItem ? cartItem: cartItems).map((item) => {
+                  console.log(item)
+                          return <Item key={item.id} user="customer" {...item} />
+                    })}
 
 
-            <button onClick={handlePlaceOrder} className='button-style theme-color'>Place Order</button>
+              <button className='button-style theme-color'>Place Order</button>
+            </form>
         </div>
     )
 }

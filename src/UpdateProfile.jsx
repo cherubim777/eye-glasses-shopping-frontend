@@ -58,11 +58,11 @@ export default function ProfileUpdate({ userType }) {
                 <p>Loading...</p>
               ) : (
                 <>
+                <form onSubmit={handleUpdate}>
                   <UserInput type="text" title="User Name" name="username" value={fields.username} onChange={handleFieldChange} />
                   <UserInput type="text" title="First Name" name="first_name" value={fields.first_name} onChange={handleFieldChange} />
                   <UserInput type="text" title="Last Name" name="last_name" value={fields.last_name} onChange={handleFieldChange} />
                   <UserInput type="number" title="Phone Number" name="phone_number" value={fields.phone_number} onChange={handleFieldChange} />
-                  {/* <UserInput type="password" title="Password" name="password" value={fields.password} onChange={handleFieldChange} /> */}
                   <UserInput type="email" title="Email Address" name="email" value={fields.email} onChange={handleFieldChange} />
                   <UserInput type="text" title="Local Address" name="local_address" value={fields.local_address} onChange={handleFieldChange} />
                   <UserInput type="text" title="Subcity" name="subcity" value={fields.subcity} onChange={handleFieldChange} />
@@ -71,12 +71,13 @@ export default function ProfileUpdate({ userType }) {
                       <UserInput type="text" title="Store Name" name="store_name" value={fields.store_name} onChange={handleFieldChange} />
                       <label>
                         Accept custom order?
-                        <input type="radio" name="accepts_custom_order" value="True" checked={fields.accepts_custom_order === 'True'} onChange={handleFieldChange} /> Yes
+                        <input type="radio" required name="accepts_custom_order" value="True" checked={fields.accepts_custom_order === 'True'} onChange={handleFieldChange} /> Yes
                         <input type="radio" name="accepts_custom_order" value="False" checked={fields.accepts_custom_order === 'False'} onChange={handleFieldChange} /> No
                       </label>
                     </div>
                   )}
-                  <button className="button-style theme-color" onClick={handleUpdate}>Update</button>
+                  <button className="button-style theme-color">Update</button>
+                  </form>
                 </>
               )}
             </div>

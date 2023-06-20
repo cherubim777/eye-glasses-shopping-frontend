@@ -125,6 +125,7 @@ export default function SellerSettings() {
                 <td>Store Name</td>
                 <td>
                   <input
+                  required
                     type="text"
                     name="store_name"
                     placeholder="mystore"
@@ -137,6 +138,7 @@ export default function SellerSettings() {
                 <td>Email Address</td>
                 <td>
                   <input
+                  required
                     type="email"
                     name="email"
                     placeholder="contact@myshop.com"
@@ -149,6 +151,7 @@ export default function SellerSettings() {
                 <td>Phone number</td>
                 <td>
                   <input
+                  required
                     type="phone"
                     name="phone_number"
                     placeholder="+251 923 232 232"
@@ -191,6 +194,7 @@ export default function SellerSettings() {
                   </div>
                   <div>
                     <input
+                    required
                       type="file"
                       id="file"
                       accept="image/*"
@@ -228,6 +232,7 @@ export default function SellerSettings() {
                 <td>Local address</td>
                 <td>
                   <input
+                  required
                     type="text"
                     name="local_address"
                     placeholder="123 Main St"
@@ -240,6 +245,7 @@ export default function SellerSettings() {
                 <td>Sub-city</td>
                 <td>
                   <input
+                  required
                     type="text"
                     name="subcity"
                     placeholder="Bole"
@@ -252,6 +258,7 @@ export default function SellerSettings() {
                 <td>City</td>
                 <td>
                   <input
+                  required
                     type="text"
                     name="city"
                     placeholder="Addis Ababa"
