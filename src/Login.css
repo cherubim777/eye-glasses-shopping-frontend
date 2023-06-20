@@ -2,6 +2,8 @@
     margin:0;
     background-color: #f1eef5;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
 
 }
 .login-left{
@@ -12,6 +14,7 @@
 
 }
 .login-form{
+    z-index: 1;
     width:450px;
     height:fit-content;
     background-color: white;
@@ -56,13 +59,15 @@
 }
 
 .forgot-password-link {
-    text-align: end;
+    float:right;
     font-size: 14px;
     opacity: 0.5;
+    display: inline;
 }
 
 .signup{
     text-align: center;
+    position: relative;
 }
 
 .signup-label {
@@ -70,10 +75,29 @@
 }
 
 .login-image{
-    width: 860px;
+    /* width: 860px; */
+    width: auto;
     height: 700px;
     position: absolute;
     right: 0;
     bottom: 0;
+}
 
+.signup-options {
+    padding: 25px 25px;
+    box-shadow: 0px 19px 40px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -30px;
+    right: -55px;
+    display: none;
+    pointer-events: none;
+    border-radius: 20px;
+}
+.signup-link {
+    padding-right: 30px
+}
+.signup-link:hover + .signup-options, 
+.signup-options:hover {
+    display: block;
+    pointer-events: auto;
 }
