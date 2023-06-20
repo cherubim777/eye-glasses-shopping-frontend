@@ -59,9 +59,10 @@
 }
 
 .forgot-password-link {
-    text-align: end;
+    float:right;
     font-size: 14px;
     opacity: 0.5;
+    display: inline;
 }
 
 .signup{
