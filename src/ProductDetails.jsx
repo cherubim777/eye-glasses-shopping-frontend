@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'
 import SubmitReview from './SubmitReview';
 import ReactStars from 'react-rating-stars-component';
+import ProductReviews from './ProductReviews';
 
 export default function ProductDetails(){
 
@@ -37,7 +38,9 @@ export default function ProductDetails(){
                     isHalf={true}
                 />}
             </div>
+            <h1>Reviews</h1>
             <SubmitReview id={product.id}/>
+            {product.id && <ProductReviews id={product.id} />}
         </div>
     )
 }
