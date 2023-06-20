@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserInput from './UserInput';
 import Item from './Item';
 
@@ -7,6 +7,7 @@ export default function Checkout(){
 
     const token = localStorage.getItem('customerToken');
     const location = useLocation();
+    const navigate = useNavigate();
     const cartItem = location.state.cartItem;
     const cartItems = location.state.cartItems;
     const [checkoutFields, setCheckoutFields] = useState({
@@ -65,6 +66,7 @@ export default function Checkout(){
           .then(response => response.json())
           .then(data => {
             // Handle the response data here
+            navigate('/')
           })
           .catch(error => {
             alert(error)
@@ -87,6 +89,16 @@ export default function Checkout(){
           .then(response => response.json())
           .then(data => {
             // Handle the response data here
+            navigate('/')
+            fetch('http://127.0.0.1:8000/cart/clearCart/', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token}`
+               }
+            })
+            .then((response) => response.json())
+            .catch((error) => console.error(error));
           })
           .catch(error => {
             // Handle any errors that occurred during the request
