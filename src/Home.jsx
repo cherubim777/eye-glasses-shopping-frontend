@@ -5,15 +5,37 @@ import Products from './Products';
 import Footer from './Footer';
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/product/getProducts/')
+    fetch('http://127.0.0.1:8000/product/getFeatured/')
       .then((response) => response.json())
       .then((data) => 
       {
-        setProducts(data)
+        setFeaturedProducts(data)
+        console.log(data)
+    })
+      .catch((error) => console.error(error));
+  }, []);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/product/getLatest/')
+      .then((response) => response.json())
+      .then((data) => 
+      {
+        setNewProducts(data)
+        console.log(data)
+    })
+      .catch((error) => console.error(error));
+  }, []);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/product/getPopular/')
+      .then((response) => response.json())
+      .then((data) => 
+      {
+        setPopularProducts(data)
         console.log(data)
     })
       .catch((error) => console.error(error));
@@ -45,9 +67,9 @@ export default function Home() {
         </div>
       </div>
 
-      <Products category="Featured" products={products.filter((product) => product.category === 'Featured')} />
-      <Products category="New" products={products.filter((product) => product.category === 'New')} />
-      <Products category="Popular" products={products.filter((product) => product.category === 'Popular')} />
+      {featuredProducts.length > 0 && <Products category="Featured" user="customer" products={featuredProducts} />}
+      {newProducts.length > 0 && <Products category="New" user="customer" products={newProducts} />}
+      {newProducts.length > 0 && <Products category="Popular" user="customer" products={popularProducts} />}
 
       <Footer />
     </>

@@ -84,19 +84,13 @@ export default function Navbar(props){
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
-                        <img src="/src/assets/navbar/shipments.png" alt="Shipments logo"/>
-                        <NavLink to="/retailer/shipments" className="inactive">Shipments</NavLink>
-                    </div>
-                    </li>
-                    <li>
-                    <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/settings.png" alt="settings logo"/>
                         <NavLink to="/retailer/settings" className="inactive">Settings</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
-                        <img src="/src/assets/navbar/transactions.png" alt="logout logo"/>
+                        <img src="/src/assets/navbar/logout.png" alt="logout logo"/>
                         <div onClick={(event) => handleLogout(event, "retailerToken")} className="inactive">Logout</div>
                     </div>
                     </li>

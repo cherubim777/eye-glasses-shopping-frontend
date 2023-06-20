@@ -1,4 +1,5 @@
 import React from "react";
+import ReactStars from "react-rating-stars-component"
 import { useNavigate, Link } from "react-router-dom"
 
 export default function Product(props){
@@ -30,11 +31,12 @@ export default function Product(props){
     return (
       <div className="product">
               <Link to={`/customer/productDetails/${props.product.id}`} state={{id: props.product.id}}>
-            <img className="product-image" src={props.product.photo} alt={props.product.name} />
+            <img style={{objectFit: "cover", objectPosition: "center"}}width={280} height={190} className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
                 <span className="product-price">{`${props.product.price} ETB`}</span>
             </div>
+            <ReactStars isHalf={true} edit={false} value={parseFloat(props.product.rating)}/>
         </Link>
                 <div className="product-buttons">
                   {props.user === "customer" ?

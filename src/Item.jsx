@@ -33,7 +33,6 @@ export default function Item(props){
         <img className="item-image" src={product.photo} alt="" />
         <div>
             <div className="item-name">{product.name}</div>
-            <div className="item-description">{product.description}</div>
          </div>
         <input className="item-quantity" type="number" placeholder="1" min={1} max={6} value={props.quantity}/>
         <div className="item-price">{`${product.price} ETB`}</div>
