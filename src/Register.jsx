@@ -18,7 +18,7 @@ export default function Register(props){
     city: '',
     photo: '',
     accepts_custom_order:'',
-    custom_order_price:''
+    custom_order_price: 0
   });
   const [customerFields, setCustomerFields] = useState({
     first_name: '',
