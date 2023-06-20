@@ -7,6 +7,7 @@ export default function Cart(){
 
     const [cartItems, setCartItems] = useState([]);
     const [subTotalPrice, setSubTotalPrice] = useState(0);
+    const [toggle, setToggle] = useState(false);
 
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
@@ -26,13 +27,16 @@ export default function Cart(){
           .catch((error) => {
             console.error(error);
           });
-      }, []);
+      }, [toggle]);
 
     useEffect(() => {
         const subtotal = cartItems.reduce((total, item) => total + (item.price*item.quantity), 0);
         setSubTotalPrice(subtotal);
       }, [cartItems]);
 
+      const reloadCart = () => {
+        setToggle(!toggle)
+      }
     return(
         <div className="cart">
             <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}>&lt; <b> Continue Shopping</b></p>
@@ -45,7 +49,7 @@ export default function Cart(){
                     <Item user="customer"/>
                     <Item user="customer"/> */}
                    {cartItems.map((item) => {
-                        return <Item key={item.id} user="customer" {...item} />
+                        return <Item key={item.id} reloadCart={reloadCart} user="customer" {...item} />
                    })}
                    
                     

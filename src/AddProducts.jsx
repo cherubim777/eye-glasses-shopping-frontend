@@ -102,7 +102,7 @@ export default function AddProducts(){
         .description} onChange={handleProductChange}></textarea>
         </label>
         <UserInput type="number" title="price" name="price" value={product.price} onChange={handleProductChange}/>
-        <UserInput type="number" min="1" max="10" title="quantity" name="quantity" value={product.quantity} onChange={handleProductChange}/>
+        <UserInput type="number" min="1" title="quantity" name="quantity" value={product.quantity} onChange={handleProductChange}/>
 
         <UserInput type="file"  accept="image/*" title="Product Image" name="image"  onChange={handleImageChange} />
         <UserInput

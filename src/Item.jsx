@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Item(props){
 
+   const token = localStorage.getItem('customerToken');
    const [product, setProduct] = React.useState([])
    if(props.product_id)
      {React.useEffect(() => {
@@ -15,6 +16,18 @@ export default function Item(props){
           .catch((error) => console.error(error));
       }, []);}
 
+      const handleDeleteCartItems = () => {
+            fetch('http://127.0.0.1:8000/cart/delete/' + props.product_id, {
+               method: 'DELETE',
+               headers: {
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token}`
+               }
+            })
+            .then((response) => {props.reloadCart()})
+            .catch((error) => console.error(error));
+     }
+
     const customer =  
     <div className="item">
         <img className="item-image" src={product.photo} alt="" />
@@ -24,7 +37,7 @@ export default function Item(props){
          </div>
         <input className="item-quantity" type="number" placeholder="1" min={1} max={6} value={props.quantity}/>
         <div className="item-price">{product.price}</div>
-        <img className="trash-btn" src="/src/assets/trash.png" alt="trash image" />
+        <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />
     </div> 
 
     const retailer = 
