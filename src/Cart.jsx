@@ -37,6 +37,15 @@ export default function Cart(){
       const reloadCart = () => {
         setToggle(!toggle)
       }
+
+      const handleCheckout = () => {
+        if(cartItems.length === 0){
+            alert("You Cart Is Empty");
+            return
+        }
+        navigate("/customer/checkout", {state: { cartItems }})
+      }
+
     return(
         <div className="cart">
             <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}>&lt; <b> Continue Shopping</b></p>
@@ -67,7 +76,7 @@ export default function Cart(){
                         <span>Total(Tax.incl)</span>
                         <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
                     </div>
-                    <div onClick={() => navigate("/customer/checkout", {state: { cartItems }})} style={{cursor: "pointer"}} className="check-out" >
+                    <div onClick={handleCheckout} style={{cursor: "pointer"}} className="check-out" >
                         <span>{`${subTotalPrice+subTotalPrice/200} ETB`}</span>
                         <span>Checkout ➜</span>
                     </div>
