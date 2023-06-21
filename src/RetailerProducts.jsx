@@ -42,11 +42,12 @@ export default function RetailerProducts(){
 
  
   return (
-    <div className="dashboard">
+    <div className="dashboard" style={{backgroundColor: "white"}}>
       <Navbar user="retailer" />
+      <div style={{textAlign: "center"}}>
       <div>
-      <div className="login-form">
         <UserInput
+        className="search-bar"
           type="text"
           placeholder="Search for a product"
           value={searchQuery}
@@ -54,7 +55,7 @@ export default function RetailerProducts(){
         />
         <button className="button-style theme-color" onClick={() => navigate("/retailer/addProduct")}>+ Add Product</button>
       </div>
-      <Products products={filteredProducts} user="retailer"/>
+      <Products products={filteredProducts} className="product-container-expanded" user="retailer"/>
       </div>
     </div>
   );

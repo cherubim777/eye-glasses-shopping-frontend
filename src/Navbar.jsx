@@ -42,7 +42,7 @@ export default function Navbar(props){
     const style = ({isActive}) => { return isActive ?  {fontWeight: "bold"} :  {opacity: 0.3}}
     const customerNavbar = 
         <div className="navbar">
-            <NavLink to="/" className="navbar-logo">VISION</NavLink>
+            <NavLink to="/" className="navbar-logo"><img src="/src/assets/fashion-glasses-icon.png" style={{width: "50px", marginRight: "5px"}}/>VISION</NavLink>
             <nav className="navbar-links">
                 <div>
                     <NavLink style={style} to="/" className="inactive">Home</NavLink>
