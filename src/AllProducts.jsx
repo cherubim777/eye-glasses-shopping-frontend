@@ -45,19 +45,32 @@ export default function AllProducts() {
       <Navbar user="customer" />
       <div style={{textAlign: "center"}}>
       <div style={{display: "flex",justifyContent: "left", width: "100%"}}>
-      <FilterBar products={filteredProducts} setFilteredProducts={setFilteredProducts}/>
-      <div className='products-body'>
-        <UserInput
-          className="search-bar"
-          type="text"
-          placeholder="Search for a product"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
-        <div>
-        <Products products={filteredProducts} className="product-container-expanded" user="customer"/>
-        </div>
-        </div>
+      <table>
+        <tr>
+          <td colSpan={2}>
+          <UserInput
+            className="search-bar"
+            type="text"
+            placeholder="Search for a product"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+          </td>
+        </tr>
+        <tr>
+          <td valign='top'>
+        <FilterBar products={filteredProducts} setFilteredProducts={setFilteredProducts}/>
+        </td>
+        <td>
+        <div className='products-body'>
+          
+          <div>
+          <Products products={filteredProducts} className="product-container-expanded" user="customer"/>
+          </div>
+          </div>
+          </td>
+          </tr>
+        </table>
       </div>
       </div>
       <Footer />
