@@ -50,7 +50,7 @@ export default function Home() {
           <div className="intro-text-description">
             Discover a range of stylish and affordable eyeglasses that provide the vision care you deserve, all from the comfort of your own home.
           </div>
-          <button onClick={() => navigate("/customer/allProducts")} className="theme-color button-style">Explore</button>
+          <button onClick={() => navigate("/customer/products")} className="theme-color button-style">Explore</button>
         </div>
         <div className="intro-images">
           <div className="intro-images-vertical">

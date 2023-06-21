@@ -16,7 +16,7 @@ export default function Navbar(props){
     const navigate = useNavigate()
     function handleLogin(event) {
         event.preventDefault();
-        navigate("/customer/login")
+        navigate("/login")
         
     }
 
@@ -46,12 +46,12 @@ export default function Navbar(props){
             <nav className="navbar-links">
                 <div>
                     <NavLink style={style} to="/" className="inactive">Home</NavLink>
-                    <NavLink style={style} to="/customer/allProducts">Products</NavLink>
-                    <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/customer/login"}>Orders</NavLink>
+                    <NavLink style={style} to="/customer/products">Products</NavLink>
+                    <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/login"}>Orders</NavLink>
                 </div>
                 <div>
-                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/customer/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
-                    <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/customer/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
+                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
+                    <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
                         <img src="/src/assets/user.png" alt="User" />
                         {userProfileElement}

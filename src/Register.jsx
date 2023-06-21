@@ -64,7 +64,7 @@ export default function Register(props){
       })
       .then(response => {
         if(response.ok)
-          navigate("/customer/login")
+          navigate("/login")
       })
       .then(data => {
         // Handle the response data here
@@ -90,7 +90,7 @@ export default function Register(props){
       })
       .then(response => {
         if(response.ok)
-          navigate("/customer/login")
+          navigate("/login")
       })
       .then(data => {
         // Handle the response data here

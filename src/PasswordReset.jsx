@@ -47,7 +47,7 @@ export default function PasswordReset() {
         );
         alert("Password reset successful")
         // Redirect to login page after successful password reset
-        navigate('/customer/login');
+        navigate('/login');
       })
       .catch((error) => {
         setFormValues({
