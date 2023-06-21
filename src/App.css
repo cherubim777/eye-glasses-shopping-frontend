@@ -213,11 +213,15 @@ li {
     text-decoration: underline;
     cursor: pointer;
 }
-.product-container {
+.product-container,
+.product-container-expanded {
     display: flex;
     overflow-x: auto;
     gap: 20px;
-    /* flex-wrap: wrap; */
+    
+}
+.product-container-expanded {
+    flex-wrap: wrap;
 }
 .product {
     margin-top: 40px;

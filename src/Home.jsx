@@ -66,10 +66,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {featuredProducts.length > 0 && <Products category="Featured" user="customer" products={featuredProducts} />}
-      {newProducts.length > 0 && <Products category="New" user="customer" products={newProducts} />}
-      {newProducts.length > 0 && <Products category="Popular" user="customer" products={popularProducts} />}
+      
+      {featuredProducts.length > 0 && <Products category="Featured" user="customer" className="product-container" isHome={true} products={featuredProducts} />}
+      {newProducts.length > 0 && <Products category="New" user="customer" className="product-container" isHome={true} products={newProducts} />}
+      {newProducts.length > 0 && <Products category="Popular" user="customer" className="product-container" isHome={true} products={popularProducts} />}
 
       <Footer />
     </>

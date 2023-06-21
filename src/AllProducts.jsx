@@ -3,6 +3,9 @@ import Navbar from './Navbar';
 import Products from './Products';
 import Footer from './Footer';
 import UserInput from './UserInput';
+import FilterBar from './FilterBar';
+import './FilterBar.css';
+
 
 export default function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -41,6 +44,9 @@ export default function AllProducts() {
     <>
       <Navbar user="customer" />
       <div style={{textAlign: "center"}}>
+      <div style={{display: "flex",justifyContent: "left", width: "100%"}}>
+      <FilterBar products={filteredProducts} setFilteredProducts={setFilteredProducts}/>
+      <div className='products-body'>
         <UserInput
           className="search-bar"
           type="text"
@@ -48,8 +54,12 @@ export default function AllProducts() {
           value={searchQuery}
           onChange={handleSearchInputChange}
         />
+        <div>
+        <Products products={filteredProducts} className="product-container-expanded" user="customer"/>
+        </div>
+        </div>
       </div>
-      <Products products={filteredProducts}  user="customer"/>
+      </div>
       <Footer />
     </>
   );
