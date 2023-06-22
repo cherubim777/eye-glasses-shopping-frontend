@@ -55,6 +55,7 @@ li {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 40px;
 }
 .navbar-links div {
@@ -102,6 +103,10 @@ li {
     width: 25px;
 
 }
+.wishlist-btn, 
+.cart-btn{
+    align-self: center;
+}
 .user-btn {
     position: relative;
 }
@@ -116,6 +121,18 @@ li {
 }
 .user-btn:hover .user-profile{
     display: block;
+}
+
+.profile-placeholder {
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 20px;
 }
 
 .intro{

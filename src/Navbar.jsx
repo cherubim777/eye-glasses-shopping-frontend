@@ -2,16 +2,47 @@ import React from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Navbar(props){
+
+    const token = localStorage.getItem('customerToken')
+    const [user,setUser] = React.useState({
+        first_name: "",
+        photo: null,
+    })
     const [isCustomerLoggedIn, setIsCustomerLoggedIn] = React.useState(() => {
         return Boolean(localStorage.getItem('customerToken'));
       });
+
     const [isRetailerLoggedIn, setIsRetailerLoggedIn] = React.useState(() => {
         return Boolean(localStorage.getItem('retailerToken'));
       });
-
+    
     React.useEffect(() => {
         setIsCustomerLoggedIn(Boolean(localStorage.getItem('customerToken')))
-    },[localStorage.getItem('customerToken')])
+    },[token])
+
+
+    React.useEffect(() => {
+        fetch(`http://127.0.0.1:8000/user/getCustomerProfile`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          setUser({
+            first_name: data.first_name,
+            photo: data.photo,
+          });
+          
+        })
+        .catch(error => {
+          console.log(error);
+        })  
+    }, [])
+      
 
     const navigate = useNavigate()
     function handleLogin(event) {
@@ -52,9 +83,17 @@ export default function Navbar(props){
                     <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
                     <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
-                        <img src="/src/assets/user.png" alt="User" />
-                        {userProfileElement}
-                    </NavLink>
+                        {isCustomerLoggedIn ? (
+                            user.photo ? (
+                                <img src={user.photo} style={{width: 40, borderRadius: 20}}/>
+                            ) : (
+                                <div className="profile-placeholder">{user.first_name && user.first_name[0].toUpperCase()}</div>
+                            )
+                        ) : (
+                            <img src="/src/assets/user.png" alt="User" />
+                        )}
+                          {userProfileElement}
+        </NavLink>
                 </div>
             </nav>
         </div>
