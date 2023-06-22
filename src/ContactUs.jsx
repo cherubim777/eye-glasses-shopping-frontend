@@ -52,7 +52,7 @@ export default function  ContactUs(){
           <label htmlFor="message">Message:</label>
           <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>
 
-          <button type="submit">Send</button>
+          <button className="button-style theme-color" type="submit">Send</button>
         </form>
       </div>
       {showSuccessMessage && <div>Thank you for your message!</div>}

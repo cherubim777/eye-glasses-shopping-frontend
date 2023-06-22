@@ -14,7 +14,7 @@ import AddProducts from './AddProducts'
 import UpdateProduct from './UpdateProduct'
 import UpdateProfile from './UpdateProfile'
 import CustomOrder from './CustomOrder'
-import AllProducts from './AllProducts'
+import CustomerProducts from './CustomerProducts'
 import ProductDetails from './ProductDetails'
 import Checkout from './Checkout'
 import RetailerProducts from './RetailerProducts'
@@ -39,7 +39,7 @@ export default function App() {
       <Route path='/customer/orders' element={<CustomerOrders />}/>
       <Route path='/customer/wishlist' element={<WishList />}/>
       <Route path='/customer/customOrder' element={<CustomOrder />}/>
-      <Route path='/customer/products' element={<AllProducts />} />
+      <Route path='/customer/products' element={<CustomerProducts />} />
       <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
       <Route path='/customer/checkout' element={<Checkout />} />
       <Route path='/customer/updateProfile' element={<UpdateProfile />} />
@@ -51,6 +51,9 @@ export default function App() {
       <Route path='/retailer/updateProduct' element={<UpdateProduct />}/>
       <Route path='/retailer/settings' element={<SellerSettings />}/>
       <Route path='/retailer/orders' element={<RetailerOrders />} />
+
+      <Route path='/aboutUs' element={<AboutUs />} />
+      <Route path='/contactUs' element={<ContactUs />} />
     </Routes>
     </>
   )

@@ -7,7 +7,7 @@ import FilterBar from './FilterBar';
 import './FilterBar.css';
 
 
-export default function AllProducts() {
+export default function CustomerProducts() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState([]);
