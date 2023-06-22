@@ -29,10 +29,6 @@ export default function Product(props){
             // Handle any errors that occurred during the request
           });
     }
-    const handleCloseNotification = () => {
-      console.log('close notification')
-      setShowNotification(false)
-    }
 
     const handlePurchase = () => {
       navigate("/customer/checkout", {state: {cartItem: [{"product_id": props.product.id}]}})
@@ -47,7 +43,7 @@ export default function Product(props){
             </div>
             <ReactStars isHalf={true} edit={false} value={parseFloat(props.product.rating)}/>
         </Link>
-                  {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)}/>}
+                  {showNotification && <Notification message={"Added Item to Cart"} onClose={setShowNotification(false)} color="green"/>}
                 <div className="product-buttons">
                   {props.user === "customer" ?
                     <>

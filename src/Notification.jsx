@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Notification.css';
 
-const Notification = ({ message, onClose }) => {
+const Notification = ({ message, onClose, color }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
@@ -13,9 +13,9 @@ const handleAnimationEnd = () => {
       onClose();
     }
   };
-  
+
   return (
-    <div className={"notification"} onAnimationEnd={handleAnimationEnd}>
+    <div className={`notification ${color}`} onAnimationEnd={handleAnimationEnd}>
       <p>{message}</p>
     </div>
   );

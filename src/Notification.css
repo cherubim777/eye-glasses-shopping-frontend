@@ -6,9 +6,14 @@
     display: flex;
     justify-content: center;
     z-index: 999;
-    background-color: #44d349;
-  }
+}
 
+.green{
+   background-color: #44d349;
+}
+.red {
+    background-color: #ef1a1c;
+}
   .notification-content {
     background-color: white;
     padding: 20px;
