@@ -1,11 +1,14 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component"
 import { useNavigate, Link } from "react-router-dom"
+import Notification from "./Notification";
 
 export default function Product(props){
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
     console.log(token)
+    const [showNotification, setShowNotification] = React.useState(false)
+
     const addToCart = () => {
 
         fetch('http://127.0.0.1:8000/cart/carts/', {
@@ -16,13 +19,19 @@ export default function Product(props){
             },
             body: JSON.stringify({"cart": 1, "quantity": 1, "product_id": props.product.id})
           })
-          .then(response => response.json())
-          .then(data => {
-            // Handle the response data here
+          .then(response => {
+            if (response.status === 201) {
+              // alert('Added Item to Cart')
+              setShowNotification(true);
+      }
           })
           .catch(error => {
             // Handle any errors that occurred during the request
           });
+    }
+    const handleCloseNotification = () => {
+      console.log('close notification')
+      setShowNotification(false)
     }
 
     const handlePurchase = () => {
@@ -38,6 +47,7 @@ export default function Product(props){
             </div>
             <ReactStars isHalf={true} edit={false} value={parseFloat(props.product.rating)}/>
         </Link>
+                  {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)}/>}
                 <div className="product-buttons">
                   {props.user === "customer" ?
                     <>
