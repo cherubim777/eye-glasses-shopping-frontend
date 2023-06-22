@@ -33,8 +33,7 @@ export default function Navbar(props){
     const userProfileElement =
     <div className="user-profile">
         <ul>
-            {isCustomerLoggedIn && <li> Profile</li>}
-            {isCustomerLoggedIn && <li> Settings</li>}
+            {isCustomerLoggedIn && <li onClick={(event) => {event.preventDefault();navigate("/customer/updateProfile")}}> Edit Profile</li>}
             {isCustomerLoggedIn ? <li onClick={((event) => handleLogout(event, "customerToken")) }> Logout</li> : <li onClick={(event) => handleLogin(event)}>Login</li>}
         </ul>
     </div>

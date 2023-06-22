@@ -14,7 +14,7 @@ export default function UpdateProduct() {
     brand: "",
     description: "",
     price: "",
-    image: "",
+    image: null,
   });
 
   const token = localStorage.getItem("retailerToken");
@@ -55,7 +55,7 @@ export default function UpdateProduct() {
     formData.append('description', product.description);
     formData.append('price', product.price);
     formData.append('quantity', product.quantity);
-    formData.append('photo', product.photo);
+    typeof product.photo !== "string" && formData.append('photo', product.photo);
     fetch(`http://127.0.0.1:8000/product/updateProduct/${productId}/`, {
       method: "PUT",
       headers: {
@@ -181,13 +181,13 @@ export default function UpdateProduct() {
             value={product.price}
             onChange={handleProductChange}
           />
-          <UserInput
+          <input
             type="file"
             title="Product Image"
             name="image"
             value={product.image}
             onChange={handleImageChange}
-          />
+          /><br /><br />
            <button
               type="submit"
               className="button-style theme-color"
