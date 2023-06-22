@@ -30,31 +30,27 @@ export default function App() {
     <>
     <Routes>
       <Route path='/' element={<Home />}/>
-      <Route path='/customer' element={<Home />}/>
+      <Route path='/login' element={<Login />}/>
+      <Route path='/resetPassword' element={<PasswordReset />} />
+      <Route path='/review' element={<SubmitReview/>}/>
+
       <Route path='/customer/register' element={<Register user="customer" />}/>
-      <Route path='/customer/login' element={<Login />}/>
       <Route path='/customer/cart' element={<Cart />}/>
       <Route path='/customer/orders' element={<CustomerOrders />}/>
       <Route path='/customer/wishlist' element={<WishList />}/>
+      <Route path='/customer/customOrder' element={<CustomOrder />}/>
+      <Route path='/customer/products' element={<AllProducts />} />
+      <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
+      <Route path='/customer/checkout' element={<Checkout />} />
+      <Route path='/customer/updateProfile' element={<UpdateProfile />} />
+
       <Route path='/retailer' element={<Dashboard />}/>
       <Route path='/retailer/register' element={<Register user="retailer" />}/>
       <Route path='/retailer/addProduct' element={<AddProducts />}/>
       <Route path='/retailer/products'  element={<RetailerProducts /> }/>
       <Route path='/retailer/updateProduct' element={<UpdateProduct />}/>
       <Route path='/retailer/settings' element={<SellerSettings />}/>
-      <Route path='/customer/customOrder' element={<CustomOrder />}/>
-      <Route path='/updateProfile' element={<UpdateProfile userType="customer" />} />
-      <Route path='/customer/allProducts' element={<AllProducts />} />
-      <Route path='/customer/productDetails/:id' element={<ProductDetails />} />
-      <Route path='/customer/checkout' element={<Checkout />} />
-      <Route path='/customer/updateProfile' element={<UpdateProfile />} />
       <Route path='/retailer/orders' element={<RetailerOrders />} />
-      <Route path='/resetPassword' element={<PasswordReset />} />
-      <Route path='/retailer/orders' element={<RetailerOrders />} />
-      <Route path='/review' element={<SubmitReview/>}/>
-      <Route path='/aboutUs' element={<AboutUs/>}/>
-      <Route path='/contactUs' element={<ContactUs/>}/>
-
     </Routes>
     </>
   )

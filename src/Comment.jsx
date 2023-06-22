@@ -18,7 +18,7 @@ export default function Comment(props) {
       {user && (
         <div className="">
             <span>
-                <img src= {user.photo ? user.photo : '/src/assets/user.png' }/>
+                <img width={50} height={50} style={{borderRadius: 25}} src= {user.photo ? user.photo : '/src/assets/user.png' }/>
                 <div>{user.first_name} {user.email}</div>
             </span>
             <p>{props.comment}</p>

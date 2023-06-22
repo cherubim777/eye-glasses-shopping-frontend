@@ -16,7 +16,7 @@ export default function Navbar(props){
     const navigate = useNavigate()
     function handleLogin(event) {
         event.preventDefault();
-        navigate("/customer/login")
+        navigate("/login")
         
     }
 
@@ -42,16 +42,16 @@ export default function Navbar(props){
     const style = ({isActive}) => { return isActive ?  {fontWeight: "bold"} :  {opacity: 0.3}}
     const customerNavbar = 
         <div className="navbar">
-            <NavLink to="/" className="navbar-logo">VISION</NavLink>
+            <NavLink to="/" className="navbar-logo"><img src="/src/assets/fashion-glasses-icon.png" style={{width: "50px", marginRight: "5px"}}/>VISION</NavLink>
             <nav className="navbar-links">
                 <div>
                     <NavLink style={style} to="/" className="inactive">Home</NavLink>
-                    <NavLink style={style} to="/customer/allProducts">Products</NavLink>
-                    <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/customer/login"}>Orders</NavLink>
+                    <NavLink style={style} to="/customer/products">Products</NavLink>
+                    <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/login"}>Orders</NavLink>
                 </div>
                 <div>
-                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/customer/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
-                    <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/customer/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
+                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
+                    <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
                         <img src="/src/assets/user.png" alt="User" />
                         {userProfileElement}
@@ -84,19 +84,13 @@ export default function Navbar(props){
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
-                        <img src="/src/assets/navbar/shipments.png" alt="Shipments logo"/>
-                        <NavLink to="/retailer/shipments" className="inactive">Shipments</NavLink>
-                    </div>
-                    </li>
-                    <li>
-                    <div className="retailer-navbar-links">
                         <img src="/src/assets/navbar/settings.png" alt="settings logo"/>
                         <NavLink to="/retailer/settings" className="inactive">Settings</NavLink>
                     </div>
                     </li>
                     <li>
                     <div className="retailer-navbar-links">
-                        <img src="/src/assets/navbar/transactions.png" alt="logout logo"/>
+                        <img src="/src/assets/navbar/logout.png" alt="logout logo"/>
                         <div onClick={(event) => handleLogout(event, "retailerToken")} className="inactive">Logout</div>
                     </div>
                     </li>

@@ -3,6 +3,9 @@ import Navbar from './Navbar';
 import Products from './Products';
 import Footer from './Footer';
 import UserInput from './UserInput';
+import FilterBar from './FilterBar';
+import './FilterBar.css';
+
 
 export default function AllProducts() {
   const [products, setProducts] = useState([]);
@@ -40,15 +43,36 @@ export default function AllProducts() {
   return (
     <>
       <Navbar user="customer" />
-      <div className="login-form">
-        <UserInput
-          type="text"
-          placeholder="Search for a product"
-          value={searchQuery}
-          onChange={handleSearchInputChange}
-        />
+      <div style={{textAlign: "center"}}>
+      <div style={{display: "flex",justifyContent: "left", width: "100%"}}>
+      <table>
+        <tr>
+          <td colSpan={2}>
+          <UserInput
+            className="search-bar"
+            type="text"
+            placeholder="Search for a product"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+          </td>
+        </tr>
+        <tr>
+          <td valign='top'>
+        <FilterBar products={filteredProducts} setFilteredProducts={setFilteredProducts}/>
+        </td>
+        <td>
+        <div className='products-body'>
+          
+          <div>
+          <Products products={filteredProducts} className="product-container-expanded" user="customer"/>
+          </div>
+          </div>
+          </td>
+          </tr>
+        </table>
       </div>
-      <Products products={filteredProducts}  user="customer"/>
+      </div>
       <Footer />
     </>
   );
