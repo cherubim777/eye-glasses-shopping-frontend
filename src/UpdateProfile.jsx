@@ -4,23 +4,35 @@ import UserInput from "./UserInput";
 export default function ProfileUpdate({ userType }) {
     const [fields, setFields] = useState({});
     const [isLoading, setIsLoading] = useState(false);
-  
+    const token = localStorage.getItem('customerToken');
+    
     const handleFieldChange = (event) => {
       const { name, value } = event.target;
       setFields((prevFields) => ({ ...prevFields, [name]: value }));
     };
   
-    const fetchUserData = async () => {
+    const fetchUserData = () => {
       setIsLoading(true);
-      try {
-        const response = await fetch(`/api/${userType}/profile`);
-        const userData = await response.json();
-        setFields(userData);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
+        fetch(`http://127.0.0.1:8000/user/getCustomerProfile`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          setFields(data);
+          setIsLoading(false)
+
+        })
+        .catch(error => {
+          console.log(error);
+
+        })
+
+
     };
   
     const handleUpdate = async () => {
