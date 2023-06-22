@@ -1,8 +1,11 @@
 import  React,{ useState ,useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
 import UserInput from './UserInput';
 
 export default function CustomOrder() {
-  const [retailers, setRetailers] = useState([]);
+
+  const location = useLocation()
+
   const [formData, setFormData] = useState({
     right_sphere: '',
     left_sphere: '',
@@ -13,7 +16,10 @@ export default function CustomOrder() {
     right_prism: '',
     left_prism: '',
     payment_method: '',
-    retailer:'' ,
+    retailer: location.state.retailer.user,
+    frame: location.state.product.id,
+    local_address: '',
+    city: '',
     delivery:'',
   });
   const authToken = localStorage.getItem('customerToken');
@@ -23,29 +29,6 @@ export default function CustomOrder() {
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/user/acceptCustom',{
-       headers: {
-        // Authorization: `Bearer ${token}`,
-       } 
-    })
-      .then((response) => response.json()) // return parsed JSON data
-      .then((data) => {
-        console.log(data); // log the parsed JSON data
-        setRetailers(data); // Update the retailers state with the fetched data
-        setFormData((prevFormData) => ({ ...prevFormData, retailer: data[0].user }));
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
-  const handleRetailerChange = (event) => {
-    const retailerId = event.target.value;
-    console.log("hey there" + retailerId); // Check the value of retailerId
-
-    setFormData((prevFormData) => ({ ...prevFormData, retailer: retailerId }));
-  };
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch('http://127.0.0.1:8000/order/placeCustomOrder/', {
@@ -54,7 +37,7 @@ export default function CustomOrder() {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${authToken}`
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({...formData, shipping_address: {address: formData.local_address, city: formData.city}})
     })
       .then((response) => {
         if (response.status === 201) {
@@ -88,7 +71,10 @@ export default function CustomOrder() {
         <input type="radio" name="payment_method" value="cbebirr" checked={formData.payment_method === 'cbebirr'} onChange={handleFieldChange} /> CBEBirr
         <input type="radio" name="payment_method" value="amole" checked={formData.payment_method === 'amole'} onChange={handleFieldChange} /> Amole
       </label><br />
-      <label>
+      <label><br />
+      <div>Shipping Address</div>
+              <UserInput type="text" title="local address" name="local_address" value={formData.local_address}  onChange={handleFieldChange}/>
+              <UserInput type="text" title="city" name="city" value={formData.city}  onChange={handleFieldChange}/>
       Delivery Method
   <br />
   <input type="radio" required name="delivery" value="GO Delivery Ethiopia" checked={formData.delivery === "GO Delivery Ethiopia"} onChange={handleFieldChange}/>
@@ -103,13 +89,8 @@ export default function CustomOrder() {
   <input type="radio" name="delivery" value="Awra Delivery" checked={formData.delivery === "Awra Delivery"} onChange={handleFieldChange}/>
   <label>Awra Delivery</label>
 </label>
-<label><br/>
-  Choose Retailer
-  <select required className="store-dropdown"  onChange={handleRetailerChange}>
-  {retailers.map(retailer => (
-  <option key={retailer.user} value={retailer.user}>{retailer.store_name}</option>
-  ))}
-</select>
+<label><br/><br />
+  <UserInput type="text" readOnly={true} title="Retailer" value={location.state.retailer.store_name}/>
 </label><br />
       <button type="submit" className="button-style theme-color login-btn">Submit</button>
 

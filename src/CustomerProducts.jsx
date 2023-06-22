@@ -38,7 +38,7 @@ export default function CustomerProducts() {
       <Navbar user="customer" />
       <div style={{textAlign: "center"}}>
       <div style={{display: "flex",justifyContent: "left", width: "100%"}}>
-      <table>
+      <table style={{width: "100%"}}>
         <tr>
           <td colSpan={2}>
           <UserInput
@@ -51,16 +51,15 @@ export default function CustomerProducts() {
           </td>
         </tr>
         <tr>
-          <td valign='top'>
+          <td  width={"15%"} valign='top'>
         <FilterBar query={searchQuery} products={products} setFilteredProducts={setFilteredProducts}/>
         </td>
-        <td>
-        <div className='products-body'>
+        <td style={{backgroundColor: "#f1eef4"}}>
           
-          <div>
+          <div className='products-body'>
           <Products products={filteredProducts} className="product-container-expanded" user="customer"/>
           </div>
-          </div>
+          
           </td>
           </tr>
         </table>

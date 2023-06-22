@@ -73,7 +73,7 @@ export default function Navbar(props){
     const customerNavbar = 
         <div className="navbar">
             <NavLink to="/" className="navbar-logo"><img src="/src/assets/fashion-glasses-icon.png" style={{width: "50px", marginRight: "5px"}}/>VISION</NavLink>
-            <nav className="navbar-links">
+            <nav className="navbar-links" style={{alignItems: "center"}}>
                 <div>
                     <NavLink style={style} to="/" className="inactive">Home</NavLink>
                     <NavLink style={style} to="/customer/products">Products</NavLink>
