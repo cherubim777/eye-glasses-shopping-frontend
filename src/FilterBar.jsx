@@ -1,71 +1,89 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function FilterBar({ products, setFilteredProducts }) {
-    const [ageGroupFilters, setAgeGroupFilters] = useState([]);
-    const [genderFilters, setGenderFilters] = useState([]);
-    const [categoryFilters, setCategoryFilters] = useState([]);
-  
-    const handleFilterChange = () => {
+export default function FilterBar({ products, setFilteredProducts, query }) {
+  const [filters, setFilters] = useState({
+    age_group: [],
+    gender_category: [],
+    category: []
+  });
+
+    const handleFilterChange = (filterType, value, checked) => {
+      // Update the filter state based on the checkbox change
+      setFilters(prevFilters => ({
+        ...prevFilters,
+        [filterType]: checked
+          ? [...prevFilters[filterType], value]
+          : prevFilters[filterType].filter(filter => filter !== value),
+      }));
+      
+
+  };
+
+    useEffect(() => {
+      console.log(filters)
       // Filter products based on the selected filters
       const filteredProducts = products.filter((product) => {
         // Check if the product matches the selected age group filters
-        if (ageGroupFilters.length > 0 && !ageGroupFilters.includes(product.ageGroup)) {
+        if (filters.age_group.length > 0 && !filters.age_group.includes(product.age_group)) {
           return false;
         }
         // Check if the product matches the selected gender filters
-        if (genderFilters.length > 0 && !genderFilters.includes(product.gender)) {
+        if (filters.gender_category.length > 0 && !filters.gender_category.includes(product.gender_category)) {
           return false;
         }
         // Check if the product matches the selected category filters
-        if (categoryFilters.length > 0 && !categoryFilters.includes(product.category)) {
+        if (filters.category.length > 0 && !filters.category.includes(product.category)) {
           return false;
+        }
+        if(query !== '') {
+          return product.name.toLowerCase().includes(query.toLowerCase())
         }
         return true;
       });
+  
       // Update the filtered products state
       setFilteredProducts(filteredProducts);
-    };
+    }, [filters, query])
   
     return (
       <div className='retailer-navbar' style={{textAlign: 'left', padding: 10, minWidth:180}}>
         <h4>Age Group</h4>
-        <input type="checkbox" onChange={() => setAgeGroupFilters([...ageGroupFilters, "Kids"])} />
+        <input type="checkbox" value="K" onChange={(e) => handleFilterChange('age_group', e.target.value, e.target.checked)} />
         <label>Kids</label><br />
-        <input type="checkbox" onChange={() => setAgeGroupFilters([...ageGroupFilters, "Teens"])} />
+        <input type="checkbox" value="T" onChange={(e) => handleFilterChange('age_group', e.target.value, e.target.checked)} />
         <label>Teens</label><br />
-        <input type="checkbox" onChange={() => setAgeGroupFilters([...ageGroupFilters, "Adults"])} />
+        <input type="checkbox" value="A" onChange={(e) => handleFilterChange('age_group', e.target.value, e.target.checked)} />
         <label>Adults</label><br />
-        <input type="checkbox" onChange={() => setAgeGroupFilters([...ageGroupFilters, "Seniors"])} />
+        <input type="checkbox" value="S" onChange={(e) => handleFilterChange('age_group', e.target.value, e.target.checked)} />
         <label>Seniors</label><br />
         <h4>Gender</h4>
-        <input type="checkbox" onChange={() => setGenderFilters([...genderFilters, "Male"])} />
+        <input type="checkbox" value="M" onChange={(e) => handleFilterChange('gender_category', e.target.value, e.target.checked)} />
         <label>Male</label><br />
-        <input type="checkbox" onChange={() => setGenderFilters([...genderFilters, "Female"])} />
+        <input type="checkbox" value="F" onChange={(e) => handleFilterChange('gender_category', e.target.value, e.target.checked)} />
         <label>Female</label><br />
-        <input type="checkbox" onChange={() => setGenderFilters([...genderFilters, "Unisex"])} />
+        <input type="checkbox" value="U" onChange={(e) => handleFilterChange('gender_category', e.target.value, e.target.checked)} />
         <label>Unisex</label><br />
         <h4>Product Category</h4>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Oversized"])} />
-        <label>Oversized</label>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Sports"])} />
+        <input type="checkbox" value="Oversized" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Oversized</label><br />
+        <input type="checkbox" value="Sports" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
         <label>Sports</label><br />
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Mirrored"])} />
-        <label>Mirrored</label>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Gradient"])} />
+        <input type="checkbox" value="Mirrored" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Mirrored</label><br />
+        <input type="checkbox" value="Gradient" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
         <label>Gradient</label><br />
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Polarized"])} />
-        <label>Polarized</label>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Aviator"])} />
+        <input type="checkbox" value="Polarized" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Polarized</label><br />
+        <input type="checkbox" value="Aviator" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
         <label>Aviator</label><br />
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Wayfarer"])} />
-        <label>Wayfarer</label>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Round"])} />
+        <input type="checkbox" value="Wayfarer" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Wayfarer</label><br />
+        <input type="checkbox" value="Round" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
         <label>Round</label><br />
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Cat-Eye"])} />
-        <label>Cat-Eye</label>
-        <input type="checkbox" onChange={() => setCategoryFilters([...categoryFilters, "Clip-On"])} />
-        <label>Clip-On</label>
-        <br />
+        <input type="checkbox" value="Cat-Eye" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Cat-Eye</label><br />
+        <input type="checkbox" value="Clip-On" onChange={(e) => handleFilterChange('category', e.target.value, e.target.checked)} />
+        <label>Clip-On</label><br />
       </div>
     );
   }

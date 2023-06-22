@@ -6,7 +6,6 @@ import Notification from "./Notification";
 export default function Product(props){
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
-    console.log(token)
     const [showNotification, setShowNotification] = React.useState(false)
 
     const addToCart = () => {

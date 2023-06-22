@@ -28,14 +28,7 @@ export default function CustomerProducts() {
     const query = event.target.value;
     setSearchQuery(query);
 
-    if (query == '') {
-      setFilteredProducts(products);
-    } else {
-      const filtered = products.filter((product) =>
-        product.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredProducts(filtered);
-    }
+
   };
 
 
@@ -59,7 +52,7 @@ export default function CustomerProducts() {
         </tr>
         <tr>
           <td valign='top'>
-        <FilterBar products={filteredProducts} setFilteredProducts={setFilteredProducts}/>
+        <FilterBar query={searchQuery} products={products} setFilteredProducts={setFilteredProducts}/>
         </td>
         <td>
         <div className='products-body'>
