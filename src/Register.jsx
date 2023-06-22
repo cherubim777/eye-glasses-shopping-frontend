@@ -44,6 +44,12 @@ export default function Register(props){
     setCustomerFields({ ...customerFields, [name]: value });
   };
 
+  const handleCustomerImageChange = (e) => {
+    setCustomerFields({ ...customerFields, photo: e.target.files[0] });
+  };
+  const handleRetailerImageChange = (e) => {
+    setRetailerFields({ ...retailerFields, photo: e.target.files[0] });
+  };
   const passwordsMatch = (field) => {
     return field.password == field.confirm_password
   }
@@ -55,12 +61,22 @@ export default function Register(props){
         alert("Passwords do not match")
         return
       }
+      
+      const formData = new FormData();
+      formData.append("first_name", customerFields.first_name);
+      formData.append("last_name", customerFields.last_name);
+      formData.append("password", customerFields.password);
+      formData.append("username", customerFields.username);
+      formData.append("phone_number", customerFields.phone_number);
+      formData.append("email", customerFields.email);
+      formData.append("local_address", customerFields.local_address);
+      formData.append("subcity", customerFields.subcity);
+      formData.append("city", customerFields.city);
+      typeof customerFields.photo !== "string" && formData.append("photo", customerFields.photo);
+
         fetch('http://127.0.0.1:8000/user/customer/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(customerFields)
+        body: formData
       })
       .then(response => {
         if(response.ok)
@@ -72,7 +88,6 @@ export default function Register(props){
       .catch(error => {
         // Handle any errors that occurred during the request
       });
-      console.log(customerFields)
     }
 
     let retailer_register =  function (event){
@@ -81,12 +96,26 @@ export default function Register(props){
         alert("Passwords do not match")
         return
       }
+
+      const formData = new FormData();
+      formData.append("store_name", retailerFields.store_name);
+      formData.append("email", retailerFields.email);
+      formData.append("phone_number", retailerFields.phone_number);
+      formData.append("local_address", retailerFields.local_address);
+      formData.append("subcity", retailerFields.subcity);
+      formData.append("city", retailerFields.city);
+      formData.append("first_name", retailerFields.first_name);
+      formData.append("last_name", retailerFields.last_name);
+      formData.append("username", retailerFields.username);
+      formData.append("password", retailerFields.password);
+      formData.append("accepts_custom_order", retailerFields.accepts_custom_order);
+      formData.append("custom_order_price", retailerFields.custom_order_price);
+      typeof retailerFields.photo !== "string" && formData.append("photo", retailerFields.photo);
+      
+
         fetch('http://127.0.0.1:8000/user/retailer/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(retailerFields)
+        body: formData
       })
       .then(response => {
         if(response.ok)
@@ -98,7 +127,6 @@ export default function Register(props){
       .catch(error => {
         // Handle any errors that occurred during the request
       });
-      console.log(retailerFields)
     }
 
 
@@ -118,7 +146,7 @@ export default function Register(props){
                   <UserInput type="text" title="local address" name="local_address" value={customerFields.local_address}  onChange={handleCustomerChange}/>
                   <UserInput type="text" title="subcity" name="subcity" value={customerFields.subcity}  onChange={handleCustomerChange}/>
                   <UserInput type="text" title="city" name="city" value={customerFields.city}  onChange={handleCustomerChange}/>
-                  <UserInput type="file" title="photo" name="photo" value={customerFields.photo}  onChange={handleCustomerChange}/>
+                  <input type="file" title="photo" name="photo" accept="images/*" value={customerFields.photo}  onChange={handleCustomerImageChange}/>
                   <button className="button-style theme-color login-btn">Register<img className="login-btn-arrow"src="/src/assets/arrow.png"/></button>
                 </form>
                 </div>
@@ -142,7 +170,7 @@ let retailerRegister = <div className="login-page">
           <UserInput type="text" title="local address" name="local_address" value={retailerFields.local_address}  onChange={handleRetailerChange}/>
           <UserInput type="text" title="subcity" name="subcity" value={retailerFields.subcity}  onChange={handleRetailerChange}/>
           <UserInput type="text" title="city" name="city" value={retailerFields.city}  onChange={handleRetailerChange}/>
-          <UserInput type="file" title="photo" name="photo" value={retailerFields.photo}  onChange={handleRetailerChange}/>
+          <input type="file" title="photo" accept="image/*" name="photo" onChange={handleRetailerImageChange} /><br /><br />
         <label>
             Accept custom order?
             <input type="radio" required name="accepts_custom_order" value="True" checked={retailerFields.accepts_custom_order==="True"} onChange={handleRetailerChange}/> Yes
