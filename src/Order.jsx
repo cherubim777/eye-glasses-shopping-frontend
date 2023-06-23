@@ -104,15 +104,15 @@ export default function Order(props){
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 30}}>
             <div>
                 <p><b>Store Name:</b> {props.custom_order.order_data.store_name}</p>
-                {props.custom_order.custom_order && <p>Custom Order Date: {props.custom_order.custom_order.createdAt}</p>}
+                {props.custom_order.custom_order && <p><b>Custom Order Date:</b> {props.custom_order.custom_order.createdAt}</p>}
                 <p><b>Delivery:</b> {props.custom_order.custom_order.delivery}</p>
                 <p><b>Payment Method:</b> {props.custom_order.custom_order.paymentMethod}</p>
-                {props.custom_order.custom_order && <p>Custom Order Status: {props.custom_order.custom_order.isDelivered ? "Delivered" : props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
+                {props.custom_order.custom_order && <p><b>Custom Order Status:</b> {props.custom_order.custom_order.isDelivered ? "Delivered" : props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
                 <button className="button-style theme-color" onClick={() => handleDelivery("customOrderFulfilled", props.custom_order.custom_order.id, props.custom_order.custom_order.isReady)} >Delivered</button>
             </div>
             <div style={{width: 200,height: 200}}>
                 {customProduct.photo && <img src={customProduct.photo} width={150} alt="" />} <br />
-                {`Selected Frame: ${customProduct.name}`}
+                {`Frame: ${customProduct.name}`}
             </div>
         </div>
         <hr />

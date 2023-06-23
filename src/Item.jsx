@@ -29,14 +29,14 @@ export default function Item(props){
      }
 
     const customer =  
-    <div className="item">
+    <div className="item" >
         <img className="item-image" src={product.photo} alt="" />
         <div>
             <div className="item-name">{product.name}</div>
          </div>
-        <input className="item-quantity" type="number" placeholder="1" min={1} max={6} value={props.quantity}/>
+        <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>
         <div className="item-price">{`${product.price} ETB`}</div>
-        <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />
+        {!props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
     </div> 
 
     const retailer = 

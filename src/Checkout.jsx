@@ -134,12 +134,11 @@ export default function Checkout(){
               <br />
               <input type="radio" name="delivery" value="Awra Delivery" checked={checkoutFields.delivery === "Awra Delivery"} onChange={handleCheckoutChange}/>
               <label>Awra Delivery</label>
-
+              <br /><br />
               {(cartItem ? cartItem: cartItems).map((item) => {
-                  console.log(item)
-                          return <Item key={item.id} user="customer" {...item} />
+                  console.log("item: " + JSON.stringify(item))
+                          return <Item key={item.id} user="customer" for="checkout" {...item} />
                     })}
-
 
               <button className='button-style theme-color'>Place Order</button>
             </form>
