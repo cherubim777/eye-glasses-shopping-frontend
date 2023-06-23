@@ -1,9 +1,10 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import Item from "./Item";
 
 export default function Order(props){
     const token = localStorage.getItem('customerToken')
     const retailerToken = localStorage.getItem('retailerToken');
+    const [customProduct, setCustomProduct] = useState({})
 
     const handleDelivery = (endPoint, id, isReady) => {
         if(isReady === false){
@@ -33,6 +34,19 @@ export default function Order(props){
         .catch((error) => console.error(error));
         
     }
+
+    useEffect(() => {
+        if(props.custom_order == null)
+            return
+        fetch(`http://127.0.0.1:8000/product/getProduct/${props.custom_order.custom_order.frame}/`)
+          .then((response) => response.json())
+          .then((data) => {
+            setCustomProduct(data);
+          })
+          .catch((error) => {
+            // Handle any errors that occurred during the request
+          });
+      }, [props.custom_order]);
 
     const retailerOrder = 
     <>
@@ -73,18 +87,30 @@ export default function Order(props){
             <Item user="order" name={props.order.order_data.product_name} quantity={props.order.order_data.quantity} photo={props.order.order_data.photo}/>
             <p>Store Name: {props.order.order_data.store_name}</p>
             <p>Order Date: {props.order.order.createdAt}</p>
+            <p>Delivery: {props.order.order.delivery}</p>
+            <p>Payment Method: {props.order.order.paymentMethod}</p>
             <p>Order Status: {props.order.order.isDelivered ? "Delivered" : "Pending Delivery"}</p>
             <button className="button-style theme-color" onClick={() => handleDelivery("orderFulfilled", props.order.order.id) }>Delivered</button>
             <hr />
         </div>
   :
-    <div>
-            <p>Store Name: {props.custom_order.order_data.store_name}</p>
-            {props.custom_order.custom_order && <p>Custom Order Date: {props.custom_order.custom_order.createdAt}</p>}
-            {props.custom_order.custom_order && <p>Custom Order Status: {props.custom_order.custom_order.isDelivered ? "Delivered" : props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
-            <button className="button-style theme-color" onClick={() => handleDelivery("customOrderFulfilled", props.custom_order.custom_order.id, props.custom_order.custom_order.isReady)} >Delivered</button>
-            <hr />
-    </div>
+    <>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 30}}>
+            <div>
+                <p>Store Name: {props.custom_order.order_data.store_name}</p>
+                {props.custom_order.custom_order && <p>Custom Order Date: {props.custom_order.custom_order.createdAt}</p>}
+                <p>Delivery: {props.custom_order.custom_order.delivery}</p>
+                <p>Payment Method: {props.custom_order.custom_order.paymentMethod}</p>
+                {props.custom_order.custom_order && <p>Custom Order Status: {props.custom_order.custom_order.isDelivered ? "Delivered" : props.custom_order.custom_order.isReady ? "Ready to be Delivered" : "Not Ready Yet" }</p>}
+                <button className="button-style theme-color" onClick={() => handleDelivery("customOrderFulfilled", props.custom_order.custom_order.id, props.custom_order.custom_order.isReady)} >Delivered</button>
+            </div>
+            <div style={{width: 200,height: 200}}>
+                {customProduct.photo && <img src={customProduct.photo} width={150} alt="" />} <br />
+                {`Selected Frame: ${customProduct.name}`}
+            </div>
+        </div>
+        <hr />
+    </>
 }  
 
     </>

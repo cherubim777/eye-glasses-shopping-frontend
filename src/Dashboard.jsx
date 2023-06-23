@@ -44,10 +44,6 @@ export default function Dashboard(){
                         <div className="total">
                             <div className="stats theme-color">
                                 <div>Total Sales</div>
-                                <div>100,345</div>
-                            </div>
-                            <div className="stats theme-color">
-                                <div>Total Made</div>
                                 <div>$300K</div>
                             </div>
                             <div className="stats theme-color">

@@ -72,10 +72,7 @@ export default function CustomerOrders(){
                 </div>     
             </div>
             <div className="cart">
-              <span style={{display: "flex", alignItems:"center", gap: 30}}>
                 <h2>Ordered Custom Items</h2>
-                <button className="button-style theme-color" onClick={() => navigate("/customer/customOrder")}>+ Add Custom Order</button>
-                </span>
                 <p>You have {orderedCustomItems.length} Ordered Custom Items</p>
                 <hr />
                 <div className="cart-body">
