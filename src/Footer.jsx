@@ -35,8 +35,8 @@ export default function Footer(){
                 <div>
                     Contact Us
                     <ul>
-                        <li>Location</li>
-                        <li>Email</li>
+                        <li onClick={() => navigate("/contactUs")}>Location</li>
+                        <li onClick={() => navigate("/contactUs")}>Email</li>
                     </ul>
                 </div>
             </div>

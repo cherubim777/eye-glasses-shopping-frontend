@@ -3,6 +3,10 @@ import Navbar from './Navbar';
 import "./AboutUs.css"
 
 const AboutUs = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Navbar user="customer"  />
