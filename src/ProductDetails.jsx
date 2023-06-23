@@ -5,11 +5,16 @@ import ReactStars from 'react-rating-stars-component';
 import ProductReviews from './ProductReviews';
 import Navbar from './Navbar';
 import {useNavigate} from 'react-router-dom';
+import Notification from "./Notification";
+
 export default function ProductDetails(){
     const navigate = useNavigate()
     const location = useLocation()
+    const token = localStorage.getItem('customerToken')
     const [product, setProduct] = useState({})
     const [retailer,setRetailer] = useState({})
+    const [showNotification, setShowNotification] = useState(false)
+
     useEffect(() => {
         fetch('http://127.0.0.1:8000/product/getProduct/' + location.state.id)
           .then((response) => response.json()) // return parsed JSON data
@@ -26,6 +31,29 @@ export default function ProductDetails(){
         })
         .catch((error) => console.error(error));
     }, []);
+
+    const addToCart = () => {
+
+      fetch('http://127.0.0.1:8000/cart/carts/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({"cart": 1, "quantity": 1, "product_id": product.id})
+        })
+        .then(response => {
+          if (response.status === 201) {
+            setShowNotification(true);
+          }
+          else if (response.status === 401) {
+              navigate('/login')
+    }
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the request
+        });
+  }
 
     return (
         <div className='product-detail'>
@@ -67,7 +95,8 @@ export default function ProductDetails(){
                 <div>{`Price: ${product.price}`}</div>
                 <div>{`Status: ${product.quantity > 0 ? "In Stock" : "Out of Stock"}`}</div>
                 <br />
-                <button className='button-style theme-color'>Add to Cart</button>
+                <button className='button-style theme-color' onClick={addToCart}>Add to Cart</button>
+                {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
                 <button className="button-style theme-color" onClick={() => navigate("/customer/customOrder", {state: {retailer: retailer, product: product}})}>+ Add Custom Lenses</button>
 
               </td>

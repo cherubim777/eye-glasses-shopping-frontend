@@ -20,8 +20,10 @@ export default function Product(props){
           })
           .then(response => {
             if (response.status === 201) {
-              // alert('Added Item to Cart')
               setShowNotification(true);
+            }
+            else if (response.status === 401) {
+                navigate('/login')
       }
           })
           .catch(error => {
@@ -42,7 +44,7 @@ export default function Product(props){
             </div>
             <ReactStars isHalf={true} edit={false} value={parseFloat(props.product.rating)}/>
         </Link>
-                  {showNotification && <Notification message={"Added Item to Cart"} onClose={setShowNotification(false)} color="green"/>}
+                  {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
                 <div className="product-buttons">
                   {props.user === "customer" ?
                     <>

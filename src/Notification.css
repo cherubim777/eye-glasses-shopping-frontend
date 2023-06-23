@@ -1,11 +1,15 @@
 .notification {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: absolute;
+    width: 40%;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     z-index: 999;
+    animation: slide-in 0.5s forwards;
+    opacity: 0.9;
 }
 
 .green{
@@ -24,4 +28,13 @@
   
   .notification-content h2 {
     margin-top: 0;
+  }
+
+  @keyframes slide-in {
+    from {
+      top: -100px;
+    }
+    to {
+      top: 10px;
+    }
   }
