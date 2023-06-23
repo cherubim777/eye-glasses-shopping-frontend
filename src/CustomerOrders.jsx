@@ -56,7 +56,7 @@ export default function CustomerOrders(){
     return (
             <>
             <Navbar user="customer"/>
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", flexWrap: 'wrap'}}>
 
             <div className="cart">
                 <h2>Ordered Items</h2>

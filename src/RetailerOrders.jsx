@@ -38,9 +38,9 @@ export default function RetailerOrders(){
     const customOrderElements = customOrders.map((order) => <Order for="retailer" custom_order={order} reloadOrders={reloadOrders} custom={true}/>)
 
     return (
-        <div className="dashboard">
+        <div className="dashboard" >
             <Navbar  user="retailer"/>
-            <div className="cart" style={{display: "flex", gap: 30}}>
+            <div className="cart" style={{display: "flex", gap: 70, flexWrap: 'wrap'}}>
               <div >
                 <h2>Orders</h2>
                 {orderElements}

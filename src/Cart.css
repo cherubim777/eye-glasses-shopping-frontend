@@ -58,7 +58,8 @@ border-radius: 15px;
 }
 
 hr {
-    width: 625px;
+    /* width: 625px; */
+    width: 100%;
     margin-left: 0;
 }
 
