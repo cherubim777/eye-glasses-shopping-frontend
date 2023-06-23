@@ -7,6 +7,7 @@ export default function Product(props){
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
     const [showNotification, setShowNotification] = React.useState(false)
+    const [liked, setLiked] = React.useState(false)
 
     const addToCart = () => {
 
@@ -36,6 +37,11 @@ export default function Product(props){
     }
     return (
       <div className="product">
+            {props.user === "customer" && 
+              <div className="fav-btn link-style" onClick={() => setLiked(!liked)}> 
+                <img src= {`/src/assets/favorite-${liked ? "checked" : "unchecked"}.png`} alt="fav" />
+              </div>
+            }
               <Link to={props.user === "customer" && `/customer/productDetails/${props.product.id}`} state={{id: props.product.id}}>
             <img style={{objectFit: "cover", objectPosition: "center"}}width={280} height={190} className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
