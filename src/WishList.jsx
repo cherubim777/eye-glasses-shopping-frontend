@@ -6,10 +6,10 @@ export default function WishList(){
     const [wishListItems,setWishListItems] = useState([]);
     
     const navigate = useNavigate()
-    const token = localStorage.getItem('CustomerToken');
+    const token = localStorage.getItem('customerToken');
     
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/wishList/wishLists", {
+        fetch("http://127.0.0.1:8000/wishlist/wishlist", {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,8 @@ export default function WishList(){
         )
           .then((response) => response.json())
           .then((data) => {
-                setWishListItems(data.items);
+              setWishListItems(data);
+              console.log("-hey" + JSON.stringify(wishListItems))
           })
           .catch((error) => {
             console.error(error);
@@ -35,7 +36,10 @@ export default function WishList(){
             <div className="cart-body">
                 <div className="cart-items">
                     {wishListItems.map((item) => {
-                        return <><Item key={item.id} user="customer" {...item} />add to cart</>
+                        return <div style={{display: 'flex', alignItems: 'center', gap: 50}}>
+                            <Item key={item.id} user="customer" for="wishlist" product_id={item.product_id} />
+                                <button  className="button-style theme-color">Add to Cart</button>
+                        </div>
                    })}
                 </div>
                 

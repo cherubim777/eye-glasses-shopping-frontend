@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import ReactStars from "react-rating-stars-component"
 import { useNavigate, Link } from "react-router-dom"
 import Notification from "./Notification";
@@ -8,7 +8,14 @@ export default function Product(props){
     const token = localStorage.getItem('customerToken');
     const [showNotification, setShowNotification] = React.useState(false)
     const [liked, setLiked] = React.useState(false)
-
+    
+    useEffect(() => {
+      const isLiked = props.wishListItems.some(item => item.product_id === props.product.id);
+      console.log("liked: " + isLiked);
+      console.log(props.wishListItems)
+      setLiked(isLiked);
+    },[props.wishListItems])
+  
     const addToCart = () => {
 
         fetch('http://127.0.0.1:8000/cart/carts/', {
@@ -32,13 +39,38 @@ export default function Product(props){
           });
     }
 
+    const addToWishlist = () => {
+
+      fetch('http://127.0.0.1:8000/wishlist/wishlist/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({"wishlist": 1, "product_id": props.product.id,"product":props.product.id})
+        })
+        .then(response => {
+          if (response.status === 201) {
+            console.log(props.product.id)
+            setLiked(!liked)
+          }
+          else if (response.status === 401) {
+              navigate('/login')
+    }
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the request
+        });
+  }
+
+
     const handlePurchase = () => {
       navigate("/customer/checkout", {state: {cartItem: [{"product_id": props.product.id}]}})
     }
     return (
       <div className="product">
             {props.user === "customer" && 
-              <div className="fav-btn link-style" onClick={() => setLiked(!liked)}> 
+              <div className="fav-btn link-style" onClick={addToWishlist}> 
                 <img src= {`/src/assets/favorite-${liked ? "checked" : "unchecked"}.png`} alt="fav" />
               </div>
             }

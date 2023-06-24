@@ -34,9 +34,9 @@ export default function Item(props){
         <div>
             <div className="item-name">{product.name}</div>
          </div>
-        <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>
+        {props.for !== "wishlist" && <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>}
         <div className="item-price">{`${product.price} ETB`}</div>
-        {!props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for !== "checkout" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
     </div> 
 
     const retailer = 
