@@ -36,31 +36,45 @@ export default function Product(props){
           })
           .catch(error => {
             // Handle any errors that occurred during the request
-          });
+          });          
     }
 
     const addToWishlist = () => {
-
-      fetch('http://127.0.0.1:8000/wishlist/wishlist/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({"wishlist": 1, "product_id": props.product.id,"product":props.product.id})
-        })
-        .then(response => {
-          if (response.status === 201) {
-            console.log(props.product.id)
-            setLiked(!liked)
-          }
-          else if (response.status === 401) {
-              navigate('/login')
-    }
-        })
-        .catch(error => {
-          // Handle any errors that occurred during the request
-        });
+      if (liked){
+        fetch('http://127.0.0.1:8000/wishlist/wishlist/' + props.product.id, {
+               method: 'DELETE',
+               headers: {
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token}`
+               }
+            })
+            .then((response) => {
+              setLiked(!liked)
+            })
+            .catch((error) => console.error(error));
+      }
+      else{
+        fetch('http://127.0.0.1:8000/wishlist/wishlist/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({"wishlist": 1, "product_id": props.product.id,"product":props.product.id})
+          })
+          .then(response => {
+            if (response.status === 201) {
+              console.log(props.product.id)
+              setLiked(!liked)
+            }
+            else if (response.status === 401) {
+                navigate('/login')
+      }
+          })
+          .catch(error => {
+            // Handle any errors that occurred during the request
+          });
+        }
   }
 
 

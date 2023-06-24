@@ -7,7 +7,12 @@ export default function WishList(){
     
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
+    const [toggle, setToggle] = useState(false);
     
+    const reloadWishlist = () => {
+        setToggle(!toggle)
+      }
+
     useEffect(() => {
         fetch("http://127.0.0.1:8000/wishlist/wishlist", {
             method: "GET",
@@ -25,7 +30,7 @@ export default function WishList(){
           .catch((error) => {
             console.error(error);
           });
-      }, []);
+      }, [toggle]);
 
     return(
         <div className="cart">
@@ -37,7 +42,7 @@ export default function WishList(){
                 <div className="cart-items">
                     {wishListItems.map((item) => {
                         return <div style={{display: 'flex', alignItems: 'center', gap: 50}}>
-                            <Item key={item.id} user="customer" for="wishlist" product_id={item.product_id} />
+                            <Item key={item.id} user="customer" reloadWishlist={reloadWishlist} for="wishlist" product_id={item.product_id} />
                                 <button  className="button-style theme-color">Add to Cart</button>
                         </div>
                    })}

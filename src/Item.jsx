@@ -27,6 +27,17 @@ export default function Item(props){
             .then((response) => {props.reloadCart()})
             .catch((error) => console.error(error));
      }
+      const handleDeleteWishListItems = () => {
+            fetch('http://127.0.0.1:8000/wishlist/wishlist/' + props.product_id, {
+               method: 'DELETE',
+               headers: {
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token}`
+               }
+            })
+            .then((response) => {props.reloadWishlist()})
+            .catch((error) => console.error(error));
+     }
 
     const customer =  
     <div className="item" >
@@ -36,7 +47,8 @@ export default function Item(props){
          </div>
         {props.for !== "wishlist" && <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>}
         <div className="item-price">{`${product.price} ETB`}</div>
-        {props.for !== "checkout" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "wishlist" && <img className="trash-btn link-style" onClick={handleDeleteWishListItems} src="/src/assets/trash.png" alt="trash image" />}
     </div> 
 
     const retailer = 
