@@ -1,5 +1,7 @@
 import {useState,useEffect} from "react";
 import {useNavigate} from 'react-router-dom'
+import Notification from "./Notification";
+
 import Item from "./Item";
 
 export default function WishList(){
@@ -8,7 +10,8 @@ export default function WishList(){
     const navigate = useNavigate()
     const token = localStorage.getItem('customerToken');
     const [toggle, setToggle] = useState(false);
-    
+    const [showNotification, setShowNotification] = useState(false)
+
     const reloadWishlist = () => {
         setToggle(!toggle)
       }
@@ -42,10 +45,10 @@ export default function WishList(){
                 <div className="cart-items">
                     {wishListItems.map((item) => {
                         return <div style={{display: 'flex', alignItems: 'center', gap: 50}}>
-                            <Item key={item.id} user="customer" reloadWishlist={reloadWishlist} for="wishlist" product_id={item.product_id} />
-                                <button  className="button-style theme-color">Add to Cart</button>
+                            <Item key={item.id} user="customer" reloadWishlist={reloadWishlist} setShowNotification={setShowNotification} for="wishlist" product_id={item.product_id} />
                         </div>
                    })}
+                   {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
                 </div>
                 
             </div>     

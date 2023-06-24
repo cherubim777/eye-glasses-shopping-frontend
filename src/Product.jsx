@@ -95,8 +95,8 @@ export default function Product(props){
                 <span className="product-price">{`${props.product.price} ETB`}</span>
             </div>
             <ReactStars isHalf={true} edit={false} value={parseFloat(props.product.rating)}/>
-        </Link>
                   {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
+        </Link>
                 <div className="product-buttons">
                   {props.user === "customer" ?
                     <>

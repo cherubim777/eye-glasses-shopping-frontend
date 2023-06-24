@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Item(props){
 
    const token = localStorage.getItem('customerToken');
@@ -15,6 +14,29 @@ export default function Item(props){
           })
           .catch((error) => console.error(error));
       }, [props.product_id]);}
+
+      const addToCart = () => {
+         fetch('http://127.0.0.1:8000/cart/carts/', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Authorization': `Bearer ${token}`,
+             },
+             body: JSON.stringify({"cart": 1, "quantity": 1, "product_id": props.product_id})
+           })
+           .then(response => {
+             if (response.status === 201) {
+                props.setShowNotification(prev => {console.log("notif: " + prev);return true})
+                handleDeleteWishListItems()        
+             }
+             else if (response.status === 401) {
+                 navigate('/login')
+       }
+           })
+           .catch(error => {
+             // Handle any errors that occurred during the request
+           });          
+     }
 
       const handleDeleteCartItems = () => {
             fetch('http://127.0.0.1:8000/cart/delete/' + props.product_id, {
@@ -35,10 +57,9 @@ export default function Item(props){
                   'Authorization': `Bearer ${token}`
                }
             })
-            .then((response) => {props.reloadWishlist()})
+            .then((response) => props.reloadWishlist())
             .catch((error) => console.error(error));
      }
-
     const customer =  
     <div className="item" >
         <img className="item-image" src={product.photo} alt="" />
@@ -49,6 +70,7 @@ export default function Item(props){
         <div className="item-price">{`${product.price} ETB`}</div>
         {props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
         {props.for === "wishlist" && <img className="trash-btn link-style" onClick={handleDeleteWishListItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "wishlist" && <button onClick={addToCart} className="button-style theme-color">Add to Cart</button>}
     </div> 
 
     const retailer = 
