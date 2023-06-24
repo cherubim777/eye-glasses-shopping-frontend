@@ -8,8 +8,9 @@ export default function Product(props){
     const token = localStorage.getItem('customerToken');
     const [showNotification, setShowNotification] = React.useState(false)
     const [liked, setLiked] = React.useState(false)
-    
+
     useEffect(() => {
+      if(token) return 
       const isLiked = props.wishListItems.some(item => item.product_id === props.product.id);
       console.log("liked: " + isLiked);
       console.log(props.wishListItems)

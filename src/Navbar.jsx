@@ -22,6 +22,8 @@ export default function Navbar(props){
 
 
     React.useEffect(() => {
+        if(!token) return
+        
         fetch(`http://127.0.0.1:8000/user/getCustomerProfile`,
         {
           method: 'GET',

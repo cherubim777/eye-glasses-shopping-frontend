@@ -15,8 +15,9 @@ export default function WishList(){
     const reloadWishlist = () => {
         setToggle(!toggle)
       }
-
     useEffect(() => {
+        if(!token) return
+        
         fetch("http://127.0.0.1:8000/wishlist/wishlist", {
             method: "GET",
             headers: {

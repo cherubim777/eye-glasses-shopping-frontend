@@ -16,6 +16,8 @@ export default function Products(props){
     }
 
     React.useEffect(() => {
+        if(!token) return
+
         fetch("http://127.0.0.1:8000/wishlist/wishlist", {
             method: "GET",
             headers: {
