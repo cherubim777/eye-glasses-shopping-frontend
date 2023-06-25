@@ -38,9 +38,9 @@ export default function WishList(){
 
     return(
         <div className="cart">
-            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}> &lt; Shopping Continue</p>
+            <p onClick={() => navigate(-1)} style={{cursor: "pointer"}}> &lt; <b>Continue Shopping</b></p>
             <hr/>
-            <p>Shopping Wishlist</p>
+            <h2>Shopping Wishlist</h2>
             <p>You have {wishListItems.length} {wishListItems.length ==1?"item":"items"} in your wish List</p>
             <div className="cart-body">
                 <div className="cart-items">
