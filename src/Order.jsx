@@ -68,10 +68,37 @@ export default function Order(props){
         <>
             {props.for=="retailer" &&
               <div>
-                <span style={{display: 'flex', alignItems: 'center'}}>
-                {customProduct.photo && <img src={customProduct.photo} width={150} alt="" />}&nbsp;
-                <b>{`${customProduct.name}`}</b>
+                <div style={{display: 'flex', gap: 25}}>
+                <span >
+                {customProduct.photo && <img src={customProduct.photo} width={150} alt="" />}&nbsp;<br />
+                <b>Selected Frame: </b>{customProduct.name}
             </span>
+            <br />
+            <table border={1} cellPadding={5}>
+                <tr>
+                    <th></th>
+                    <th>Sph</th>
+                    <th>Cy</th>
+                    <th>Ax</th>
+                    <th>Pr</th>
+                </tr>
+                <tr>
+                    <th>L</th>
+                    <td>{props.custom_order.custom_order.leftSphere}</td>
+                    <td>{props.custom_order.custom_order.leftCylinder}</td>
+                    <td>{props.custom_order.custom_order.leftAxis}</td>
+                    <td>{props.custom_order.custom_order.leftPrism}</td>
+                </tr>
+                <tr>
+                    <th>R</th>
+                    <td>{props.custom_order.custom_order.rightSphere}</td>
+                    <td>{props.custom_order.custom_order.rightCylinder}</td>
+                    <td>{props.custom_order.custom_order.rightAxis}</td>
+                    <td>{props.custom_order.custom_order.rightPrism}</td>
+
+                </tr>
+            </table>
+            </div>
                 <p><b>Customer Name:</b> {props.custom_order.order_data.customer}</p>
                 <p><b>Custom Order Date:</b> {props.custom_order.custom_order.createdAt}</p>
                 <p><b>Delivery:</b> {props.custom_order.custom_order.delivery}</p>
