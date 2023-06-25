@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 
 export default function Dashboard(){
     const [salesData, setSalesData] = React.useState({})
+    const [stats, setStats] = React.useState({})
     const [year, setYear] = React.useState("current")
 
     const getMonthlyRevenue = (month, index) => {
@@ -44,6 +45,18 @@ export default function Dashboard(){
             setSalesData({...data, monthly_revenues: JSON.parse(data.monthly_revenues)}) // log the object to the console
         })
         .catch((error) => {})
+        
+        fetch("http://127.0.0.1:8000/order/getStatNumbers/", {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            setStats(data) // log the object to the console
+        })
+        .catch((error) => {})
+
+
     }, []);
 
     const handleYearChange = (event) => {
