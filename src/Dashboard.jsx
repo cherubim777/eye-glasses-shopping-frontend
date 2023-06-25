@@ -109,19 +109,19 @@ export default function Dashboard(){
                         <div>
                             <div>Women</div>
                             <div className="progress-bar">
-                                <div className="progress" style={{width: "75% "}}></div>
+                                <div className="progress" style={{width: `${parseInt(stats.women)}%`}}></div>
                             </div>
-                            <div className="percentage">75%</div>
+                            <div className="percentage">{parseInt(stats.women)}%</div>
                             <div>Men</div>
                             <div className="progress-bar">
-                                <div className="progress" style={{width: "65% "}}></div>
+                                <div className="progress" style={{width: `${parseInt(stats.men)}%`}}></div>
                         </div>
-                        <div className="percentage">65%</div>
+                        <div className="percentage">{parseInt(stats.men)}%</div>
                         <div>Kids</div>
                             <div className="progress-bar">
-                                <div className="progress" style={{width: "35% "}}></div>
+                                <div className="progress" style={{width: `${parseInt(stats.kids)}%`}}></div>
                         </div>
-                        <div className="percentage">35%</div>
+                        <div className="percentage">{parseInt(stats.kids)}%</div>
 
                         </div>
                     </div>
