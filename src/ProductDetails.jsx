@@ -69,35 +69,32 @@ export default function ProductDetails(){
                     edit={false}
                     isHalf={true}
                 />}
-               <div>{`Description: ${product.description}`}</div>
-               <div>{`Retailer: ${retailer.store_name}`}</div>
-
-                <div>{`Description: ${product.description}`}</div>
-                <div>{`Brand: ${product.brand}`}</div>
-                <div>{`Category: ${product.category}`}</div>
-                <div>{`Gender Category: ${
+               <div><b>{`Description:`}</b> {product.description}</div>
+                <div><b>{`Brand:`}</b> {product.brand}</div>
+                <div><b>{`Category:`}</b> {product.category}</div>
+                <div><b>{`Gender Category:`}</b> {
                   product.gender_category == 'M' ? 'Male' :
                   product.gender_category == 'F' ? 'Female' :
                   product.gender_category == 'U' ? 'Unisex' :
                   product.gender_category
-                }`}
-                </div>
+                }</div>
                 <div>
-                  {`Age Group: ${
-                  product.age_group == 'K' ? 'Kids' :
-                  product.age_group == 'T' ? 'Teens' :
-                  product.age_group == 'A' ? 'Adults' :
-                  product.age_group == 'S' ? 'Seniors' :
-                  product.age_group
-                }`}
+                  <b>{`Age Group:`}</b> {
+                    product.age_group == 'K' ? 'Kids' :
+                    product.age_group == 'T' ? 'Teens' :
+                    product.age_group == 'A' ? 'Adults' :
+                    product.age_group == 'S' ? 'Seniors' :
+                    product.age_group
+                  }
                 </div>
                 <br />
-                <div>{`Price: ${product.price}`}</div>
-                <div>{`Status: ${product.quantity > 0 ? "In Stock" : "Out of Stock"}`}</div>
+                <div><b>{`Retailer:`}</b> {retailer.store_name}</div>
+                <div><b>{`Price:`}</b> {product.price}</div>
+                <div><b>{`Status:`}</b> {product.quantity > 0 ? "In Stock" : "Out of Stock"}</div>
                 <br />
-                <button className='button-style theme-color' onClick={addToCart}>Add to Cart</button>
-                {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
+                <button className='button-style theme-color' onClick={addToCart}>Add to Cart</button>&nbsp;&nbsp;&nbsp;&nbsp;
                 <button className="button-style theme-color" onClick={() => navigate("/customer/customOrder", {state: {retailer: retailer, product: product}})}>+ Add Custom Lenses</button>
+                {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
 
               </td>
             </tr>

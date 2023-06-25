@@ -1,11 +1,13 @@
 import React from "react";
 import ReactStars from 'react-rating-stars-component';
+import Notification from "./Notification";
 
 export default function SubmitReview(props) {
     const [review, setReview] = React.useState({
         rating: 0,
         comment: ''
     })
+    const [showNotification, setShowNotification] = React.useState(false)
 
     const token = localStorage.getItem('customerToken')
     
@@ -27,9 +29,9 @@ export default function SubmitReview(props) {
             },
             body:JSON.stringify(review)
         })
-        .then(response => response.json())
-        .then(data=> {
-
+        .then(response => {
+            setShowNotification(true)
+            return response.json();
         })
         .catch(error => console.log(error))
     }
@@ -44,7 +46,6 @@ export default function SubmitReview(props) {
 
             <ReactStars
                 count={5}
-                // onChange={ratingChanged}
                 size={24}
                 onChange={ratingChanged}
                 value={review.rating}
@@ -62,6 +63,7 @@ export default function SubmitReview(props) {
             <br />
             <input className="theme-color button-style" type="submit" />
         </form>
+        {showNotification && <Notification message="Review Submitted" onClose={() => setShowNotification(false)} color="green" />}
 
 
     </div>
