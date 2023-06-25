@@ -75,26 +75,22 @@ export default function Item(props){
 
     const retailer = 
     <div className="item">
-        <img className="item-image" src="/src/assets/sample-eyeglass3.png" alt="" />
+        {props.topProduct && <img className="item-image" src={props.topProduct.photo} alt="" />}
     <div>
         <div className="item-name"></div>
         <div className="item-description"></div>
      </div>
      <div>
         <div className="item-name">Inventory</div>
-        <div className="item-description">700</div>
+        {props.topProduct && <div className="item-description">{props.topProduct.quantity}</div>}
      </div>
      <div>
         <div className="item-name">Sale</div>
-        <div className="item-description">$1,000.60</div>
+        {props.topProduct && <div className="item-description">{props.topProduct.sales} ETB</div>}
      </div>
      <div>
         <div className="item-name">Price</div>
-        <div className="item-description">$1,000.60</div>
-     </div>
-     <div>
-        <div className="item-name">Today</div>
-        <div className="item-description">$17,000.60</div>
+        {props.topProduct &&  <div className="item-description">{props.topProduct.price} ETB</div>}
      </div>
 </div> 
 

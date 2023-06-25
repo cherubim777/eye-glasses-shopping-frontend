@@ -63,7 +63,6 @@ export default function Order(props){
             <p><b>Order Date:</b> {props.order.order.createdAt}</p>
             <p><b>Delivery:</b> {props.order.order.delivery}</p>
             <p><b>Order Status:</b> {props.order.order.isDelivered ? "Delivered" : "Pending Delivery"}</p>
-            {/* <button className="button-style theme-color" onClick={handleDelivery}>Delivered</button> */}
             <hr />
         </div>
         }</>

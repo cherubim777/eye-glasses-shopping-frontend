@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 export default function Dashboard(){
     const [salesData, setSalesData] = React.useState({})
     const [stats, setStats] = React.useState({})
+    const [topProducts, setTopProducts] = React.useState([])
     const [year, setYear] = React.useState("current")
 
     const getMonthlyRevenue = (month, index) => {
@@ -55,9 +56,21 @@ export default function Dashboard(){
             setStats(data) // log the object to the console
         })
         .catch((error) => {})
+        
+        fetch("http://127.0.0.1:8000/order/getTopProducts/", {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            setTopProducts(data) // log the object to the console
+        })
+        .catch((error) => {})
 
 
     }, []);
+
+    const topItemsElement = topProducts.map(topProduct => <Item user='retailer' topProduct={topProduct} />)
 
     const handleYearChange = (event) => {
         setYear(event.target.value)
@@ -96,11 +109,7 @@ export default function Dashboard(){
                         </div>
                         <div className="top">Top products</div>
                         <div className="top-products">
-                            <Item user="retaier" />
-                            <Item user="retailer" />
-                            <Item user="retailer" />
-                            <Item user="retailer" />
-                            <Item user="retailer" />
+                            {topItemsElement}
                         </div>                
                     </div>
                     <div className="stats-overview">
