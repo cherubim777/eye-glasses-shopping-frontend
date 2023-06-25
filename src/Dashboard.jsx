@@ -32,8 +32,6 @@ export default function Dashboard(){
             getMonthlyRevenue('Dec', 11),
         ];
     }
-    if(salesData.monthly_revenues && salesData.monthly_revenues.length > 0)
-        console.log(salesData.monthly_revenues[5].current_year_revenue)
 
       const token = localStorage.getItem('retailerToken');
     React.useEffect(() => {
@@ -60,7 +58,7 @@ export default function Dashboard(){
                     <div className="barchart-title">Total Revenue</div>
                     <div className="revenue-value">{year === "current" ? salesData.current_year_revenue: salesData.last_year_revenue} ETB</div>
                     <div className="year-selector">
-                        <select className="theme-color" onChange={(event) => handleYearChange(event)}>
+                        <select className="theme-color button-style" onChange={(event) => handleYearChange(event)}>
                             <option value="current">This year</option>
                             <option value="last">Last year</option>
                         </select>
