@@ -63,7 +63,7 @@ export default function Register(props){
       alert("Name should contain 2 - 20 alphabetical characters")
       return false
     }
-    if(emailPattern.test(field.email)){
+    if(!emailPattern.test(field.email)){
       alert("Invalid Email Address")
       return false
     }
@@ -71,7 +71,7 @@ export default function Register(props){
       alert("Passwords do not match")
       return false
     }
-    return field.password == field.confirm_password
+    return true
   }
 
 
@@ -113,8 +113,7 @@ export default function Register(props){
 
     let retailer_register =  function (event){
       event.preventDefault();
-      if (!passwordsMatch(retailerFields)){
-        alert("Passwords do not match")
+      if (!validate(retailerFields)){
         return
       }
 

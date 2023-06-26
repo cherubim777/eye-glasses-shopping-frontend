@@ -42,7 +42,7 @@ export default function ProfileUpdate({ userType }) {
         alert("Name should contain 2 - 20 alphabetical characters")
         return false
       }
-      if(emailPattern.test(field.email)){
+      if(!emailPattern.test(field.email)){
         alert("Invalid Email Address")
         return false
       }
@@ -50,7 +50,7 @@ export default function ProfileUpdate({ userType }) {
         alert("Passwords do not match")
         return false
       }
-      return field.password == field.confirm_password
+      return true
     }
       
       const handleUpdate = (e) => {
