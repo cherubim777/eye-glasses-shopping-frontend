@@ -50,15 +50,34 @@ export default function Register(props){
   const handleRetailerImageChange = (e) => {
     setRetailerFields({ ...retailerFields, photo: e.target.files[0] });
   };
-  const passwordsMatch = (field) => {
+  const validate = (field) => {
+    const usernamePattern = /^[a-zA-Z]{3,20}$/;
+    const namePattern = /^[a-zA-Z]{2,20}$/;
+    const emailPattern = /^[a-zA-Z0-9._+-]{1,20}@[a-zA-Z.]{2,30}\.[a-zA-Z]{2,6}$/;
+
+    if(!usernamePattern.test(field.username)){
+      alert("Username should contain 3 - 20 alphabetical characters")
+      return false
+    }
+    if(!namePattern.test(field.first_name) || !namePattern.test(field.last_name)){
+      alert("Name should contain 2 - 20 alphabetical characters")
+      return false
+    }
+    if(emailPattern.test(field.email)){
+      alert("Invalid Email Address")
+      return false
+    }
+    if(!field.password == field.confirm_password){
+      alert("Passwords do not match")
+      return false
+    }
     return field.password == field.confirm_password
   }
 
 
     let customer_register =  function (event){
       event.preventDefault();
-      if (!passwordsMatch(customerFields)){
-        alert("Passwords do not match")
+      if (!validate(customerFields)){
         return
       }
       

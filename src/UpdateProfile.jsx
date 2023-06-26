@@ -33,8 +33,29 @@ export default function ProfileUpdate({ userType }) {
           console.log(error);
         })  
     }, [])
+
+    const validate = (field) => {
+      const namePattern = /^[a-zA-Z]{2,20}$/;
+      const emailPattern = /^[a-zA-Z0-9._+-]{1,20}@[a-zA-Z.]{2,30}\.[a-zA-Z]{2,6}$/;
+  
+      if(!namePattern.test(field.first_name) || !namePattern.test(field.last_name)){
+        alert("Name should contain 2 - 20 alphabetical characters")
+        return false
+      }
+      if(emailPattern.test(field.email)){
+        alert("Invalid Email Address")
+        return false
+      }
+      if(!field.password == field.confirm_password){
+        alert("Passwords do not match")
+        return false
+      }
+      return field.password == field.confirm_password
+    }
       
       const handleUpdate = (e) => {
+      if(!validate(fields))
+        return
       e.preventDefault();
       const formData = new FormData();
       formData.append("first_name", fields.first_name);
