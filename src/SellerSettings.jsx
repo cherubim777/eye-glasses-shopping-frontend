@@ -108,7 +108,7 @@ export default function SellerSettings() {
                 ? settings.photo
                 : "/src/assets/profile-placeholder.png"
               }
-              width={130}
+              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", borderRadius: "50%" }}
             />
           </div>
           <div className="profile-info">
@@ -184,13 +184,9 @@ export default function SellerSettings() {
                             ? settings.photo
                             : "/src/assets/profile-placeholder.png"
                         }
-                        width={90}
+                        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", borderRadius: "50%" }}
                       />
                     </div>
-                    svg, png, jpg or gif (max 800x400px)
-                  </div>
-                  <div style={{ cursor: "pointer" }}>
-                    <u>Delete</u>
                   </div>
                   <div>
                     <input

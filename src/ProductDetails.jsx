@@ -10,6 +10,7 @@ import Notification from "./Notification";
 export default function ProductDetails(){
     const navigate = useNavigate()
     const location = useLocation()
+
     const token = localStorage.getItem('customerToken')
     const [product, setProduct] = useState({})
     const [retailer,setRetailer] = useState({})
@@ -92,8 +93,8 @@ export default function ProductDetails(){
                 <div><b>{`Price:`}</b> {product.price}</div>
                 <div><b>{`Status:`}</b> {product.quantity > 0 ? "In Stock" : "Out of Stock"}</div>
                 <br />
-                <button className='button-style theme-color' onClick={addToCart}>Add to Cart</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <button className="button-style theme-color" onClick={() => navigate("/customer/customOrder", {state: {retailer: retailer, product: product}})}>+ Add Custom Lenses</button>
+                {location.state.user === "customer" && <button className='button-style theme-color' onClick={addToCart}>Add to Cart</button>}&nbsp;&nbsp;&nbsp;&nbsp;
+                {location.state.user === "customer" && <button className="button-style theme-color" onClick={() => navigate("/customer/customOrder", {state: {retailer: retailer, product: product}})}>+ Add Custom Lenses</button>}
                 {showNotification && <Notification message={"Added Item to Cart"} onClose={() => setShowNotification(false)} color="green"/>}
 
               </td>
@@ -102,8 +103,8 @@ export default function ProductDetails(){
             <tr>
               <td colSpan={2}>
             <h1>Reviews</h1>
-            <SubmitReview id={product.id}/>
-            {product.id && <ProductReviews id={product.id} />}
+{location.state.user === "customer" &&<SubmitReview id={product.id}/>}            
+{product.id && <ProductReviews id={product.id} />}
             </td>
             </tr>
             </table>

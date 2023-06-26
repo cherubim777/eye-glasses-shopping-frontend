@@ -278,6 +278,10 @@ li {
 
 }
 
+.product-edit {
+    width: 100%;
+}
+
 .product-body{
     background-color: #f1eef5;
     border: 5px solid green;

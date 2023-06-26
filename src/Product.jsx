@@ -89,7 +89,7 @@ export default function Product(props){
                 <img src= {`/src/assets/favorite-${liked ? "checked" : "unchecked"}.png`} alt="fav" />
               </div>
             }
-              <Link to={props.user === "customer" && `/customer/productDetails/${props.product.id}`} state={{id: props.product.id}}>
+              <Link to={ `/customer/productDetails/${props.product.id}`} state={{id: props.product.id,user:props.user}}>
             <img style={{objectFit: "cover", objectPosition: "center"}}width={280} height={190} className="product-image" src={props.product.photo} alt={props.product.name} />
             <div className="product-info">
                 <span className="product-name">{props.product.name}</span>
@@ -105,8 +105,7 @@ export default function Product(props){
                     <button onClick={addToCart} className="product-add theme-color button-style">Add to cart</button></>
                     :
                     <>
-                    <button className="product-buy theme-color button-style" onClick={() => navigate("/retailer/updateProduct", {state: {id: props.product.id}})}>Edit</button>
-                    <button  className="product-add theme-color button-style">Remove</button>
+                    <button className="product-edit theme-color button-style" onClick={() => navigate("/retailer/updateProduct", {state: {id: props.product.id}})}>Edit</button>
                     </>
                   }
                 </div>
