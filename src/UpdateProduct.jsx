@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 
 export default function UpdateProduct() {
 
+  const navigate = useNavigate()
   const location = useLocation()
   const productId = location.state?.id
   const [product, setProduct] = useState({
@@ -66,7 +67,7 @@ export default function UpdateProduct() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(formData)
+        navigate("/retailer/products")
         // Handle the response data here
       })
       .catch((error) => {

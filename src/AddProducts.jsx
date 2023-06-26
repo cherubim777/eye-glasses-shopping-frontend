@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 
 export default function AddProducts() {
+  const navigate = useNavigate()
   const [product, setProduct] = useState({
     name: "",
     age_group: "",
@@ -192,10 +194,11 @@ export default function AddProducts() {
               name="image"
               onChange={handleImageChange}
             />
-            <UserInput
+            <button
               type="submit"
               value="Submit"
               className="button-style theme-color"
+              onClick={() => navigate("/retailer/products")}
             />
           </form>
         </div>

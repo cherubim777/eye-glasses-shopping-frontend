@@ -21,12 +21,16 @@ export default function PasswordReset() {
   initiatePasswordReset(formValues.username)
     .then((response) => {
     
-
+      if(response.status === 200){
         setFormValues({
             ...formValues,
             resetStatus: 'Reset code sent',
           });
           alert('Reset code Sent')
+      }
+      else {
+        alert("Something went wrong")
+      }
     
     })
     .catch((error) => {
@@ -165,7 +169,7 @@ export default function PasswordReset() {
         value={formValues.password}
         onChange={handleFormChange}
       />
-      <button type="submit">Submit</button>
+      <button className="button-style theme-color" type="submit">Submit</button>
     </form>
   )}
 </div>

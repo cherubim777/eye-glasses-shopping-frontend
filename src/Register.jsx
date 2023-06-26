@@ -79,8 +79,10 @@ export default function Register(props){
         body: formData
       })
       .then(response => {
-        if(response.ok)
+        if(response.ok){
+          alert("Registration successful")
           navigate("/login")
+        }
       })
       .then(data => {
         // Handle the response data here
@@ -118,8 +120,10 @@ export default function Register(props){
         body: formData
       })
       .then(response => {
-        if(response.ok)
+        if(response.ok){
+          alert("Form submitted. Email will be sent when you are approved.")
           navigate("/login")
+        }
       })
       .then(data => {
         // Handle the response data here
