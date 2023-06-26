@@ -47,9 +47,13 @@ export default function AddProducts() {
       },
       body: formData,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response data here
+      .then((response) => {
+        if (response.status === 200 || response.status === 201){
+          navigate("/retailer/products")
+        }
+        else {
+          alert("Error Adding Product")
+        }
       })
       .catch((error) => {
         // Handle any errors that occurred during the request
@@ -194,11 +198,10 @@ export default function AddProducts() {
               name="image"
               onChange={handleImageChange}
             />
-            <button
+            <input
               type="submit"
               value="Submit"
               className="button-style theme-color"
-              onClick={() => navigate("/retailer/products")}
             />
           </form>
         </div>

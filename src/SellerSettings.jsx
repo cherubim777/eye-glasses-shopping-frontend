@@ -4,7 +4,7 @@ import "./SellerSettings.css";
 
 export default function SellerSettings() {
 
-    const token = localStorage.getItem("retailerToken");
+  const token = localStorage.getItem("retailerToken");
   const [settings, setSettings] = useState({
     store_name: "",
     email: "",
