@@ -123,6 +123,32 @@ li {
     display: block;
 }
 
+.user-profile > ul > li {
+  /* --color: #333; */
+  --color: #000;
+  --hover: #555;
+  
+  background: none;
+  /* border: 2px solid var(--color); */
+  color: var(--color);
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+}
+.user-profile > ul >li:hover,
+.user-profile > ul > li:focus {
+  background-color: var(--hover);
+  color: #fff;
+}
+
+.user-profile > ul > li:hover,
+.user-profile > ul > li:focus {
+  background-color: var(--hover);
+  border-color: var(--hover);
+}
+
 .profile-placeholder {
     width: 40px;
     height: 40px;
