@@ -140,13 +140,13 @@ li {
 }
 .user-profile > ul >li:hover,
 .user-profile > ul > li:focus {
-  background-color: var(--hover);
+  background-color: black;
   color: #fff;
 }
 
 .user-profile > ul > li:hover,
 .user-profile > ul > li:focus {
-  background-color: var(--hover);
+    background-color: black;
   border-color: var(--hover);
 }
 

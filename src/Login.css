@@ -109,3 +109,13 @@
     display: block;
     pointer-events: auto;
 }
+
+.signup-customer:hover,
+.signup-customer:focus {
+    text-decoration: underline;
+}
+
+.signup-retailer:hover,
+.signup-retailer:focus {
+    text-decoration: underline;
+}

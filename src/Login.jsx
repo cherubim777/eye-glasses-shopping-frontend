@@ -85,9 +85,9 @@ export default function login(){
                         <span className="signup-label">Don't have an account ? </span>
                         <span className="signup-link link-style">Sign Up</span>
                         <div className="signup-options">
-                            <Link to="/customer/register">As customer</Link>
+                            <Link to="/customer/register" className="signup-customer">As customer</Link>
                             <br />
-                            <Link to="/retailer/register">As Retailer</Link>
+                            <Link to="/retailer/register" className="signup-retailer">As Retailer</Link>
                         </div>
                     </div>
                 </div>
