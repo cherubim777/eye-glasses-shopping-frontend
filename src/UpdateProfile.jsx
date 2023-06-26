@@ -1,10 +1,11 @@
 import React ,{useState,useEffect} from "react";
+import {useNavigate} from "react-router-dom"
 import UserInput from "./UserInput";
 
 export default function ProfileUpdate({ userType }) {
     const [fields, setFields] = useState({});
     const token = localStorage.getItem('customerToken');
-
+    const navigate = useNavigate()
     const handleFieldChange = (event) => {
       const { name, value } = event.target;
       setFields((prevFields) => ({ ...prevFields, [name]: value }));
@@ -57,6 +58,8 @@ export default function ProfileUpdate({ userType }) {
             if (!response.ok) {
               throw new Error("Network response was not ok");
             }
+            alert("Profile updated successfully")
+            navigate(-1)
             return response.json();
           })
           .then((data) => {

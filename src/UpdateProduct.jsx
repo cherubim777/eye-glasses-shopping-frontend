@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import UserInput from "./UserInput";
 
 export default function UpdateProduct() {
 
+  const navigate = useNavigate()
   const location = useLocation()
   const productId = location.state?.id
   const [product, setProduct] = useState({
@@ -66,7 +67,7 @@ export default function UpdateProduct() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(formData)
+        navigate("/retailer/products")
         // Handle the response data here
       })
       .catch((error) => {
@@ -93,68 +94,35 @@ export default function UpdateProduct() {
           />
           <label>
             Age Group
-            <input
+            <select 
+              className="button-style"
               required
-              type="radio"
               name="age_group"
-              value="K"
-              checked={product.age_group === "K"}
+              value={product.age_group}
               onChange={handleProductChange}
-            />
-            Kids
-            <input
-              type="radio"
-              name="age_group"
-              value="T"
-              checked={product.age_group === "T"}
-              onChange={handleProductChange}
-            />
-            Teens
-            <input
-              type="radio"
-              name="age_group"
-              value="A"
-              checked={product.age_group === "A"}
-              onChange={handleProductChange}
-            />
-            Adults
-            <input
-              type="radio"
-              name="age_group"
-              value="S"
-              checked={product.age_group === "S"}
-              onChange={handleProductChange}
-            />
-            Seniors
+            >
+              <option value="">Select an age group</option>
+              <option value="K">Kids</option>
+              <option value="T">Teens</option>
+              <option value="A">Adults</option>
+              <option value="S">Seniors</option>
+            </select>
           </label>
           <br />
           <label>
             Gender Group
-            <input
+            <select
+              className="button-style"
               required
-              type="radio"
               name="gender_category"
-              value="M"
-              checked={product.gender_category === "M"}
+              value={product.gender_category}
               onChange={handleProductChange}
-            />
-            Male
-            <input
-              type="radio"
-              name="gender_category"
-              value="F"
-              checked={product.gender_category === "F"}
-              onChange={handleProductChange}
-            />
-            Female
-            <input
-              type="radio"
-              name="gender_category"
-              value="U"
-              checked={product.gender_category === "U"}
-              onChange={handleProductChange}
-            />
-            Unisex
+            >
+              <option value="">Select a gender category</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="U">Unisex</option>
+            </select>
           </label>
           <UserInput
             type="text"

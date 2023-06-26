@@ -1,22 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Notification.css';
 
 const Notification = ({ message, onClose, color }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timeout = setTimeout(() => {
+      setIsVisible(false);
       onClose();
     }, 2000);
-    return () => clearTimeout(timer);
-  }, [onClose]);
-const handleAnimationEnd = () => {
-    if (!isVisible) {
-      onClose();
-    }
-  };
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+
 
   return (
-    <div className={`notification ${color}`} onAnimationEnd={handleAnimationEnd}>
-      <p>{message}</p>
+    <div>
+      {isVisible && (
+        <div className={`notification ${color}`}>
+          <p>{message}</p>
+        </div>
+      )}
     </div>
   );
 };

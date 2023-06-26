@@ -1,9 +1,10 @@
 import  React,{ useState ,useEffect} from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import UserInput from './UserInput';
 
 export default function CustomOrder() {
 
+  const navigate = useNavigate()
   const location = useLocation()
 
   const [formData, setFormData] = useState({
@@ -42,6 +43,7 @@ export default function CustomOrder() {
       .then((response) => {
         if (response.status === 201) {
           alert('Custom order saved successfully!');
+          navigate(-2)
         } else {
           alert('Failed to save custom order. Please try again.');
         }

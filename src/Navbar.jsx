@@ -22,6 +22,8 @@ export default function Navbar(props){
 
 
     React.useEffect(() => {
+        if(!token) return
+        
         fetch(`http://127.0.0.1:8000/user/getCustomerProfile`,
         {
           method: 'GET',
@@ -80,7 +82,7 @@ export default function Navbar(props){
                     <NavLink style={style} to={isCustomerLoggedIn ? "/customer/orders" : "/login"}>Orders</NavLink>
                 </div>
                 <div>
-                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/login"}><img src="/src/assets/wishlist.png" alt="Search" /></NavLink>
+                    <NavLink className="logo wishlist-btn" to={isCustomerLoggedIn ? "/customer/wishlist" : "/login"}><img src="/src/assets/favorite-unchecked.png" alt="Search" /></NavLink>
                     <NavLink className="logo cart-btn" to={isCustomerLoggedIn ? "/customer/cart" : "/login"} ><img src="/src/assets/cart.png" alt="Cart" /></NavLink>
                     <NavLink className="logo user-btn">
                         {isCustomerLoggedIn ? (

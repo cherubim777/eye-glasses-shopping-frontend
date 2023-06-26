@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Item(props){
 
    const token = localStorage.getItem('customerToken');
@@ -16,6 +15,29 @@ export default function Item(props){
           .catch((error) => console.error(error));
       }, [props.product_id]);}
 
+      const addToCart = () => {
+         fetch('http://127.0.0.1:8000/cart/carts/', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+               'Authorization': `Bearer ${token}`,
+             },
+             body: JSON.stringify({"cart": 1, "quantity": 1, "product_id": props.product_id})
+           })
+           .then(response => {
+             if (response.status === 201) {
+                props.setShowNotification(prev => {console.log("notif: " + prev);return true})
+                handleDeleteWishListItems()        
+             }
+             else if (response.status === 401) {
+                 navigate('/login')
+       }
+           })
+           .catch(error => {
+             // Handle any errors that occurred during the request
+           });          
+     }
+
       const handleDeleteCartItems = () => {
             fetch('http://127.0.0.1:8000/cart/delete/' + props.product_id, {
                method: 'DELETE',
@@ -27,40 +49,48 @@ export default function Item(props){
             .then((response) => {props.reloadCart()})
             .catch((error) => console.error(error));
      }
-
+      const handleDeleteWishListItems = () => {
+            fetch('http://127.0.0.1:8000/wishlist/wishlist/' + props.product_id, {
+               method: 'DELETE',
+               headers: {
+                  'Content-Type': 'application/json', 
+                  'Authorization': `Bearer ${token}`
+               }
+            })
+            .then((response) => props.reloadWishlist())
+            .catch((error) => console.error(error));
+     }
     const customer =  
     <div className="item" >
         <img className="item-image" src={product.photo} alt="" />
         <div>
             <div className="item-name">{product.name}</div>
          </div>
-        <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>
+        {props.for !== "wishlist" && <input className="item-quantity" type="number" placeholder="1" min={1} max={6} disabled value={props.quantity}/>}
         <div className="item-price">{`${product.price} ETB`}</div>
-        {!props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "cart" && <img className="trash-btn link-style" onClick={handleDeleteCartItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "wishlist" && <img className="trash-btn link-style" onClick={handleDeleteWishListItems} src="/src/assets/trash.png" alt="trash image" />}
+        {props.for === "wishlist" && <button onClick={addToCart} className="button-style theme-color">Add to Cart</button>}
     </div> 
 
     const retailer = 
     <div className="item">
-        <img className="item-image" src="/src/assets/sample-eyeglass3.png" alt="" />
+        {props.topProduct && <img className="item-image" src={props.topProduct.photo} alt="" />}
     <div>
         <div className="item-name"></div>
         <div className="item-description"></div>
      </div>
      <div>
         <div className="item-name">Inventory</div>
-        <div className="item-description">700</div>
+        {props.topProduct && <div className="item-description">{props.topProduct.quantity}</div>}
      </div>
      <div>
         <div className="item-name">Sale</div>
-        <div className="item-description">$1,000.60</div>
+        {props.topProduct && <div className="item-description">{props.topProduct.sales} ETB</div>}
      </div>
      <div>
         <div className="item-name">Price</div>
-        <div className="item-description">$1,000.60</div>
-     </div>
-     <div>
-        <div className="item-name">Today</div>
-        <div className="item-description">$17,000.60</div>
+        {props.topProduct &&  <div className="item-description">{props.topProduct.price} ETB</div>}
      </div>
 </div> 
 

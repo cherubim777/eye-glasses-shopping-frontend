@@ -55,7 +55,7 @@ export default function Cart(){
             <div className="cart-body">
                 <div className="cart-items">
                    {cartItems.map((item) => {
-                        return <Item key={item.id} reloadCart={reloadCart} user="customer" {...item} />
+                        return <Item key={item.id} for="cart" reloadCart={reloadCart} user="customer" {...item} />
                    })}
                 </div>
                 <div className="price theme-color">
